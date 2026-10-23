@@ -4,13 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Presupuesto CRM · LivX</title>
-  <meta name="description" content="Presupuesto del CRM para LivX: $475 USD pago único, dominio $25 y hosting opcional de $145 al año o $25 al mes. Costos de Twilio aparte.">
+  <meta name="description" content="Presupuesto del CRM para LivX: $475 USD pago único, dominio $25 y hosting opcional de $145 al año o $25 al mes. Servicios de terceros aparte.">
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#07080d">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Presupuesto CRM para LivX">
   <meta property="og:description" content="$475 USD pago único + dominio $25. Hosting opcional: $145/año o $25/mes.">
-  <link rel="icon" href="../assets/img/dgp-mark.png" type="image/png">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://livxteam.dgp-link.com/presupuesto/">
+  <meta property="og:url" content="https://livxteam.dgp-link.com/presupuesto/">
+  <meta property="og:site_name" content="LivX CRM">
+  <meta property="og:locale" content="es_US">
+  <meta property="og:image" content="https://livxteam.dgp-link.com/presupuesto/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://livxteam.dgp-link.com/presupuesto/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -90,7 +99,7 @@
     <div class="hero">
       <span class="eyebrow">Presupuesto para LivX</span>
       <h1>Un solo pago. <em>El CRM es de LivX.</em></h1>
-      <p class="lead">Sin cobro por usuario ni contratos anuales obligatorios. El hosting es opcional, y los minutos y SMS de Twilio se pagan directo a Twilio, al costo y sin recargo.</p>
+      <p class="lead">Sin cobro por usuario ni contratos anuales obligatorios. El hosting es opcional. Nosotros cobramos solo el diseño y el desarrollo.</p>
       <div class="meta">
         <div><small>Preparado para</small><strong>LivX</strong></div>
         <div><small>Preparado por</small><strong>DGP Global Group &amp; Moya Company</strong></div>
@@ -105,10 +114,10 @@
         <div class="card price-card">
           <span class="lbl">CRM LivX · cold calling + Twilio</span>
           <div class="price"><span class="cur">$</span><span class="amt">475</span><span class="per">USD · pago único</span></div>
-          <p class="price-sub">Desarrollo, integración con Twilio, migración del Google Sheet, puesta en línea y capacitación.</p>
+          <p class="price-sub">Diseño y desarrollo, integración con Twilio, migración del Google Sheet, puesta en línea y capacitación.</p>
           <div class="terms">
-            <div class="term"><small>50% para iniciar</small><strong>$237.50</strong></div>
-            <div class="term"><small>50% contra entrega</small><strong>$237.50</strong></div>
+            <div class="term"><small>60% para iniciar</small><strong>$285</strong></div>
+            <div class="term"><small>40% contra entrega</small><strong>$190</strong></div>
           </div>
           <ul class="checks">
             <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Vista de tabla tipo Airtable</strong> con filtros, vistas guardadas y pipeline kanban</span></li>
@@ -116,6 +125,7 @@
             <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>SMS de ida y vuelta</strong> desde la ficha del lead, con plantillas</span></li>
             <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Seguimientos, fechas, tipo de contacto, status y notas</strong>: todo lo que hoy falta en la hoja</span></li>
             <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Migración del Google Sheet</strong>, limpieza de duplicados y teléfonos</span></li>
+            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Diseño adaptable</strong>: se ve y funciona bien en computadora, tablet y celular</span></li>
             <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Usuarios con login</strong> para dueños y caller, sin cobro por usuario</span></li>
             <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Capacitación en vivo</strong> y <strong>30 días de soporte</strong> después de la entrega</span></li>
           </ul>
@@ -126,9 +136,9 @@
           <div id="lines" style="margin-top:12px"></div>
           <div class="sum-total"><span style="font-weight:500">Total hoy</span><strong id="total">$500</strong></div>
           <div class="sum-rec" id="rec"></div>
-          <p class="sum-note">Elija abajo la opción de hosting y el total se actualiza. Twilio se factura aparte, directo a LivX.</p>
+          <p class="sum-note">Elija abajo la opción de hosting y el total se actualiza. Los servicios de terceros, como Twilio, se pagan aparte.</p>
           <div class="row no-print" style="margin-top:18px">
-            <a class="btn gold" id="acceptBtn" href="#aceptar" style="flex:1">Aceptar presupuesto</a>
+            <button class="btn gold" type="button" onclick="window.print()" style="flex:1">Guardar en PDF</button>
           </div>
         </aside>
       </div>
@@ -167,29 +177,15 @@
       </div>
     </section>
 
-    <!-- Twilio -->
-    <section id="twilio">
+    <!-- Terceros -->
+    <section id="terceros">
       <div class="sec-head">
-        <div class="k">Costos de Twilio</div>
-        <h2>Telefonía al costo, en la cuenta de LivX</h2>
-        <p>La cuenta de Twilio y el número del caller quedan a nombre de LivX. Twilio cobra por uso directamente a su tarjeta. Estas son tarifas aproximadas para EE. UU.</p>
-      </div>
-      <div class="card scroll-x">
-        <table class="t" style="min-width:560px">
-          <thead><tr><th>Concepto</th><th>Para qué es</th><th class="r">Costo aprox.</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Número local de Houston</strong></td><td>La línea del cold caller (713, 832 o 281)</td><td class="r">~$1.15 /mes</td></tr>
-            <tr><td><strong>Llamadas salientes</strong></td><td>Las que hace el caller desde el CRM</td><td class="r">~$0.014 /min</td></tr>
-            <tr><td><strong>Llamadas entrantes</strong></td><td>Cuando un negocio devuelve la llamada</td><td class="r">~$0.0085 /min</td></tr>
-            <tr><td><strong>Grabación</strong></td><td>Para que los dueños escuchen las llamadas</td><td class="r">~$0.0025 /min</td></tr>
-            <tr><td><strong>SMS</strong></td><td>Enviados y recibidos, más el recargo del operador</td><td class="r">~$0.01 /mensaje</td></tr>
-            <tr><td><strong>Registro A2P 10DLC</strong><small>Obligatorio para enviar SMS en EE. UU.</small></td><td>Registro de la marca y del tipo de mensajes</td><td class="r">~$20–65 único<br>+ ~$2–10 /mes</td></tr>
-          </tbody>
-        </table>
+        <div class="k">Servicios de terceros</div>
+        <h2>Nosotros cobramos el diseño y el desarrollo</h2>
       </div>
       <div class="card callout">
         <svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-        <p><strong>Ejemplo de un mes:</strong> un caller con unos 1,500 minutos de llamadas grabadas y 300 SMS gastaría alrededor de <strong>$30 a $40 al mes</strong> en Twilio. La configuración de la cuenta y el trámite del registro A2P están incluidos en los $475.</p>
+        <p>Twilio (llamadas, SMS y grabaciones), igual que cualquier otra integración, se contrata a nombre de LivX y se paga aparte, directamente al proveedor. El presupuesto cubre solo el diseño y el desarrollo del CRM.</p>
       </div>
     </section>
 
@@ -197,7 +193,7 @@
     <section>
       <div class="sec-head"><div class="k">Preguntas frecuentes</div><h2>Lo que suelen preguntar</h2></div>
       <div class="card faq">
-        <details open><summary>¿Hay que pagar mensualidad por el CRM?</summary><p>No. El CRM es un solo pago de $475 y no se cobra por usuario. Lo único recurrente es el hosting, si lo eligen, y el uso de Twilio.</p></details>
+        <details open><summary>¿Hay que pagar mensualidad por el CRM?</summary><p>No. El CRM es un solo pago de $475 y no se cobra por usuario. Lo único recurrente es el dominio y el hosting, si lo eligen. Los servicios de terceros se pagan aparte.</p></details>
         <details><summary>¿Qué pasa si no tomamos el hosting?</summary><p>Les dejamos el sistema listo para alojarlo en una cuenta de LivX. El mantenimiento y los respaldos quedarían por su cuenta.</p></details>
         <details><summary>¿Los dueños pueden escuchar todas las llamadas?</summary><p>Sí. Cada llamada queda grabada en la ficha del lead y en el registro de llamadas, con fecha, duración y resultado.</p></details>
         <details><summary>¿El número de teléfono es de LivX o del caller?</summary><p>Es de LivX. Si el caller cambia, el número, las grabaciones y los SMS se quedan con ustedes.</p></details>
@@ -215,10 +211,10 @@
           <span class="agency"><span class="lg"><img src="../assets/img/moya-mark.png" alt=""></span>Moya Company</span>
         </div>
         <h2>¿Empezamos?</h2>
-        <p>Con la aprobación y el 50% inicial arrancamos de inmediato. En unas dos semanas su caller estará trabajando en el CRM.</p>
+        <p>Con la aprobación y el 60% inicial arrancamos de inmediato. En unas dos semanas su caller estará trabajando en el CRM.</p>
         <div class="row">
-          <a class="btn gold lg" id="waBtn" href="https://wa.me/17133827990" target="_blank" rel="noopener">Aceptar por WhatsApp</a>
-          <button class="btn lg no-print" type="button" onclick="window.print()">Guardar en PDF</button>
+          <button class="btn gold lg no-print" type="button" onclick="window.print()">Guardar en PDF</button>
+          <a class="btn lg no-print" href="../propuesta/">Ver propuesta</a>
         </div>
         <p id="selNote" style="margin:18px auto 0;font-size:13.5px"></p>
       </div>
@@ -257,11 +253,8 @@
       document.getElementById('total').textContent = money(total);
       document.getElementById('rec').textContent = h.rec;
       document.getElementById('selNote').innerHTML =
-        `Total hoy: <strong>${money(total)}</strong> · 50% del CRM para iniciar: <strong>${money(CRM / 2)}</strong>`;
+        `Total hoy: <strong>${money(total)}</strong> · 60% del CRM para iniciar: <strong>${money(CRM * .6)}</strong>`;
       document.querySelectorAll('.opt').forEach((el) => el.classList.toggle('on', el.dataset.v === host));
-      const msg = `Hola, aceptamos el presupuesto del CRM para LivX: CRM ${money(CRM)} + dominio ${money(DOMAIN)}` +
-        (h.name ? ` + ${h.name.toLowerCase()} (${host === 'year' ? '$145/año' : '$25/mes'})` : ' (sin hosting)') + `. Total hoy: ${money(total)}.`;
-      document.getElementById('waBtn').href = 'https://wa.me/17133827990?text=' + encodeURIComponent(msg);
     }
     document.getElementById('hostOpts').addEventListener('change', (e) => { host = e.target.value; update(); });
 
