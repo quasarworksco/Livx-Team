@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Presupuesto CRM · LivX</title>
-  <meta name="description" content="Presupuesto del CRM para LivX: $545 USD pago único más $25 de dominio. Hosting opcional de $145 al año o $25 al mes. Servicios de terceros aparte.">
+  <meta name="description" content="Presupuesto del CRM para LivX: $545 USD pago único más $25 de dominio. Hosting de $145 al año o $25 al mes. Servicios de terceros aparte.">
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#ffffff">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Presupuesto CRM para LivX">
-  <meta property="og:description" content="$545 USD pago único + $25 de dominio. Hosting opcional: $145/año o $25/mes.">
+  <meta property="og:description" content="$545 USD pago único + $25 de dominio. Hosting: $145/año o $25/mes.">
   <link rel="icon" href="../assets/img/dgp-mark.png" type="image/png">
   <link rel="canonical" href="https://livxteam.dgp-link.com/presupuesto/">
   <meta property="og:url" content="https://livxteam.dgp-link.com/presupuesto/">
@@ -20,7 +20,7 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Presupuesto CRM para LivX">
-  <meta name="twitter:description" content="$545 USD pago único + $25 de dominio. Hosting opcional: $145/año o $25/mes.">
+  <meta name="twitter:description" content="$545 USD pago único + $25 de dominio. Hosting: $145/año o $25/mes.">
   <meta name="twitter:image" content="https://livxteam.dgp-link.com/presupuesto/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -113,7 +113,7 @@
     .summary { padding: 28px; position: sticky; top: 86px; }
     .summary h3 { font-family: var(--display); font-weight: 400; font-size: 34px; color: var(--black); letter-spacing: .5px; }
     .seg-lbl { font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; color: var(--soft); margin-top: 12px; }
-    .seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; background: var(--off); border: 1px solid var(--border); border-radius: 100px; margin: 8px 0 8px; }
+    .seg { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; padding: 4px; background: var(--off); border: 1px solid var(--border); border-radius: 100px; margin: 8px 0 8px; }
     .seg button { font: inherit; font-size: 13px; font-weight: 500; height: 34px; border: 0; border-radius: 100px; background: none; color: var(--soft); cursor: pointer; transition: background .2s, color .2s; }
     .seg button.on { background: var(--black); color: var(--white); }
     .sum-line { display: flex; justify-content: space-between; gap: 12px; padding: 11px 0; border-bottom: 1px dashed var(--border); font-size: 14.5px; color: var(--black); }
@@ -128,7 +128,7 @@
     .sum-note { font-size: 12.5px; color: var(--soft); margin-top: 14px; }
 
     /* Hosting */
-    .opts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
     .opt { position: relative; padding: 28px 24px 24px; cursor: pointer; background: var(--white); display: flex; flex-direction: column; transition: background .2s; }
     .opt:hover { background: #fbfbff; }
     .opt input { position: absolute; opacity: 0; pointer-events: none; }
@@ -218,7 +218,7 @@
     <div class="hero">
       <span class="eyebrow">Presupuesto para LivX</span>
       <h1>CRM para cold calling <span>con Twilio integrado</span></h1>
-      <p class="lead">Un solo pago por el diseño y el desarrollo, sin cobro por usuario. Más $25 de dominio, y el hosting es opcional: anual o mensual.</p>
+      <p class="lead">Un solo pago por el diseño y el desarrollo, sin cobro por usuario. Más $25 de dominio y el hosting: $145 al año o $25 al mes.</p>
       <div class="meta">
         <div><small>Preparado para</small><strong>LivX</strong></div>
         <div><small>Preparado por</small><strong>DGP Global Group &amp; Moya Company</strong></div>
@@ -257,7 +257,6 @@
           <div class="seg no-print" id="seg" role="group" aria-label="Opción de hosting">
             <button type="button" data-v="year">Anual</button>
             <button type="button" data-v="month">Mensual</button>
-            <button type="button" data-v="none">Sin hosting</button>
           </div>
           <div id="lines"></div>
           <div class="sum-total">
@@ -275,7 +274,7 @@
       <div class="sec-head">
         <span class="eyebrow">Dominio y hosting</span>
         <h2>Elija cómo <span>mantenerlo en línea</span></h2>
-        <p>Las tres opciones incluyen el dominio de $25. El hosting cubre que el CRM esté en línea, con respaldos, certificado de seguridad y monitoreo.</p>
+        <p>Ambas opciones incluyen el dominio de $25. El hosting cubre que el CRM esté en línea, con respaldos, certificado de seguridad y monitoreo.</p>
       </div>
       <div class="opts" id="hostOpts"></div>
     </section>
@@ -326,11 +325,6 @@
         title: 'Hosting mensual', price: 25, unit: '/mes', desc: 'Lo mismo que el anual, pagado mes a mes y sin compromiso.',
         line: 'Hosting mensual', sub: 'Primer mes', today: 25, firstYear: 300, then: 'Luego $25 al mes + dominio $25 al año',
         after: ['Luego, cada mes', '$25']
-      },
-      none: {
-        title: 'Sin hosting', price: 0, unit: '', desc: 'Les entregamos el sistema para alojarlo en una cuenta propia de LivX, que administran ustedes.',
-        line: null, today: 0, firstYear: 0, then: 'Renovación del dominio: $25 al año',
-        after: ['Renovación del dominio', '$25/año']
       }
     };
     const money = (n) => '$' + n.toLocaleString('en-US', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 });
