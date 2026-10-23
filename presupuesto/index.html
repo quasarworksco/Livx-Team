@@ -4,103 +4,221 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Presupuesto CRM · LivX</title>
-  <meta name="description" content="Presupuesto del CRM para LivX: $475 USD pago único, dominio $25 y hosting opcional de $145 al año o $25 al mes. Servicios de terceros aparte.">
+  <meta name="description" content="Presupuesto del CRM para LivX: $545 USD pago único más $25 de dominio. Hosting opcional de $145 al año o $25 al mes. Servicios de terceros aparte.">
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#07080d">
+  <meta name="theme-color" content="#ffffff">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Presupuesto CRM para LivX">
-  <meta property="og:description" content="$475 USD pago único + dominio $25. Hosting opcional: $145/año o $25/mes.">
-  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <meta property="og:description" content="$545 USD pago único + $25 de dominio. Hosting opcional: $145/año o $25/mes.">
+  <link rel="icon" href="../assets/img/dgp-mark.png" type="image/png">
   <link rel="canonical" href="https://livxteam.dgp-link.com/presupuesto/">
   <meta property="og:url" content="https://livxteam.dgp-link.com/presupuesto/">
-  <meta property="og:site_name" content="LivX CRM">
+  <meta property="og:site_name" content="DGP Global Group">
   <meta property="og:locale" content="es_US">
   <meta property="og:image" content="https://livxteam.dgp-link.com/presupuesto/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Presupuesto CRM para LivX">
-  <meta name="twitter:description" content="$475 USD pago único + dominio $25. Hosting opcional: $145/año o $25/mes.">
+  <meta name="twitter:description" content="$545 USD pago único + $25 de dominio. Hosting opcional: $145/año o $25/mes.">
   <meta name="twitter:image" content="https://livxteam.dgp-link.com/presupuesto/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/site.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
   <style>
-    .price-wrap { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 18px; align-items: start; }
-    .price-card { padding: 32px; }
-    .price-card .lbl { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
-    .price { display: flex; align-items: flex-start; gap: 6px; margin: 18px 0 18px; }
-    .price .cur { font-size: 28px; margin-top: 12px; color: var(--ink-2); font-weight: 300; }
-    .price .amt { font-family: var(--display); font-size: 104px; font-weight: 700; line-height: 1; letter-spacing: -.02em; font-variant-numeric: lining-nums; }
-    .price .per { align-self: flex-end; margin-bottom: 10px; color: var(--ink-3); font-size: 14px; }
-    .price-sub { color: var(--ink-2); font-size: 14px; font-weight: 300; }
-    .terms { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .term { border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; background: rgba(255, 255, 255, .02); }
-    .term small { color: var(--ink-3); font-size: 12px; }
-    .term strong { display: block; font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
-    .checks { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 10px; }
-    .checks li { display: flex; gap: 10px; font-size: 14px; color: var(--ink-2); font-weight: 300; }
-    .checks li strong { color: var(--ink); font-weight: 500; }
-    .checks svg.i { color: var(--gold); width: 17px; height: 17px; margin-top: 3px; }
+    /* Estilo DGP Global Group: claro, legible, azul de marca */
+    :root {
+      color-scheme: light;
+      --white: #ffffff;
+      --off: #f7f7f5;
+      --black: #0a0a0a;
+      --text: #1d2433;
+      --soft: #5b6578;
+      --muted: #2a3f7e;
+      --blue: #1438cc;
+      --blue-l: #2a52e0;
+      --blue-bg: rgba(20, 56, 204, .06);
+      --border: #e8e8e4;
+      --good: #15803d;
+      --display: "Bebas Neue", Impact, sans-serif;
+      --body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--body); font-size: 15.5px; line-height: 1.6; color: var(--text); background: var(--off); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    h1, h2, h3, p { margin: 0; }
+    svg.i { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-    .summary { padding: 26px; position: sticky; top: 84px; }
-    .summary h3 { font-family: var(--display); font-size: 28px; font-weight: 700; }
-    .sum-line { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--line-2); font-size: 14px; }
-    .sum-line span:first-child { color: var(--ink-2); }
+    /* Barra superior */
+    .top { position: sticky; top: 0; z-index: 20; background: rgba(255, 255, 255, .92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 66px; }
+    .top .right { display: flex; gap: 10px; align-items: center; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-size: 21px; letter-spacing: 4px; color: var(--black); white-space: nowrap; }
+    .logo img { width: 26px; height: auto; }
+    .logo span { color: var(--blue); }
+    .badge { display: inline-flex; align-items: center; gap: 7px; background: var(--off); border: 1px solid var(--border); border-radius: 100px; padding: 6px 14px; font-size: 11px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; }
+    .badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+
+    /* Botones */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 46px; padding: 0 22px; border-radius: 100px; font: inherit; font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; white-space: nowrap; border: 1px solid var(--black); background: var(--black); color: var(--white); transition: background .25s, transform .25s, box-shadow .25s, border-color .25s; }
+    .btn:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 14px 32px rgba(20, 56, 204, .28); }
+    .btn.sm { height: 38px; padding: 0 16px; font-size: 13px; }
+    .btn.sm svg.i { width: 15px; height: 15px; }
+
+    /* Portada */
+    .hero { padding: 64px 0 34px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue); font-weight: 500; }
+    .eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--blue); }
+    .hero h1 { font-family: var(--display); font-weight: 400; font-size: clamp(52px, 8vw, 96px); line-height: .92; color: var(--black); margin: 18px 0; letter-spacing: .5px; }
+    .hero h1 span { color: var(--blue); }
+    .hero .lead { font-size: 17px; color: var(--soft); max-width: 640px; font-weight: 300; }
+    .meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 36px; }
+    .meta > div { background: var(--white); padding: 16px 20px; }
+    .meta small { display: block; font-size: 10.5px; letter-spacing: 1.8px; text-transform: uppercase; color: var(--soft); }
+    .meta strong { font-weight: 500; color: var(--black); }
+
+    section { padding: 34px 0; }
+    .sec-head { margin-bottom: 22px; max-width: 700px; }
+    .sec-head h2 { font-family: var(--display); font-weight: 400; font-size: clamp(36px, 5vw, 56px); line-height: .95; color: var(--black); margin-top: 12px; letter-spacing: .5px; }
+    .sec-head h2 span { color: var(--blue); }
+    .sec-head p { color: var(--soft); margin-top: 10px; font-weight: 300; }
+
+    .card { background: var(--white); border: 1px solid var(--border); position: relative; overflow: hidden; }
+    .card.line::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--blue-l), var(--blue)); }
+
+    /* Inversión */
+    .price-wrap { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+    .price-card { padding: 34px; }
+    .price-card .lbl { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); font-weight: 500; }
+    .price { display: flex; align-items: flex-start; gap: 6px; margin: 14px 0 6px; color: var(--black); flex-wrap: wrap; }
+    .price .cur { font-family: var(--display); font-size: 40px; margin-top: 10px; }
+    .price .amt { font-family: var(--display); font-size: 120px; line-height: .9; }
+    .price .per { align-self: flex-end; margin-bottom: 14px; color: var(--soft); font-size: 14px; }
+    .plus { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 14px; padding: 8px 14px; background: var(--blue-bg); border: 1px solid rgba(20, 56, 204, .15); border-radius: 100px; font-size: 14px; color: var(--muted); }
+    .plus b { font-family: var(--display); font-weight: 400; font-size: 24px; line-height: 1; color: var(--blue); }
+    .price-sub { color: var(--soft); font-size: 14.5px; font-weight: 300; }
+    .terms { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .term { background: var(--off); padding: 14px 18px; }
+    .term small { color: var(--soft); font-size: 12.5px; }
+    .term strong { display: block; font-family: var(--display); font-weight: 400; font-size: 34px; line-height: 1; color: var(--black); margin-top: 4px; }
+    .term .pct { color: var(--blue); font-weight: 700; }
+    .checks { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 11px; }
+    .checks li { display: flex; gap: 10px; font-size: 14.5px; color: var(--soft); }
+    .checks li strong { color: var(--black); font-weight: 500; }
+    .checks svg.i { color: var(--blue); margin-top: 2px; }
+
+    .summary { padding: 28px; position: sticky; top: 86px; }
+    .summary h3 { font-family: var(--display); font-weight: 400; font-size: 34px; color: var(--black); letter-spacing: .5px; }
+    .seg-lbl { font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; color: var(--soft); margin-top: 12px; }
+    .seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; background: var(--off); border: 1px solid var(--border); border-radius: 100px; margin: 8px 0 8px; }
+    .seg button { font: inherit; font-size: 13px; font-weight: 500; height: 34px; border: 0; border-radius: 100px; background: none; color: var(--soft); cursor: pointer; transition: background .2s, color .2s; }
+    .seg button.on { background: var(--black); color: var(--white); }
+    .sum-line { display: flex; justify-content: space-between; gap: 12px; padding: 11px 0; border-bottom: 1px dashed var(--border); font-size: 14.5px; color: var(--black); }
+    .sum-line small { display: block; color: var(--soft); font-size: 12px; }
     .sum-line span:last-child { font-variant-numeric: tabular-nums; font-weight: 500; white-space: nowrap; }
-    .sum-line small { display: block; color: var(--ink-3); font-size: 12px; }
-    .sum-total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px; }
-    .sum-total strong { font-family: var(--display); font-size: 44px; font-weight: 700; font-variant-numeric: lining-nums tabular-nums; color: var(--gold); line-height: 1; }
-    .sum-rec { font-size: 13px; color: var(--ink-2); margin-top: 6px; min-height: 20px; }
-    .sum-note { font-size: 12px; color: var(--ink-3); margin-top: 12px; }
+    .sum-total { margin-top: 16px; padding: 18px 20px; background: var(--black); color: var(--white); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .sum-total small { display: block; font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(255, 255, 255, .6); }
+    .sum-total strong { font-family: var(--display); font-weight: 400; font-size: 54px; line-height: .9; letter-spacing: .5px; }
+    .sum-total .then { text-align: right; font-size: 12.5px; color: rgba(255, 255, 255, .78); max-width: 160px; }
+    .sum-year { display: flex; justify-content: space-between; gap: 12px; padding: 12px 20px; background: var(--blue-bg); border: 1px solid rgba(20, 56, 204, .15); border-top: 0; font-size: 13.5px; color: var(--muted); }
+    .sum-year b { color: var(--blue); font-variant-numeric: tabular-nums; }
+    .sum-note { font-size: 12.5px; color: var(--soft); margin-top: 14px; }
 
-    .opts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-    .opt { position: relative; padding: 22px; cursor: pointer; transition: border-color .15s, box-shadow .15s; display: block; }
-    .opt:hover { border-color: var(--line-2); }
+    /* Hosting */
+    .opts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .opt { position: relative; padding: 28px 24px 24px; cursor: pointer; background: var(--white); display: flex; flex-direction: column; transition: background .2s; }
+    .opt:hover { background: #fbfbff; }
     .opt input { position: absolute; opacity: 0; pointer-events: none; }
-    .opt.on { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold), var(--shadow); }
-    .opt .radio { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--line-2); display: inline-grid; place-items: center; float: right; }
-    .opt.on .radio { border-color: var(--gold); }
-    .opt.on .radio::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
-    .opt input:focus-visible ~ .radio { outline: 2px solid var(--gold); outline-offset: 2px; }
-    .opt h3 { font-size: 15px; font-weight: 600; }
-    .opt .pr { font-variant-numeric: lining-nums; font-family: var(--display); font-size: 40px; font-weight: 700; margin: 8px 0 4px; line-height: 1; }
-    .opt .pr small { font-family: var(--body); font-size: 13px; font-weight: 400; color: var(--ink-3); }
-    .opt p { font-size: 13px; color: var(--ink-2); font-weight: 300; }
-    .opt .save { display: inline-block; margin-top: 10px; font-size: 11.5px; color: var(--good); border: 1px solid rgba(95, 211, 154, .3); background: rgba(95, 211, 154, .08); border-radius: 999px; padding: 1px 9px; }
+    .opt::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform .35s cubic-bezier(.22, 1, .36, 1); }
+    .opt.on { background: #fafbff; }
+    .opt.on::after { transform: scaleX(1); }
+    .opt .radio { position: absolute; top: 24px; right: 22px; width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #cfd3dc; display: grid; place-items: center; }
+    .opt.on .radio { border-color: var(--blue); }
+    .opt.on .radio::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); }
+    .opt input:focus-visible ~ .radio { outline: 2px solid var(--blue); outline-offset: 2px; }
+    .opt h3 { font-size: 15px; font-weight: 500; color: var(--black); }
+    .opt .pr { font-family: var(--display); font-size: 52px; line-height: 1; color: var(--black); margin: 10px 0 6px; }
+    .opt .pr small { font-family: var(--body); font-size: 14px; color: var(--soft); }
+    .opt p { font-size: 13.5px; color: var(--soft); font-weight: 300; }
+    .opt .save { align-self: flex-start; margin-top: 10px; font-size: 11.5px; font-weight: 500; color: var(--good); background: rgba(21, 128, 61, .08); border: 1px solid rgba(21, 128, 61, .2); border-radius: 100px; padding: 2px 10px; }
+    .opt .tot { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border); display: grid; gap: 5px; }
+    .opt .tot-wrap { margin-top: 18px; flex: 1; display: flex; flex-direction: column; }
+    .opt .tot div { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; color: var(--soft); }
+    .opt .tot b { color: var(--black); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .opt .tot .big { margin-top: 4px; padding-top: 8px; border-top: 1px dashed var(--border); font-size: 14px; color: var(--black); font-weight: 500; }
+    .opt .tot .big b { font-family: var(--display); font-weight: 400; font-size: 30px; line-height: 1; color: var(--blue); }
 
-    .callout { padding: 18px 22px; display: flex; gap: 14px; align-items: flex-start; margin-top: 14px; }
-    .callout svg.i { color: var(--gold); margin-top: 3px; }
-    .callout p { font-size: 13.5px; color: var(--ink-2); font-weight: 300; }
-    .callout strong { color: var(--ink); font-weight: 500; }
+    .callout { padding: 22px 24px; display: flex; gap: 14px; align-items: flex-start; }
+    .callout svg.i { color: var(--blue); margin-top: 3px; }
+    .callout p { color: var(--soft); font-size: 14.5px; }
+    .callout strong { color: var(--black); font-weight: 500; }
+
+
+    .cta { text-align: center; padding: 56px 24px; background: var(--black); color: var(--white); border: 0; }
+    .cta h2 { font-family: var(--display); font-weight: 400; font-size: clamp(44px, 6vw, 72px); line-height: .95; letter-spacing: .5px; }
+    .cta h2 span { color: #7d9bff; }
+    .cta p { color: rgba(255, 255, 255, .72); margin: 12px auto 26px; max-width: 560px; font-weight: 300; }
+    .cta .btn { background: var(--white); color: var(--black); border-color: var(--white); }
+    .cta .btn:hover { background: var(--blue); border-color: var(--blue); color: var(--white); }
+    .cta .total-line { margin: 18px auto 0; font-size: 14px; color: rgba(255, 255, 255, .78); }
+    .cta .total-line strong { color: var(--white); }
+
+    .by { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .agency { display: inline-flex; align-items: center; gap: 10px; padding: 5px 14px 5px 5px; border-radius: 100px; background: var(--white); border: 1px solid var(--border); font-size: 13.5px; font-weight: 500; color: var(--black); }
+    .agency .lg { width: 32px; height: 32px; border-radius: 50%; background: var(--off); display: grid; place-items: center; }
+    .agency .lg img { max-width: 22px; max-height: 20px; }
+    .amp { font-family: var(--display); font-size: 24px; color: var(--blue); }
+    footer { padding: 30px 0 48px; color: var(--soft); font-size: 13px; border-top: 1px solid var(--border); margin-top: 26px; background: var(--white); }
+    footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
 
     @media (max-width: 900px) {
       .price-wrap { grid-template-columns: minmax(0, 1fr); }
       .summary { position: static; }
       .opts { grid-template-columns: minmax(0, 1fr); }
     }
-    @media (max-width: 680px) {
-      .price .amt { font-size: 84px; }
+    @media (max-width: 640px) {
+      .meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero { padding: 40px 0 20px; }
+      .price .amt { font-size: 96px; }
+      .price-card, .summary { padding: 22px; }
+      .badge { display: none; }
+      .logo { font-size: 18px; letter-spacing: 3px; }
+      .sum-total strong { font-size: 46px; }
       .terms { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media print {
+      body { background: #fff; font-size: 12.5px; }
+      .top, .no-print { display: none !important; }
+      .card, .opt { break-inside: avoid; }
+      section { padding: 14px 0; }
+      .hero { padding: 0 0 10px; }
+      .summary { position: static; }
+      .cta { background: #fff; color: #000; border: 1px solid var(--border); }
+      .cta p, .cta .total-line { color: #333; }
+      .cta .total-line strong { color: #000; }
+      .sum-total { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
   </style>
 </head>
 <body>
   <header class="top">
     <div class="wrap">
-      <div class="brand"><span class="word">Liv<b>X</b></span><span class="sep"></span><span class="sub">Presupuesto de CRM</span></div>
-      <nav class="nav no-print">
-        <button class="btn" type="button" onclick="window.print()"><svg class="i" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Guardar PDF</button>
-      </nav>
+      <span class="logo"><img src="../assets/img/dgp-mark.png" alt="">DGP <span>GLOBAL</span> GROUP</span>
+      <div class="right">
+        <span class="badge"><span class="dot"></span>Presupuesto · LivX</span>
+        <button class="btn sm no-print" type="button" onclick="window.print()"><svg class="i" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Guardar PDF</button>
+      </div>
     </div>
   </header>
 
   <main class="wrap">
     <div class="hero">
       <span class="eyebrow">Presupuesto para LivX</span>
-      <h1>Un solo pago. <em>El CRM es de LivX.</em></h1>
-      <p class="lead">Sin cobro por usuario ni contratos anuales obligatorios. El hosting es opcional. Nosotros cobramos solo el diseño y el desarrollo.</p>
+      <h1>CRM para cold calling <span>con Twilio integrado</span></h1>
+      <p class="lead">Un solo pago por el diseño y el desarrollo, sin cobro por usuario. Más $25 de dominio, y el hosting es opcional: anual o mensual.</p>
       <div class="meta">
         <div><small>Preparado para</small><strong>LivX</strong></div>
         <div><small>Preparado por</small><strong>DGP Global Group &amp; Moya Company</strong></div>
@@ -110,15 +228,16 @@
     </div>
 
     <!-- Inversión -->
-    <section id="inversion" style="padding-top:20px">
+    <section id="inversion" style="padding-top:10px">
       <div class="price-wrap">
-        <div class="card price-card">
-          <span class="lbl">CRM LivX · cold calling + Twilio</span>
-          <div class="price"><span class="cur">$</span><span class="amt">475</span><span class="per">USD · pago único</span></div>
-          <p class="price-sub">Diseño y desarrollo, integración con Twilio, migración del Google Sheet, puesta en línea y capacitación.</p>
+        <div class="card line price-card">
+          <span class="lbl">CRM LivX · diseño y desarrollo</span>
+          <div class="price"><span class="cur">$</span><span class="amt">545</span><span class="per">USD · pago único</span></div>
+          <div class="plus">+ <b>$25</b> dominio (registro y configuración)</div>
+          <p class="price-sub">Diseño y desarrollo, integración con Twilio, migración del Google Sheet, puesta en línea y capacitación. Entrega en 5 días como máximo.</p>
           <div class="terms">
-            <div class="term"><small>60% para iniciar</small><strong>$285</strong></div>
-            <div class="term"><small>40% contra entrega</small><strong>$190</strong></div>
+            <div class="term"><small><span class="pct">60%</span> para iniciar</small><strong>$327</strong></div>
+            <div class="term"><small><span class="pct">40%</span> contra entrega</small><strong>$218</strong></div>
           </div>
           <ul class="checks">
             <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Vista de tabla tipo Airtable</strong> con filtros, vistas guardadas y pipeline kanban</span></li>
@@ -132,15 +251,21 @@
           </ul>
         </div>
 
-        <aside class="card summary">
+        <aside class="card line summary">
           <h3>Su inversión</h3>
-          <div id="lines" style="margin-top:12px"></div>
-          <div class="sum-total"><span style="font-weight:500">Total hoy</span><strong id="total">$500</strong></div>
-          <div class="sum-rec" id="rec"></div>
-          <p class="sum-note">Elija abajo la opción de hosting y el total se actualiza. Los servicios de terceros, como Twilio, se pagan aparte.</p>
-          <div class="row no-print" style="margin-top:18px">
-            <button class="btn gold" type="button" onclick="window.print()" style="flex:1">Guardar en PDF</button>
+          <div class="seg-lbl no-print">Hosting</div>
+          <div class="seg no-print" id="seg" role="group" aria-label="Opción de hosting">
+            <button type="button" data-v="year">Anual</button>
+            <button type="button" data-v="month">Mensual</button>
+            <button type="button" data-v="none">Sin hosting</button>
           </div>
+          <div id="lines"></div>
+          <div class="sum-total">
+            <div><small>Total hoy</small><strong id="total">—</strong></div>
+            <div class="then" id="then"></div>
+          </div>
+          <div class="sum-year"><span>Total del primer año</span><b id="year">—</b></div>
+          <p class="sum-note">Los servicios de terceros, como Twilio, se pagan aparte, directamente al proveedor.</p>
         </aside>
       </div>
     </section>
@@ -148,75 +273,32 @@
     <!-- Hosting -->
     <section id="hosting">
       <div class="sec-head">
-        <div class="k">Dominio y hosting</div>
-        <h2>El dominio va incluido en el presupuesto. El hosting lo eligen ustedes.</h2>
-        <p>El dominio ($25) es la dirección web del CRM, por ejemplo <strong>crm.</strong>sudominio.com. El hosting cubre que el sistema esté en línea, con respaldos, certificados de seguridad y monitoreo del servidor de llamadas.</p>
+        <span class="eyebrow">Dominio y hosting</span>
+        <h2>Elija cómo <span>mantenerlo en línea</span></h2>
+        <p>Las tres opciones incluyen el dominio de $25. El hosting cubre que el CRM esté en línea, con respaldos, certificado de seguridad y monitoreo.</p>
       </div>
-      <div class="opts" id="hostOpts">
-        <label class="card opt" data-v="year">
-          <input type="radio" name="host" value="year" checked>
-          <span class="radio"></span>
-          <h3>Hosting anual</h3>
-          <div class="pr">$145<small> /año</small></div>
-          <p>Un pago al año, con respaldos y monitoreo.</p>
-          <span class="save">Ahorra $155 frente al mensual</span>
-        </label>
-        <label class="card opt" data-v="month">
-          <input type="radio" name="host" value="month">
-          <span class="radio"></span>
-          <h3>Hosting mensual</h3>
-          <div class="pr">$25<small> /mes</small></div>
-          <p>Lo mismo que el anual, pagado mes a mes y sin compromiso.</p>
-        </label>
-        <label class="card opt" data-v="none">
-          <input type="radio" name="host" value="none">
-          <span class="radio"></span>
-          <h3>Sin hosting</h3>
-          <div class="pr">$0</div>
-          <p>Les entregamos el sistema para alojarlo en una cuenta propia de LivX, que administran ustedes.</p>
-        </label>
-      </div>
+      <div class="opts" id="hostOpts"></div>
     </section>
 
     <!-- Terceros -->
     <section id="terceros">
       <div class="sec-head">
-        <div class="k">Servicios de terceros</div>
-        <h2>Nosotros cobramos el diseño y el desarrollo</h2>
+        <span class="eyebrow">Servicios de terceros</span>
+        <h2>Cobramos solo <span>diseño y desarrollo</span></h2>
       </div>
       <div class="card callout">
         <svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-        <p>Twilio (llamadas, SMS y grabaciones), igual que cualquier otra integración, se contrata a nombre de LivX y se paga aparte, directamente al proveedor. El presupuesto cubre solo el diseño y el desarrollo del CRM.</p>
+        <p><strong>Twilio</strong> (llamadas, SMS y grabaciones), igual que cualquier otra integración, se contrata a nombre de LivX y se paga aparte, directamente al proveedor.</p>
       </div>
     </section>
 
-    <!-- Preguntas -->
+    <!-- Cierre -->
     <section>
-      <div class="sec-head"><div class="k">Preguntas frecuentes</div><h2>Lo que suelen preguntar</h2></div>
-      <div class="card faq">
-        <details open><summary>¿Hay que pagar mensualidad por el CRM?</summary><p>No. El CRM es un solo pago de $475 y no se cobra por usuario. Lo único recurrente es el dominio y el hosting, si lo eligen. Los servicios de terceros se pagan aparte.</p></details>
-        <details><summary>¿Qué pasa si no tomamos el hosting?</summary><p>Les dejamos el sistema listo para alojarlo en una cuenta de LivX. El mantenimiento y los respaldos quedarían por su cuenta.</p></details>
-        <details><summary>¿Los dueños pueden escuchar todas las llamadas?</summary><p>Sí. Cada llamada queda grabada en la ficha del lead y en el registro de llamadas, con fecha, duración y resultado.</p></details>
-        <details><summary>¿El número de teléfono es de LivX o del caller?</summary><p>Es de LivX. Si el caller cambia, el número, las grabaciones y los SMS se quedan con ustedes.</p></details>
-        <details><summary>¿Cómo se pasan los datos del Google Sheet?</summary><p>Lo hacemos nosotros: importamos la hoja, unimos duplicados, damos un solo formato a los teléfonos y asignamos categorías y status.</p></details>
-        <details><summary>¿Se puede crecer después?</summary><p>Sí. Cuando hagan el launch se pueden agregar más callers, formularios de registro de partners, email marketing o reportes. Se cotiza aparte según lo que necesiten.</p></details>
-      </div>
-    </section>
-
-    <!-- Aceptar -->
-    <section id="aceptar">
       <div class="card cta">
-        <div class="by no-print" style="justify-content:center;margin-bottom:22px">
-          <span class="agency"><span class="lg"><img src="../assets/img/dgp-mark.png" alt=""></span>DGP Global Group</span>
-          <span class="amp">&amp;</span>
-          <span class="agency"><span class="lg"><img src="../assets/img/moya-mark.png" alt=""></span>Moya Company</span>
-        </div>
-        <h2>¿Empezamos?</h2>
+        <h2>¿Empezamos? <span>5 días.</span></h2>
         <p>Con la aprobación y el 60% inicial arrancamos de inmediato. En 5 días como máximo su caller estará trabajando en el CRM.</p>
-        <div class="row">
-          <button class="btn gold lg no-print" type="button" onclick="window.print()">Guardar en PDF</button>
-        </div>
-        <p id="selNote" style="margin:18px auto 0;font-size:13.5px"></p>
+        <button class="btn no-print" type="button" onclick="window.print()">Guardar en PDF</button>
+        <p class="total-line" id="selNote"></p>
       </div>
     </section>
   </main>
@@ -224,7 +306,6 @@
   <footer>
     <div class="wrap">
       <div class="by">
-        <span class="lbl">Presupuesto de</span>
         <span class="agency"><span class="lg"><img src="../assets/img/dgp-mark.png" alt="Logo de DGP Global Group"></span>DGP Global Group</span>
         <span class="amp">&amp;</span>
         <span class="agency"><span class="lg"><img src="../assets/img/moya-mark.png" alt="Logo de Moya Company"></span>Moya Company</span>
@@ -234,29 +315,68 @@
   </footer>
 
   <script>
-    const CRM = 475, DOMAIN = 25;
+    const CRM = 545, DOMAIN = 25;
     const HOST = {
-      year: { name: 'Hosting anual', today: 145, rec: 'Renovación anual: dominio $25 + hosting $145' },
-      month: { name: 'Hosting mensual', today: 25, rec: 'Luego $25/mes de hosting · dominio $25/año' },
-      none: { name: null, today: 0, rec: 'Renovación anual del dominio: $25' }
+      year: {
+        title: 'Hosting anual', price: 145, unit: '/año', desc: 'Un solo pago al año, con respaldos y monitoreo.', save: 'Ahorra $155 frente al mensual',
+        line: 'Hosting anual', sub: 'Primer año', today: 145, firstYear: 145, then: 'Renovación: $170 al año (dominio + hosting)',
+        after: ['Renovación anual', '$170']
+      },
+      month: {
+        title: 'Hosting mensual', price: 25, unit: '/mes', desc: 'Lo mismo que el anual, pagado mes a mes y sin compromiso.',
+        line: 'Hosting mensual', sub: 'Primer mes', today: 25, firstYear: 300, then: 'Luego $25 al mes + dominio $25 al año',
+        after: ['Luego, cada mes', '$25']
+      },
+      none: {
+        title: 'Sin hosting', price: 0, unit: '', desc: 'Les entregamos el sistema para alojarlo en una cuenta propia de LivX, que administran ustedes.',
+        line: null, today: 0, firstYear: 0, then: 'Renovación del dominio: $25 al año',
+        after: ['Renovación del dominio', '$25/año']
+      }
     };
     const money = (n) => '$' + n.toLocaleString('en-US', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 });
     let host = 'year';
+
+    // Tarjetas de hosting con el total de cada opción
+    document.getElementById('hostOpts').innerHTML = Object.entries(HOST).map(([k, h]) => `
+      <label class="opt" data-v="${k}">
+        <input type="radio" name="host" value="${k}">
+        <span class="radio"></span>
+        <h3>${h.title}</h3>
+        <div class="pr">${money(h.price)}<small> ${h.unit}</small></div>
+        <p>${h.desc}</p>
+        ${h.save ? `<span class="save">${h.save}</span>` : ''}
+        <div class="tot-wrap"><div class="tot">
+          <div><span>CRM</span><b>${money(CRM)}</b></div>
+          <div><span>Dominio</span><b>${money(DOMAIN)}</b></div>
+          ${h.line ? `<div><span>${h.title} (${h.sub.toLowerCase()})</span><b>${money(h.today)}</b></div>` : ''}
+          <div class="big"><span>Total hoy</span><b>${money(CRM + DOMAIN + h.today)}</b></div>
+          <div><span>${h.after[0]}</span><b>${h.after[1]}</b></div>
+        </div></div>
+      </label>`).join('');
 
     function update() {
       const h = HOST[host];
       const total = CRM + DOMAIN + h.today;
       document.getElementById('lines').innerHTML =
-        `<div class="sum-line"><span>CRM LivX<small>Pago único</small></span><span>${money(CRM)}</span></div>` +
+        `<div class="sum-line"><span>CRM LivX<small>Diseño y desarrollo · pago único</small></span><span>${money(CRM)}</span></div>` +
         `<div class="sum-line"><span>Dominio<small>Registro y configuración</small></span><span>${money(DOMAIN)}</span></div>` +
-        (h.name ? `<div class="sum-line"><span>${h.name}<small>${host === 'year' ? 'Primer año' : 'Primer mes'}</small></span><span>${money(h.today)}</span></div>` : '');
+        (h.line ? `<div class="sum-line"><span>${h.line}<small>${h.sub}</small></span><span>${money(h.today)}</span></div>` : '');
       document.getElementById('total').textContent = money(total);
-      document.getElementById('rec').textContent = h.rec;
+      document.getElementById('then').textContent = h.then;
+      document.getElementById('year').textContent = money(CRM + DOMAIN + h.firstYear);
       document.getElementById('selNote').innerHTML =
         `Total hoy: <strong>${money(total)}</strong> · 60% del CRM para iniciar: <strong>${money(CRM * .6)}</strong>`;
-      document.querySelectorAll('.opt').forEach((el) => el.classList.toggle('on', el.dataset.v === host));
+      document.querySelectorAll('.opt').forEach((el) => {
+        el.classList.toggle('on', el.dataset.v === host);
+        el.querySelector('input').checked = el.dataset.v === host;
+      });
+      document.querySelectorAll('#seg button').forEach((b) => b.classList.toggle('on', b.dataset.v === host));
     }
     document.getElementById('hostOpts').addEventListener('change', (e) => { host = e.target.value; update(); });
+    document.getElementById('seg').addEventListener('click', (e) => {
+      const b = e.target.closest('button'); if (!b) return;
+      host = b.dataset.v; update();
+    });
 
     // Fecha de emisión fija: la validez no se mueve cada vez que se abre la página
     const ISSUED = new Date(2026, 9, 23);

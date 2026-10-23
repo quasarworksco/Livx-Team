@@ -132,14 +132,6 @@ table.t td small { display: block; color: var(--ink-3); font-size: 12.5px; }
 .step h3 { font-size: 16px; font-weight: 600; margin: 8px 0 6px; }
 .step p { font-size: 13.5px; color: var(--ink-2); font-weight: 300; }
 
-/* FAQ */
-.faq details { padding: 18px 22px; border-bottom: 1px solid var(--line); }
-.faq details:last-child { border-bottom: 0; }
-.faq summary { cursor: pointer; font-weight: 500; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
-.faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; color: var(--gold); font-size: 20px; line-height: 1; }
-.faq details[open] summary::after { content: "–"; }
-.faq p { color: var(--ink-2); margin-top: 8px; font-size: 14px; font-weight: 300; }
 
 /* Cierre */
 .cta { text-align: center; padding: 60px 24px; background: radial-gradient(600px 260px at 50% 0%, rgba(241, 198, 111, .12), transparent 70%), linear-gradient(180deg, var(--surface), var(--bg-2)); }
