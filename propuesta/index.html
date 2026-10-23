@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Propuesta CRM · LivX</title>
+  <meta name="description" content="Propuesta de DGP Global Group y Moya Company para LivX: un CRM con vista de tabla, seguimientos y teléfono integrado con Twilio para el equipo de cold calling.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#07080d">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Propuesta CRM para LivX">
+  <meta property="og:description" content="Del Google Sheet a un CRM con llamadas, grabaciones, SMS y seguimientos para el equipo de cold calling de LivX.">
+  <link rel="icon" href="../assets/img/dgp-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <style>
+    /* ---------- Hoja actual ---------- */
+    .sheet-wrap { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+    .sheet { background: #fff; color: #202124; border-radius: 14px; overflow: hidden; font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; border: 1px solid var(--line); }
+    .sheet .bar { background: #f1f3f4; padding: 8px 12px; display: flex; gap: 10px; align-items: center; font-size: 12px; color: #444; border-bottom: 1px solid #dadce0; }
+    .sheet .bar i { width: 18px; height: 18px; border-radius: 4px; background: #0f9d58; display: inline-block; }
+    .sheet table { border-collapse: collapse; width: 100%; min-width: 560px; }
+    .sheet th { background: #1e1b4b; color: #fff; font-weight: 600; padding: 7px 8px; white-space: nowrap; text-align: left; font-size: 12.5px; }
+    .sheet td { border: 1px solid #e3e3e3; padding: 5px 8px; white-space: nowrap; }
+    .sheet td.flag { background: rgba(240, 123, 123, .14); outline: 1.5px dashed #d93025; outline-offset: -2px; }
+    .gs { display: inline-block; padding: 0 8px; border-radius: 8px; font-size: 11.5px; }
+    .gs-y { background: #188038; color: #fff; } .gs-n { background: #c5221f; color: #fff; } .gs-s { background: #e8eaed; color: #9aa0a6; }
+    .gs-r { background: #ffcfc9; } .gs-b { background: #e6e6e6; } .gs-rest { background: #ffe5a0; } .gs-w { background: #bfe1f6; }
+    .issues { padding: 8px 0; }
+    .issue { display: flex; gap: 14px; padding: 14px 22px; border-bottom: 1px solid var(--line); }
+    .issue:last-child { border-bottom: 0; }
+    .issue .n { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 600; color: var(--bad); background: rgba(240, 123, 123, .12); border: 1px solid rgba(240, 123, 123, .3); flex: none; margin-top: 1px; }
+    .issue h3 { font-size: 14.5px; font-weight: 600; }
+    .issue p { font-size: 13.5px; color: var(--ink-2); font-weight: 300; }
+
+    /* ---------- Demo del CRM ---------- */
+    .app { border: 1px solid var(--line-2); border-radius: 20px; overflow: hidden; background: var(--bg-2); box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .9), 0 0 0 1px rgba(241, 198, 111, .05); }
+    .app-chrome { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); background: #0d0e17; }
+    .app-chrome .d { width: 10px; height: 10px; border-radius: 50%; background: #2a2c3d; }
+    .app-chrome .url { margin-left: 10px; flex: 1; max-width: 360px; font-size: 12px; color: var(--ink-3); background: rgba(255, 255, 255, .04); border: 1px solid var(--line); border-radius: 8px; padding: 3px 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .app-body { display: grid; grid-template-columns: 56px minmax(0, 1fr) 340px; min-height: 560px; }
+    .side { border-right: 1px solid var(--line); padding: 12px 0; display: flex; flex-direction: column; align-items: center; gap: 6px; background: #0a0b12; }
+    .side .lg { font-family: var(--display); font-weight: 700; font-size: 20px; margin-bottom: 10px; }
+    .side .lg b { color: var(--gold); }
+    .side span { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; color: var(--ink-3); }
+    .side span.on { color: var(--gold); background: var(--gold-soft); }
+    .main { min-width: 0; display: flex; flex-direction: column; }
+    .views { display: flex; gap: 2px; padding: 10px 12px 0; border-bottom: 1px solid var(--line); overflow-x: auto; }
+    .views button { font: inherit; font-size: 12.5px; color: var(--ink-3); background: none; border: 0; padding: 8px 12px 10px; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; display: flex; gap: 6px; align-items: center; }
+    .views button.on { color: var(--ink); border-bottom-color: var(--gold); }
+    .views .cnt { font-size: 11px; padding: 0 6px; border-radius: 6px; background: rgba(255, 255, 255, .06); }
+    .tools { display: flex; gap: 8px; padding: 10px 12px; border-bottom: 1px solid var(--line); align-items: center; flex-wrap: wrap; }
+    .tools .search { flex: 1; min-width: 140px; display: flex; gap: 8px; align-items: center; height: 32px; padding: 0 10px; border-radius: 8px; border: 1px solid var(--line); color: var(--ink-3); font-size: 12.5px; }
+    .tools .tb { height: 32px; padding: 0 10px; border-radius: 8px; border: 1px solid var(--line); color: var(--ink-2); font-size: 12.5px; display: inline-flex; align-items: center; gap: 6px; }
+    .tools .tb.gold { color: #1a1408; background: var(--gold); border-color: var(--gold); font-weight: 500; }
+    .tools svg.i { width: 15px; height: 15px; }
+    .grid-x { overflow: auto; flex: 1; }
+    table.at { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 860px; font-size: 12.5px; }
+    table.at th { position: sticky; top: 0; background: #0f1019; text-align: left; font-weight: 500; color: var(--ink-3); padding: 8px 10px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); white-space: nowrap; font-size: 11.5px; }
+    table.at th .ty { opacity: .6; margin-right: 4px; }
+    table.at td { padding: 8px 10px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); white-space: nowrap; color: var(--ink-2); }
+    table.at td.num { color: var(--ink-3); width: 34px; text-align: center; font-size: 11px; }
+    table.at td.name { color: var(--ink); font-weight: 500; }
+    table.at tbody tr { cursor: pointer; transition: background .1s; }
+    table.at tbody tr:hover td { background: rgba(255, 255, 255, .025); }
+    table.at tbody tr.sel td { background: rgba(241, 198, 111, .07); }
+    table.at tbody tr.sel td:first-child { box-shadow: inset 2px 0 0 var(--gold); }
+    .due { color: var(--bad); font-weight: 500; }
+    .today { color: var(--gold); font-weight: 500; }
+    .ph { font-variant-numeric: tabular-nums; }
+
+    .panel { border-left: 1px solid var(--line); display: flex; flex-direction: column; min-width: 0; background: #0c0d15; }
+    .p-head { padding: 16px 16px 12px; border-bottom: 1px solid var(--line); }
+    .p-head h3 { font-family: var(--display); font-size: 26px; font-weight: 700; }
+    .p-head .sub { font-size: 12.5px; color: var(--ink-3); margin-top: 2px; }
+    .p-head .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+    .acts { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 8px; margin-top: 14px; }
+    .acts button { font: inherit; font-size: 12.5px; height: 36px; border-radius: 10px; border: 1px solid var(--line-2); background: rgba(255, 255, 255, .03); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; }
+    .acts button.call { background: var(--good); color: #062014; border-color: transparent; font-weight: 600; }
+    .acts button.hang { background: var(--bad); color: #2a0707; border-color: transparent; font-weight: 600; }
+    .acts svg.i { width: 15px; height: 15px; }
+    .from { font-size: 11.5px; color: var(--ink-3); margin-top: 8px; }
+    .from svg.i { width: 12px; height: 12px; vertical-align: -1px; margin-right: 4px; }
+    .from b { color: var(--ink-2); font-weight: 500; }
+    .live { margin-top: 10px; padding: 10px 12px; border-radius: 10px; background: rgba(95, 211, 154, .08); border: 1px solid rgba(95, 211, 154, .25); font-size: 12.5px; display: none; align-items: center; gap: 10px; }
+    .live.on { display: flex; }
+    .live .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--good); animation: blink 1s infinite; }
+    @keyframes blink { 50% { opacity: .25; } }
+    .live .tm { margin-left: auto; font-variant-numeric: tabular-nums; font-weight: 600; }
+    .outcome { display: none; margin-top: 10px; }
+    .outcome.on { display: block; }
+    .outcome small { display: block; font-size: 11.5px; color: var(--ink-3); margin-bottom: 6px; }
+    .outcome .opts { display: flex; flex-wrap: wrap; gap: 6px; }
+    .outcome button { font: inherit; font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line-2); background: none; color: var(--ink-2); cursor: pointer; }
+    .outcome button:hover { border-color: var(--gold); color: var(--gold); }
+    .nextfu { margin: 12px 16px 0; padding: 10px 12px; border-radius: 10px; border: 1px dashed rgba(241, 198, 111, .35); background: var(--gold-soft); font-size: 12.5px; display: flex; gap: 10px; align-items: center; }
+    .nextfu svg.i { color: var(--gold); width: 16px; height: 16px; }
+    .nextfu b { font-weight: 600; color: var(--gold); }
+    .p-tabs { display: flex; gap: 2px; padding: 10px 16px 0; border-bottom: 1px solid var(--line); }
+    .p-tabs button { font: inherit; font-size: 12.5px; color: var(--ink-3); background: none; border: 0; padding: 6px 10px 9px; cursor: pointer; border-bottom: 2px solid transparent; }
+    .p-tabs button.on { color: var(--ink); border-bottom-color: var(--gold); }
+    .p-body { padding: 12px 16px 16px; overflow: auto; flex: 1; max-height: 330px; }
+    .ev { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .ev:last-child { border-bottom: 0; }
+    .ev .ic { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; flex: none; background: rgba(255, 255, 255, .04); border: 1px solid var(--line); color: var(--ink-2); }
+    .ev .ic.g { color: var(--good); } .ev .ic.v { color: var(--violet); } .ev .ic.y { color: var(--gold); }
+    .ev .ic svg.i { width: 14px; height: 14px; }
+    .ev .tx { flex: 1; min-width: 0; font-size: 12.5px; }
+    .ev .tx b { font-weight: 500; color: var(--ink); }
+    .ev .tx .w { color: var(--ink-3); font-size: 11.5px; }
+    .ev .tx p { color: var(--ink-2); margin-top: 2px; font-weight: 300; }
+    .rec { display: flex; align-items: center; gap: 8px; margin-top: 6px; padding: 6px 8px; border-radius: 8px; background: rgba(255, 255, 255, .03); border: 1px solid var(--line); }
+    .rec button { width: 24px; height: 24px; border-radius: 50%; border: 0; background: var(--ink); color: var(--bg); display: grid; place-items: center; cursor: pointer; flex: none; }
+    .rec button svg { width: 10px; height: 10px; fill: currentColor; }
+    .wave { flex: 1; display: flex; gap: 2px; align-items: center; height: 20px; }
+    .wave i { flex: 1; background: var(--ink-3); border-radius: 2px; opacity: .55; }
+    .wave i.p { background: var(--gold); opacity: 1; }
+    .rec .d { font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+    .bubble { max-width: 86%; padding: 8px 11px; border-radius: 12px; font-size: 12.5px; margin: 6px 0; }
+    .bubble.out { margin-left: auto; background: rgba(241, 198, 111, .14); border: 1px solid rgba(241, 198, 111, .25); border-bottom-right-radius: 4px; }
+    .bubble.in { background: rgba(255, 255, 255, .05); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+    .bubble small { display: block; font-size: 10.5px; color: var(--ink-3); margin-top: 2px; }
+    .compose { display: flex; gap: 6px; margin-top: 10px; }
+    .compose span { flex: 1; height: 32px; border-radius: 8px; border: 1px solid var(--line); font-size: 12px; color: var(--ink-3); display: flex; align-items: center; padding: 0 10px; }
+    .compose b { height: 32px; padding: 0 12px; border-radius: 8px; background: var(--gold); color: #1a1408; font-size: 12px; display: grid; place-items: center; font-weight: 600; }
+    .fields { display: grid; grid-template-columns: auto 1fr; gap: 8px 14px; font-size: 12.5px; }
+    .fields dt { color: var(--ink-3); }
+    .fields dd { margin: 0; color: var(--ink); }
+    .demo-note { text-align: center; color: var(--ink-3); font-size: 12.5px; margin-top: 14px; }
+
+    /* ---------- Antes y después ---------- */
+    .map td:first-child { color: var(--ink-3); }
+    .map td .arrow { color: var(--gold); }
+    .new-pill { font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(241, 198, 111, .35); border-radius: 999px; padding: 0 7px; margin-left: 6px; }
+
+    /* ---------- Flujo de llamada ---------- */
+    .flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .flow > div { padding: 22px; border-right: 1px solid var(--line); background: linear-gradient(180deg, var(--surface), var(--bg-2)); }
+    .flow > div:last-child { border-right: 0; }
+    .flow .n { font-variant-numeric: lining-nums; font-family: var(--display); font-size: 40px; color: var(--gold); line-height: 1; }
+    .flow h3 { font-size: 15px; font-weight: 600; margin: 10px 0 6px; }
+    .flow p { font-size: 13.5px; color: var(--ink-2); font-weight: 300; }
+
+    /* ---------- Roles ---------- */
+    .role { padding: 26px; }
+    .role .who { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .role .av { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--gold-soft); color: var(--gold); border: 1px solid rgba(241, 198, 111, .25); }
+    .role h3 { font-family: var(--display); font-size: 26px; font-weight: 700; }
+    .role .who small { display: block; color: var(--ink-3); font-size: 12.5px; }
+    .role ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 9px; }
+    .role li { display: flex; gap: 10px; font-size: 14px; color: var(--ink-2); font-weight: 300; }
+    .role li svg.i { color: var(--gold); width: 16px; height: 16px; margin-top: 3px; }
+
+    @media (max-width: 1060px) {
+      .app-body { grid-template-columns: 56px minmax(0, 1fr); }
+      .panel { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--line); }
+      .p-body { max-height: none; }
+    }
+    @media (max-width: 860px) {
+      .sheet-wrap { grid-template-columns: minmax(0, 1fr); }
+      .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .flow > div:nth-child(2) { border-right: 0; }
+      .flow > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    }
+    @media (max-width: 680px) {
+      .app-body { grid-template-columns: minmax(0, 1fr); }
+      .side { display: none; }
+      .flow { grid-template-columns: minmax(0, 1fr); }
+      .flow > div { border-right: 0; border-bottom: 1px solid var(--line); }
+      .flow > div:last-child { border-bottom: 0; }
+      .app-chrome .url { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { .live .pulse { animation: none; } }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <div class="brand"><span class="word">Liv<b>X</b></span><span class="sep"></span><span class="sub">Propuesta de CRM</span></div>
+      <nav class="nav">
+        <a class="tab on" href="./">Propuesta</a>
+        <a class="tab" href="../presupuesto/">Presupuesto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Portada -->
+    <div class="hero">
+      <span class="eyebrow">Propuesta para LivX</span>
+      <h1>Del Google Sheet a un CRM donde <em>cada llamada cuenta.</em></h1>
+      <p class="lead">Un sistema hecho para LivX: la comodidad de una tabla tipo Airtable, con el teléfono integrado como en LeadConnector. Su cold caller llama, envía SMS y agenda seguimientos desde un solo lugar, y ustedes escuchan cada llamada y ven cómo avanza la preventa de founding partners.</p>
+      <div class="meta">
+        <div><small>Preparado para</small><strong>LivX</strong></div>
+        <div><small>Preparado por</small><strong>DGP Global Group &amp; Moya Company</strong></div>
+        <div><small>Fecha</small><strong id="issued">—</strong></div>
+        <div><small>Entrega estimada</small><strong>10 a 14 días</strong></div>
+      </div>
+      <div class="row no-print" style="margin-top:26px">
+        <a class="btn gold lg" href="#demo">Ver cómo se vería</a>
+        <a class="btn lg" href="../presupuesto/">Ver presupuesto
+          <svg class="i" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Hoy -->
+    <section>
+      <div class="sec-head">
+        <div class="k">Cómo se trabaja hoy</div>
+        <h2>La hoja funcionó para empezar. Para un cold caller de tiempo completo, se queda corta.</h2>
+        <p>Así lleva hoy LivX la lista de negocios. Sirve como directorio, pero no deja registrar lo que pasa en cada llamada ni lo que hay que hacer después.</p>
+      </div>
+      <div class="sheet-wrap">
+        <div class="card" style="padding:0;overflow:hidden">
+          <div class="sheet scroll-x" aria-label="Recreación de la hoja de cálculo actual">
+            <div class="bar"><i></i>LivX contacts HTX · Google Sheets</div>
+            <table>
+              <thead><tr><th>Business Name</th><th>Category</th><th>Signed</th><th>Contact</th><th>Phone number</th><th>Side of Town</th></tr></thead>
+              <tbody>
+                <tr><td>River oaks plant house</td><td><span class="gs gs-r">Retail</span></td><td><span class="gs gs-y">YES</span></td><td>Ben</td><td class="flag">(713) 446-••••</td><td>RIVER OAKS</td></tr>
+                <tr><td>Fuegos</td><td><span class="gs gs-b">Bar</span></td><td><span class="gs gs-n">NO</span></td><td>Lauren</td><td>(832) 566-••••</td><td>WASHINGTON</td></tr>
+                <tr><td>Perspire</td><td class="flag"></td><td><span class="gs gs-s">Signed up</span></td><td class="flag"></td><td class="flag"></td><td></td></tr>
+                <tr><td>Pitch 25</td><td><span class="gs gs-rest">Restaurant</span></td><td><span class="gs gs-n">NO</span></td><td>alex General Manag…</td><td>832769••••</td><td>Houston</td></tr>
+                <tr><td>River Oaks Plant House</td><td><span class="gs gs-r">Retail</span></td><td><span class="gs gs-s">Signed up</span></td><td>Ben</td><td class="flag">713446••••</td><td></td></tr>
+                <tr><td>The Tox</td><td><span class="gs gs-w">Wellness</span></td><td><span class="gs gs-s">Signed up</span></td><td>chase</td><td>713705••••</td><td>Galleria/Sugarland</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card issues">
+          <div class="issue"><span class="n">1</span><div><h3>No hay seguimientos ni fechas</h3><p>Si un dueño dice "llámame el jueves", eso no queda en ningún lado. Ahí se pierden los partners que ya estaban interesados.</p></div></div>
+          <div class="issue"><span class="n">2</span><div><h3>El estado es solo YES / NO / Signed up</h3><p>No se distingue entre "no contestó", "pidió info por SMS" o "quiere una reunión".</p></div></div>
+          <div class="issue"><span class="n">3</span><div><h3>Sin notas ni historial</h3><p>No se sabe quién llamó, cuándo, cuántas veces ni qué se habló. Tampoco por qué medio fue el contacto.</p></div></div>
+          <div class="issue"><span class="n">4</span><div><h3>Duplicados y datos desordenados</h3><p>El mismo negocio aparece dos veces, los teléfonos tienen formatos distintos y hay filas sin contacto ni teléfono.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo -->
+    <section id="demo">
+      <div class="sec-head">
+        <div class="k">La solución</div>
+        <h2>Una tabla que ya conocen, con un teléfono adentro.</h2>
+        <p>Vista previa interactiva. Hagan clic en un negocio para abrir su ficha y prueben el botón <strong>Llamar</strong>. Los datos son de ejemplo.</p>
+      </div>
+
+      <div class="app" id="app">
+        <div class="app-chrome"><span class="d"></span><span class="d"></span><span class="d"></span><span class="url">crm.livx · Leads</span></div>
+        <div class="app-body">
+          <nav class="side" aria-hidden="true">
+            <div class="lg">L<b>X</b></div>
+            <span class="on"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="10" x2="9" y2="20"/></svg></span>
+            <span><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+            <span><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="12" rx="1"/><rect x="17" y="3" width="4" height="8" rx="1"/></svg></span>
+            <span><svg class="i" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
+            <span><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+            <span><svg class="i" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>
+          </nav>
+
+          <div class="main">
+            <div class="views" id="views"></div>
+            <div class="tools">
+              <div class="search"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg>Buscar negocio, contacto o teléfono…</div>
+              <span class="tb"><svg class="i" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.5 10 19 14 21 14 12.5 22 3"/></svg>Filtrar</span>
+              <span class="tb"><svg class="i" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>Ordenar</span>
+              <span class="tb gold"><svg class="i" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Nuevo lead</span>
+            </div>
+            <div class="grid-x">
+              <table class="at">
+                <thead><tr>
+                  <th></th><th><span class="ty">Aa</span>Negocio</th><th><span class="ty">◉</span>Status</th><th><span class="ty">▤</span>Categoría</th>
+                  <th><span class="ty">◷</span>Próximo seguimiento</th><th><span class="ty">☏</span>Teléfono</th><th><span class="ty">⇄</span>Último contacto</th><th><span class="ty">#</span>Intentos</th><th><span class="ty">⌖</span>Zona</th>
+                </tr></thead>
+                <tbody id="rows"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <aside class="panel" aria-live="polite">
+            <div class="p-head">
+              <h3 id="pName">—</h3>
+              <div class="sub" id="pSub">—</div>
+              <div class="chips" id="pChips"></div>
+              <div class="acts">
+                <button class="call" id="callBtn" type="button"><svg class="i" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>Llamar</span></button>
+                <button type="button" data-tab="sms"><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>SMS</button>
+                <button type="button" data-tab="info"><svg class="i" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Nota</button>
+              </div>
+              <div class="from"><svg class="i" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Sale desde <b>(713) 555-0100</b> · línea del caller · grabando</div>
+              <div class="live" id="live"><span class="pulse"></span><span id="liveTx">Llamando…</span><span class="tm" id="liveTm">00:00</span></div>
+              <div class="outcome" id="outcome">
+                <small>¿Cómo terminó la llamada?</small>
+                <div class="opts" id="outOpts"></div>
+              </div>
+            </div>
+            <div class="nextfu" id="pNext"></div>
+            <div class="p-tabs" id="pTabs">
+              <button type="button" class="on" data-tab="act">Actividad</button>
+              <button type="button" data-tab="sms">SMS</button>
+              <button type="button" data-tab="info">Datos</button>
+            </div>
+            <div class="p-body" id="pBody"></div>
+          </aside>
+        </div>
+      </div>
+      <p class="demo-note">Vista previa ilustrativa. El diseño final se ajusta con ustedes en la primera semana.</p>
+    </section>
+
+    <!-- Antes / después -->
+    <section>
+      <div class="sec-head">
+        <div class="k">Los datos</div>
+        <h2>Lo que ya tienen se conserva. Lo que falta, se agrega.</h2>
+        <p>Importamos la hoja actual, unimos los duplicados y dejamos los teléfonos en un solo formato. Después se suman los campos que hoy no existen.</p>
+      </div>
+      <div class="card scroll-x map">
+        <table class="t" style="min-width:560px">
+          <thead><tr><th>En el Google Sheet</th><th>En el CRM</th></tr></thead>
+          <tbody>
+            <tr><td>Business Name · Business Type</td><td><span class="arrow">→</span> Negocio y tipo, con detección de duplicados</td></tr>
+            <tr><td>Category (colores)</td><td><span class="arrow">→</span> Categoría: Restaurante, Bar, Wellness, Fitness, Retail, Experiencia…</td></tr>
+            <tr><td>Signed (YES / NO / Signed up)</td><td><span class="arrow">→</span> <strong>Status del lead</strong> por etapas: Nuevo, Intentando contactar, Contactado, Interesado, Seguimiento, Founding partner y No interesado</td></tr>
+            <tr><td>Contact · Phone number</td><td><span class="arrow">→</span> Contacto, cargo, teléfono (un solo formato, clic para llamar), email e Instagram</td></tr>
+            <tr><td>Side of Town</td><td><span class="arrow">→</span> Zona de Houston (River Oaks, Midtown, Heights, Galleria…)</td></tr>
+            <tr><td>Emailed</td><td><span class="arrow">→</span> Queda en el historial como un contacto por email, con fecha</td></tr>
+            <tr><td>—</td><td><strong>Próximo seguimiento</strong> con fecha, hora y aviso<span class="new-pill">Nuevo</span></td></tr>
+            <tr><td>—</td><td><strong>Tipo de contacto</strong>: llamada, SMS, email, visita o DM<span class="new-pill">Nuevo</span></td></tr>
+            <tr><td>—</td><td><strong>Último contacto</strong> e <strong>intentos</strong>, calculados solos<span class="new-pill">Nuevo</span></td></tr>
+            <tr><td>—</td><td><strong>Notas</strong> e historial completo con grabaciones y SMS<span class="new-pill">Nuevo</span></td></tr>
+            <tr><td>—</td><td><strong>Responsable</strong> y <strong>fuente</strong> del lead<span class="new-pill">Nuevo</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Qué incluye -->
+    <section id="incluye">
+      <div class="sec-head">
+        <div class="k">Qué incluye</div>
+        <h2>Pensado para cold calling, sin lo que no van a usar.</h2>
+      </div>
+      <div class="grid g3">
+        <div class="card feat">
+          <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="10" x2="9" y2="20"/></svg></div>
+          <h3>Vista de tabla tipo Airtable</h3>
+          <p>Se edita directo en la celda, con filtros, orden, búsqueda y vistas guardadas.</p>
+          <ul><li>"Por llamar hoy", "Vencidos", "Interesados"</li><li>Exportar a Excel cuando quieran</li></ul>
+        </div>
+        <div class="card feat">
+          <div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
+          <h3>Teléfono integrado con Twilio</h3>
+          <p>El caller llama desde el navegador con su número de Houston. No necesita marcar desde su celular personal.</p>
+          <ul><li>Cada llamada se graba y queda en la ficha</li><li>Duración y hora se registran solas</li><li>Llamadas entrantes al mismo número</li></ul>
+        </div>
+        <div class="card feat">
+          <div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3>SMS de ida y vuelta</h3>
+          <p>Mensajes desde la ficha del lead. Las respuestas llegan al mismo hilo, como una conversación.</p>
+          <ul><li>Plantillas: "Gracias por su tiempo", info de LivX, link de registro</li></ul>
+        </div>
+        <div class="card feat">
+          <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <h3>Seguimientos y agenda</h3>
+          <p>Al terminar cada llamada se elige el resultado y la fecha del próximo contacto. El CRM arma la lista del día.</p>
+          <ul><li>Vencidos, hoy, mañana y la semana</li><li>Ningún "llámame el jueves" se pierde</li></ul>
+        </div>
+        <div class="card feat">
+          <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="12" rx="1"/><rect x="17" y="3" width="4" height="8" rx="1"/></svg></div>
+          <h3>Pipeline de founding partners</h3>
+          <p>Las mismas tarjetas en vista kanban, desde "Nuevo" hasta "Founding partner", para ver la preventa de un vistazo.</p>
+        </div>
+        <div class="card feat">
+          <div class="ico"><svg class="i" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+          <h3>Panel para los dueños</h3>
+          <p>Llamadas por día, contactos efectivos, interesados y partners firmados. También pueden escuchar cualquier grabación.</p>
+        </div>
+        <div class="card feat">
+          <div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+          <h3>Migración del Google Sheet</h3>
+          <p>Pasamos toda la hoja actual, limpiamos duplicados y unificamos teléfonos y categorías.</p>
+        </div>
+        <div class="card feat">
+          <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <h3>Usuarios y permisos</h3>
+          <p>Cada persona entra con su correo y contraseña. Los dueños ven todo; el caller ve y trabaja sus leads.</p>
+        </div>
+        <div class="card feat">
+          <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+          <h3>Desde computadora o celular</h3>
+          <p>Funciona en el navegador, sin instalar nada. Se adapta a cualquier pantalla.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flujo de una llamada -->
+    <section>
+      <div class="sec-head">
+        <div class="k">Un día del caller</div>
+        <h2>De la lista a la siguiente llamada en cuatro pasos</h2>
+      </div>
+      <div class="flow">
+        <div><div class="n">01</div><h3>Abre "Por llamar hoy"</h3><p>Ve los seguimientos vencidos primero, luego los de hoy y luego los leads nuevos.</p></div>
+        <div><div class="n">02</div><h3>Llama con un clic</h3><p>La llamada sale de su número de Twilio y se graba. La ficha tiene a mano las notas e intentos anteriores.</p></div>
+        <div><div class="n">03</div><h3>Marca el resultado</h3><p>No contestó, buzón, interesado, pidió info o no interesado. El status se actualiza solo.</p></div>
+        <div><div class="n">04</div><h3>Agenda y sigue</h3><p>Elige la fecha del próximo contacto, envía un SMS si hace falta y pasa al siguiente lead.</p></div>
+      </div>
+    </section>
+
+    <!-- Roles -->
+    <section>
+      <div class="sec-head">
+        <div class="k">Para quién</div>
+        <h2>Una herramienta, dos miradas</h2>
+      </div>
+      <div class="grid g2">
+        <div class="card role">
+          <div class="who"><span class="av"><svg class="i" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-6h3zM3 19a2 2 0 0 0 2 2h1v-6H3z"/></svg></span><div><h3>Cold caller</h3><small>Trabaja la lista todos los días</small></div></div>
+          <ul>
+            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Sabe a quién llamar y en qué orden</li>
+            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Llama y envía SMS desde una línea de trabajo, no desde su celular personal</li>
+            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Tiene notas e historial antes de marcar</li>
+            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Registra cada llamada en segundos</li>
+          </ul>
+        </div>
+        <div class="card role">
+          <div class="who"><span class="av"><svg class="i" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><div><h3>Dueños de LivX</h3><small>Supervisan y cierran</small></div></div>
+          <ul>
+            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Escuchan las grabaciones para dar feedback y cuidar el mensaje de la marca</li>
+            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Ven cuántas llamadas, contactos e interesados hubo cada día</li>
+            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Toman los leads calientes para cerrar</li>
+            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Los datos y el número quedan en cuentas de LivX</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cronograma -->
+    <section>
+      <div class="sec-head">
+        <div class="k">Cronograma</div>
+        <h2>Su caller trabajando en el CRM en dos semanas</h2>
+      </div>
+      <div class="steps">
+        <div class="card step"><div class="when">Días 1–2</div><h3>Arranque</h3><p>Definimos con ustedes etapas, campos, resultados de llamada y plantillas de SMS.</p></div>
+        <div class="card step"><div class="when">Días 3–7</div><h3>CRM y login</h3><p>Tabla, fichas, seguimientos, pipeline y usuarios. Importación de la hoja actual.</p></div>
+        <div class="card step"><div class="when">Días 8–11</div><h3>Twilio</h3><p>Número de Houston, llamadas desde el navegador, grabaciones y SMS. Registro del número para mensajes.</p></div>
+        <div class="card step"><div class="when">Días 12–14</div><h3>Entrega</h3><p>Pruebas con el caller, ajustes finales, capacitación y publicación en su dominio.</p></div>
+      </div>
+    </section>
+
+    <!-- Cierre -->
+    <section>
+      <div class="card cta">
+        <div class="by no-print" style="justify-content:center;margin-bottom:22px">
+          <span class="agency"><span class="lg"><img src="../assets/img/dgp-mark.png" alt=""></span>DGP Global Group</span>
+          <span class="amp">&amp;</span>
+          <span class="agency"><span class="lg"><img src="../assets/img/moya-mark.png" alt=""></span>Moya Company</span>
+        </div>
+        <h2>Listos para dejar el Google Sheet atrás</h2>
+        <p>El presupuesto detalla la inversión, el dominio, el hosting opcional y los costos de Twilio.</p>
+        <div class="row">
+          <a class="btn gold lg" href="../presupuesto/">Ver presupuesto</a>
+          <button class="btn lg no-print" type="button" onclick="window.print()">Guardar en PDF</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="by">
+        <span class="lbl">Propuesta de</span>
+        <span class="agency"><span class="lg"><img src="../assets/img/dgp-mark.png" alt="Logo de DGP Global Group"></span>DGP Global Group</span>
+        <span class="amp">&amp;</span>
+        <span class="agency"><span class="lg"><img src="../assets/img/moya-mark.png" alt="Logo de Moya Company"></span>Moya Company</span>
+      </div>
+      <span>Documento confidencial preparado para LivX</span>
+    </div>
+  </footer>
+
+  <script>
+    // Datos de ejemplo para la vista previa (contactos y teléfonos ficticios)
+    const ST = {
+      new: ['Nuevo', 'c-new'], try: ['Intentando contactar', 'c-try'], int: ['Interesado', 'c-int'],
+      fu: ['Seguimiento', 'c-fu'], won: ['Founding partner', 'c-won'], lost: ['No interesado', 'c-lost']
+    };
+    const LEADS = [
+      { name: 'Fuegos', type: 'Bar', cat: 'Bar', st: 'try', next: ['Vencido · ayer', 'due'], ph: '(832) 555-0141', last: 'Ayer · llamada', tries: 3, zone: 'Washington Ave', who: 'Gerente de turno', note: 'Piden llamar después de las 3 PM, antes del servicio.' },
+      { name: 'Fourtin 8', type: 'Restaurante chino', cat: 'Restaurante', st: 'int', next: ['Hoy · 4:00 PM', 'today'], ph: '(917) 555-0163', last: 'Lun · SMS', tries: 2, zone: 'Chinatown', who: 'Dueño', note: 'Le interesa un "secret menu" para miembros. Quiere ver el preview de la app.' },
+      { name: 'Loyly Sauna Lounge', type: 'Wellness', cat: 'Wellness', st: 'fu', next: ['Hoy · 11:30 AM', 'today'], ph: '(832) 555-0106', last: 'Vie · llamada', tries: 2, zone: 'Midtown', who: 'Socios', note: 'Deciden entre los dos socios. Enviar info por email y volver a llamar.' },
+      { name: 'El Tiempo Cantina', type: 'Restaurante mexicano', cat: 'Restaurante', st: 'new', next: ['Mañana · 10:00 AM', ''], ph: '(713) 555-0172', last: '—', tries: 0, zone: 'Montrose', who: 'Gerente general', note: 'Lead nuevo importado del Google Sheet.' },
+      { name: 'BLVD', type: 'Bar', cat: 'Bar', st: 'try', next: ['Mañana · 2:00 PM', ''], ph: '(832) 555-0117', last: 'Mar · buzón', tries: 1, zone: 'Heights', who: 'Gerente de eventos', note: 'Dejé buzón de voz. Probar por Instagram DM.' },
+      { name: 'Trufusion', type: 'Fitness · franquicia', cat: 'Fitness', st: 'fu', next: ['Jue · 9:00 AM', ''], ph: '(281) 555-0179', last: 'Mié · llamada', tries: 2, zone: 'Houston', who: 'Gerente', note: 'Necesita aprobación de la franquicia. Seguimiento el jueves.' },
+      { name: 'The Tox', type: 'Wellness', cat: 'Wellness', st: 'won', next: ['—', ''], ph: '(713) 555-0189', last: 'Lun · llamada', tries: 3, zone: 'Galleria', who: 'Gerente', note: 'Firmó como founding partner. Perfil creado.' },
+      { name: 'Green Earth', type: 'Juice bar', cat: 'Juice bar', st: 'won', next: ['—', ''], ph: '(832) 555-0127', last: 'Sem. pasada', tries: 2, zone: 'Houston', who: 'Dueño', note: 'Founding partner. Ofrece un perk de bienvenida.' },
+      { name: 'Pitch 25', type: 'Restaurante', cat: 'Restaurante', st: 'lost', next: ['—', ''], ph: '(832) 555-0152', last: 'Hace 2 sem.', tries: 4, zone: 'EaDo', who: 'Gerente general', note: 'No interesado por ahora. Retomar en 3 meses.' }
+    ];
+    const VIEWS = [
+      ['Todos los leads', () => true],
+      ['Por llamar hoy', (l) => /due|today/.test(l.next[1])],
+      ['Seguimientos', (l) => l.st === 'fu' || l.st === 'int'],
+      ['Founding partners', (l) => l.st === 'won']
+    ];
+    const OUTCOMES = [['No contestó', 'try'], ['Buzón de voz', 'try'], ['Interesado', 'int'], ['Pidió info', 'fu'], ['Founding partner', 'won'], ['No interesado', 'lost']];
+    const ic = {
+      call: '<svg class="i" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>',
+      sms: '<svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+      note: '<svg class="i" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>',
+      cal: '<svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+      play: '<svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>'
+    };
+    const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const chip = (k) => `<span class="chip ${ST[k][1]}">${ST[k][0]}</span>`;
+    const wave = (seed, played) => Array.from({ length: 34 }, (_, i) => {
+      const h = 25 + Math.abs(Math.sin(i * 1.7 + seed) * 70);
+      return `<i style="height:${h.toFixed(0)}%"${i < played ? ' class="p"' : ''}></i>`;
+    }).join('');
+    const rec = (seed, dur) => `<div class="rec"><button type="button" aria-label="Reproducir grabación">${ic.play}</button><div class="wave">${wave(seed, 0)}</div><span class="d">${dur}</span></div>`;
+
+    let view = 0, sel = 1, tab = 'act';
+    const extra = {}; // actividad agregada desde la demo
+
+    function renderViews() {
+      document.getElementById('views').innerHTML = VIEWS.map(([n, f], i) =>
+        `<button type="button" class="${i === view ? 'on' : ''}" data-v="${i}">${n}<span class="cnt">${LEADS.filter(f).length}</span></button>`).join('');
+    }
+    function renderRows() {
+      const list = LEADS.map((l, i) => [l, i]).filter(([l]) => VIEWS[view][1](l));
+      if (!list.some(([, i]) => i === sel) && list.length) sel = list[0][1];
+      document.getElementById('rows').innerHTML = list.map(([l, i], n) => `
+        <tr data-i="${i}" class="${i === sel ? 'sel' : ''}">
+          <td class="num">${n + 1}</td><td class="name">${esc(l.name)}</td><td>${chip(l.st)}</td><td><span class="tag">${esc(l.cat)}</span></td>
+          <td class="${l.next[1]}">${esc(l.next[0])}</td><td class="ph">${esc(l.ph)}</td><td>${esc(l.last)}</td><td>${l.tries}</td><td>${esc(l.zone)}</td>
+        </tr>`).join('');
+    }
+    function activity(l, i) {
+      const added = (extra[i] || []).map((e) => `
+        <div class="ev"><span class="ic g">${ic.call}</span><div class="tx"><b>Llamada saliente · ${e.out}</b> <span class="w">· ahora · ${e.dur}</span>${rec(i + 3, e.dur)}</div></div>`).join('');
+      if (l.tries === 0 && !added) return `<div class="ev"><span class="ic">${ic.note}</span><div class="tx"><b>Lead importado</b> <span class="w">· desde Google Sheet</span><p>${esc(l.note)}</p></div></div>`;
+      return added + `
+        <div class="ev"><span class="ic y">${ic.note}</span><div class="tx"><b>Nota</b> <span class="w">· caller</span><p>${esc(l.note)}</p></div></div>
+        <div class="ev"><span class="ic g">${ic.call}</span><div class="tx"><b>Llamada saliente · ${l.st === 'try' ? 'No contestó' : 'Conectada'}</b> <span class="w">· ${esc((l.first || l.last).split(' · ')[0])}</span>${l.st === 'try' ? '' : rec(i, '3:42')}</div></div>
+        <div class="ev"><span class="ic v">${ic.sms}</span><div class="tx"><b>SMS enviado</b> <span class="w">· plantilla "Info LivX"</span><p>Hola, le escribe el equipo de LivX. Le comparto la info de founding partners…</p></div></div>
+        <div class="ev"><span class="ic">${ic.call}</span><div class="tx"><b>Primera llamada · Buzón de voz</b> <span class="w">· semana pasada · 0:31</span>${rec(i + 7, '0:31')}</div></div>`;
+    }
+    function renderPanel() {
+      const l = LEADS[sel];
+      document.getElementById('pName').textContent = l.name;
+      document.getElementById('pSub').textContent = `${l.type} · ${l.zone} · ${l.who}`;
+      document.getElementById('pChips').innerHTML = `${chip(l.st)}<span class="tag">${esc(l.cat)}</span><span class="tag">${l.tries} intentos</span>`;
+      document.getElementById('pNext').innerHTML = l.next[0] === '—'
+        ? `${ic.cal}<span>Sin seguimiento pendiente</span>`
+        : `${ic.cal}<span>Próximo seguimiento: <b>${esc(l.next[0])}</b> · llamada</span>`;
+      document.querySelectorAll('#pTabs button').forEach((b) => b.classList.toggle('on', b.dataset.tab === tab));
+      const body = document.getElementById('pBody');
+      if (tab === 'act') body.innerHTML = activity(l, sel);
+      else if (tab === 'sms') body.innerHTML = `
+        <div class="bubble out">Hola, le escribe el equipo de LivX 👋 Gracias por su tiempo hoy. Aquí está la info para founding partners.<small>Enviado · ${esc(l.ph)}</small></div>
+        ${l.tries ? '<div class="bubble in">Gracias, lo reviso con mi socio y le confirmo.<small>Recibido</small></div>' : ''}
+        <div class="compose"><span>Escribir SMS o elegir plantilla…</span><b>Enviar</b></div>`;
+      else body.innerHTML = `<dl class="fields">
+        <dt>Contacto</dt><dd>${esc(l.who)}</dd><dt>Teléfono</dt><dd>${esc(l.ph)}</dd><dt>Email</dt><dd>—</dd>
+        <dt>Zona</dt><dd>${esc(l.zone)}</dd><dt>Fuente</dt><dd>Google Sheet</dd><dt>Responsable</dt><dd>Cold caller</dd>
+        <dt>Notas</dt><dd>${esc(l.note)}</dd></dl>`;
+    }
+    function render() { renderViews(); renderRows(); renderPanel(); }
+
+    document.getElementById('views').addEventListener('click', (e) => {
+      const b = e.target.closest('button'); if (!b) return;
+      view = +b.dataset.v; render();
+    });
+    document.getElementById('rows').addEventListener('click', (e) => {
+      const tr = e.target.closest('tr'); if (!tr) return;
+      sel = +tr.dataset.i; endCall(true); renderRows(); renderPanel();
+    });
+    document.querySelector('.panel').addEventListener('click', (e) => {
+      const t = e.target.closest('[data-tab]');
+      if (t) { tab = t.dataset.tab; renderPanel(); return; }
+      const play = e.target.closest('.rec button');
+      if (play) {
+        const bars = play.parentElement.querySelectorAll('.wave i');
+        let k = 0; clearInterval(play._t);
+        bars.forEach((b) => b.classList.remove('p'));
+        play._t = setInterval(() => { if (k >= bars.length) return clearInterval(play._t); bars[k++].classList.add('p'); }, 90);
+      }
+    });
+
+    // Simulación de llamada
+    let timer = null, secs = 0;
+    const callBtn = document.getElementById('callBtn');
+    const fmt = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+    function endCall(silent) {
+      clearInterval(timer); timer = null;
+      callBtn.classList.add('call'); callBtn.classList.remove('hang'); callBtn.querySelector('span').textContent = 'Llamar';
+      document.getElementById('live').classList.remove('on');
+      document.getElementById('outcome').classList.toggle('on', !silent);
+    }
+    callBtn.addEventListener('click', () => {
+      if (timer) return endCall(false);
+      secs = 0;
+      document.getElementById('outcome').classList.remove('on');
+      document.getElementById('live').classList.add('on');
+      document.getElementById('liveTx').textContent = `Llamando a ${LEADS[sel].name}…`;
+      document.getElementById('liveTm').textContent = '00:00';
+      callBtn.classList.remove('call'); callBtn.classList.add('hang'); callBtn.querySelector('span').textContent = 'Colgar';
+      timer = setInterval(() => {
+        secs++;
+        if (secs === 3) document.getElementById('liveTx').textContent = 'En llamada · grabando';
+        document.getElementById('liveTm').textContent = fmt(secs);
+      }, 1000);
+    });
+    document.getElementById('outOpts').innerHTML = OUTCOMES.map(([n], i) => `<button type="button" data-o="${i}">${n}</button>`).join('');
+    document.getElementById('outOpts').addEventListener('click', (e) => {
+      const b = e.target.closest('button'); if (!b) return;
+      const [name, st] = OUTCOMES[+b.dataset.o];
+      const l = LEADS[sel];
+      l.first = l.first || l.last; l.st = st; l.tries += 1; l.last = 'Ahora · llamada';
+      l.next = st === 'won' || st === 'lost' ? ['—', ''] : ['Mañana · 10:00 AM', ''];
+      (extra[sel] = extra[sel] || []).unshift({ out: name, dur: `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}` });
+      document.getElementById('outcome').classList.remove('on');
+      tab = 'act'; render();
+    });
+
+    // Fecha de emisión fija
+    const ISSUED = new Date(2026, 9, 23);
+    document.getElementById('issued').textContent = ISSUED.toLocaleDateString('es-US', { day: 'numeric', month: 'long', year: 'numeric' });
+    render();
+  </script>
+</body>
+</html>

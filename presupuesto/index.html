@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Presupuesto CRM · LivX</title>
+  <meta name="description" content="Presupuesto del CRM para LivX: $475 USD pago único, dominio $25 y hosting opcional de $145 al año o $25 al mes. Costos de Twilio aparte.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#07080d">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Presupuesto CRM para LivX">
+  <meta property="og:description" content="$475 USD pago único + dominio $25. Hosting opcional: $145/año o $25/mes.">
+  <link rel="icon" href="../assets/img/dgp-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <style>
+    .price-wrap { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+    .price-card { padding: 32px; }
+    .price-card .lbl { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+    .price { display: flex; align-items: flex-start; gap: 6px; margin: 18px 0 18px; }
+    .price .cur { font-size: 28px; margin-top: 12px; color: var(--ink-2); font-weight: 300; }
+    .price .amt { font-family: var(--display); font-size: 104px; font-weight: 700; line-height: 1; letter-spacing: -.02em; font-variant-numeric: lining-nums; }
+    .price .per { align-self: flex-end; margin-bottom: 10px; color: var(--ink-3); font-size: 14px; }
+    .price-sub { color: var(--ink-2); font-size: 14px; font-weight: 300; }
+    .terms { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .term { border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; background: rgba(255, 255, 255, .02); }
+    .term small { color: var(--ink-3); font-size: 12px; }
+    .term strong { display: block; font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .checks { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 10px; }
+    .checks li { display: flex; gap: 10px; font-size: 14px; color: var(--ink-2); font-weight: 300; }
+    .checks li strong { color: var(--ink); font-weight: 500; }
+    .checks svg.i { color: var(--gold); width: 17px; height: 17px; margin-top: 3px; }
+
+    .summary { padding: 26px; position: sticky; top: 84px; }
+    .summary h3 { font-family: var(--display); font-size: 28px; font-weight: 700; }
+    .sum-line { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--line-2); font-size: 14px; }
+    .sum-line span:first-child { color: var(--ink-2); }
+    .sum-line span:last-child { font-variant-numeric: tabular-nums; font-weight: 500; white-space: nowrap; }
+    .sum-line small { display: block; color: var(--ink-3); font-size: 12px; }
+    .sum-total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px; }
+    .sum-total strong { font-family: var(--display); font-size: 44px; font-weight: 700; font-variant-numeric: lining-nums tabular-nums; color: var(--gold); line-height: 1; }
+    .sum-rec { font-size: 13px; color: var(--ink-2); margin-top: 6px; min-height: 20px; }
+    .sum-note { font-size: 12px; color: var(--ink-3); margin-top: 12px; }
+
+    .opts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .opt { position: relative; padding: 22px; cursor: pointer; transition: border-color .15s, box-shadow .15s; display: block; }
+    .opt:hover { border-color: var(--line-2); }
+    .opt input { position: absolute; opacity: 0; pointer-events: none; }
+    .opt.on { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold), var(--shadow); }
+    .opt .radio { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--line-2); display: inline-grid; place-items: center; float: right; }
+    .opt.on .radio { border-color: var(--gold); }
+    .opt.on .radio::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+    .opt input:focus-visible ~ .radio { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .opt h3 { font-size: 15px; font-weight: 600; }
+    .opt .pr { font-variant-numeric: lining-nums; font-family: var(--display); font-size: 40px; font-weight: 700; margin: 8px 0 4px; line-height: 1; }
+    .opt .pr small { font-family: var(--body); font-size: 13px; font-weight: 400; color: var(--ink-3); }
+    .opt p { font-size: 13px; color: var(--ink-2); font-weight: 300; }
+    .opt .save { display: inline-block; margin-top: 10px; font-size: 11.5px; color: var(--good); border: 1px solid rgba(95, 211, 154, .3); background: rgba(95, 211, 154, .08); border-radius: 999px; padding: 1px 9px; }
+
+    .callout { padding: 18px 22px; display: flex; gap: 14px; align-items: flex-start; margin-top: 14px; }
+    .callout svg.i { color: var(--gold); margin-top: 3px; }
+    .callout p { font-size: 13.5px; color: var(--ink-2); font-weight: 300; }
+    .callout strong { color: var(--ink); font-weight: 500; }
+
+    @media (max-width: 900px) {
+      .price-wrap { grid-template-columns: minmax(0, 1fr); }
+      .summary { position: static; }
+      .opts { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .price .amt { font-size: 84px; }
+      .terms { grid-template-columns: minmax(0, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <div class="brand"><span class="word">Liv<b>X</b></span><span class="sep"></span><span class="sub">Presupuesto de CRM</span></div>
+      <nav class="nav">
+        <a class="tab" href="../propuesta/">Propuesta</a>
+        <a class="tab on" href="./">Presupuesto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="hero">
+      <span class="eyebrow">Presupuesto para LivX</span>
+      <h1>Un solo pago. <em>El CRM es de LivX.</em></h1>
+      <p class="lead">Sin cobro por usuario ni contratos anuales obligatorios. El hosting es opcional, y los minutos y SMS de Twilio se pagan directo a Twilio, al costo y sin recargo.</p>
+      <div class="meta">
+        <div><small>Preparado para</small><strong>LivX</strong></div>
+        <div><small>Preparado por</small><strong>DGP Global Group &amp; Moya Company</strong></div>
+        <div><small>Fecha</small><strong id="issued">—</strong></div>
+        <div><small>Válido hasta</small><strong id="valid">—</strong></div>
+      </div>
+    </div>
+
+    <!-- Inversión -->
+    <section id="inversion" style="padding-top:20px">
+      <div class="price-wrap">
+        <div class="card price-card">
+          <span class="lbl">CRM LivX · cold calling + Twilio</span>
+          <div class="price"><span class="cur">$</span><span class="amt">475</span><span class="per">USD · pago único</span></div>
+          <p class="price-sub">Desarrollo, integración con Twilio, migración del Google Sheet, puesta en línea y capacitación.</p>
+          <div class="terms">
+            <div class="term"><small>50% para iniciar</small><strong>$237.50</strong></div>
+            <div class="term"><small>50% contra entrega</small><strong>$237.50</strong></div>
+          </div>
+          <ul class="checks">
+            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Vista de tabla tipo Airtable</strong> con filtros, vistas guardadas y pipeline kanban</span></li>
+            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Llamadas desde el navegador</strong> con el número del cold caller, grabadas y escuchables por los dueños</span></li>
+            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>SMS de ida y vuelta</strong> desde la ficha del lead, con plantillas</span></li>
+            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Seguimientos, fechas, tipo de contacto, status y notas</strong>: todo lo que hoy falta en la hoja</span></li>
+            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Migración del Google Sheet</strong>, limpieza de duplicados y teléfonos</span></li>
+            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Usuarios con login</strong> para dueños y caller, sin cobro por usuario</span></li>
+            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Capacitación en vivo</strong> y <strong>30 días de soporte</strong> después de la entrega</span></li>
+          </ul>
+        </div>
+
+        <aside class="card summary">
+          <h3>Su inversión</h3>
+          <div id="lines" style="margin-top:12px"></div>
+          <div class="sum-total"><span style="font-weight:500">Total hoy</span><strong id="total">$500</strong></div>
+          <div class="sum-rec" id="rec"></div>
+          <p class="sum-note">Elija abajo la opción de hosting y el total se actualiza. Twilio se factura aparte, directo a LivX.</p>
+          <div class="row no-print" style="margin-top:18px">
+            <a class="btn gold" id="acceptBtn" href="#aceptar" style="flex:1">Aceptar presupuesto</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Hosting -->
+    <section id="hosting">
+      <div class="sec-head">
+        <div class="k">Dominio y hosting</div>
+        <h2>El dominio va incluido en el presupuesto. El hosting lo eligen ustedes.</h2>
+        <p>El dominio ($25) es la dirección web del CRM, por ejemplo <strong>crm.</strong>sudominio.com. El hosting cubre que el sistema esté en línea, con respaldos, certificados de seguridad y monitoreo del servidor de llamadas.</p>
+      </div>
+      <div class="opts" id="hostOpts">
+        <label class="card opt" data-v="year">
+          <input type="radio" name="host" value="year" checked>
+          <span class="radio"></span>
+          <h3>Hosting anual</h3>
+          <div class="pr">$145<small> /año</small></div>
+          <p>Un pago al año, con respaldos y monitoreo.</p>
+          <span class="save">Ahorra $155 frente al mensual</span>
+        </label>
+        <label class="card opt" data-v="month">
+          <input type="radio" name="host" value="month">
+          <span class="radio"></span>
+          <h3>Hosting mensual</h3>
+          <div class="pr">$25<small> /mes</small></div>
+          <p>Lo mismo que el anual, pagado mes a mes y sin compromiso.</p>
+        </label>
+        <label class="card opt" data-v="none">
+          <input type="radio" name="host" value="none">
+          <span class="radio"></span>
+          <h3>Sin hosting</h3>
+          <div class="pr">$0</div>
+          <p>Les entregamos el sistema para alojarlo en una cuenta propia de LivX, que administran ustedes.</p>
+        </label>
+      </div>
+    </section>
+
+    <!-- Twilio -->
+    <section id="twilio">
+      <div class="sec-head">
+        <div class="k">Costos de Twilio</div>
+        <h2>Telefonía al costo, en la cuenta de LivX</h2>
+        <p>La cuenta de Twilio y el número del caller quedan a nombre de LivX. Twilio cobra por uso directamente a su tarjeta. Estas son tarifas aproximadas para EE. UU.</p>
+      </div>
+      <div class="card scroll-x">
+        <table class="t" style="min-width:560px">
+          <thead><tr><th>Concepto</th><th>Para qué es</th><th class="r">Costo aprox.</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Número local de Houston</strong></td><td>La línea del cold caller (713, 832 o 281)</td><td class="r">~$1.15 /mes</td></tr>
+            <tr><td><strong>Llamadas salientes</strong></td><td>Las que hace el caller desde el CRM</td><td class="r">~$0.014 /min</td></tr>
+            <tr><td><strong>Llamadas entrantes</strong></td><td>Cuando un negocio devuelve la llamada</td><td class="r">~$0.0085 /min</td></tr>
+            <tr><td><strong>Grabación</strong></td><td>Para que los dueños escuchen las llamadas</td><td class="r">~$0.0025 /min</td></tr>
+            <tr><td><strong>SMS</strong></td><td>Enviados y recibidos, más el recargo del operador</td><td class="r">~$0.01 /mensaje</td></tr>
+            <tr><td><strong>Registro A2P 10DLC</strong><small>Obligatorio para enviar SMS en EE. UU.</small></td><td>Registro de la marca y del tipo de mensajes</td><td class="r">~$20–65 único<br>+ ~$2–10 /mes</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card callout">
+        <svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <p><strong>Ejemplo de un mes:</strong> un caller con unos 1,500 minutos de llamadas grabadas y 300 SMS gastaría alrededor de <strong>$30 a $40 al mes</strong> en Twilio. La configuración de la cuenta y el trámite del registro A2P están incluidos en los $475.</p>
+      </div>
+    </section>
+
+    <!-- Preguntas -->
+    <section>
+      <div class="sec-head"><div class="k">Preguntas frecuentes</div><h2>Lo que suelen preguntar</h2></div>
+      <div class="card faq">
+        <details open><summary>¿Hay que pagar mensualidad por el CRM?</summary><p>No. El CRM es un solo pago de $475 y no se cobra por usuario. Lo único recurrente es el hosting, si lo eligen, y el uso de Twilio.</p></details>
+        <details><summary>¿Qué pasa si no tomamos el hosting?</summary><p>Les dejamos el sistema listo para alojarlo en una cuenta de LivX. El mantenimiento y los respaldos quedarían por su cuenta.</p></details>
+        <details><summary>¿Los dueños pueden escuchar todas las llamadas?</summary><p>Sí. Cada llamada queda grabada en la ficha del lead y en el registro de llamadas, con fecha, duración y resultado.</p></details>
+        <details><summary>¿El número de teléfono es de LivX o del caller?</summary><p>Es de LivX. Si el caller cambia, el número, las grabaciones y los SMS se quedan con ustedes.</p></details>
+        <details><summary>¿Cómo se pasan los datos del Google Sheet?</summary><p>Lo hacemos nosotros: importamos la hoja, unimos duplicados, damos un solo formato a los teléfonos y asignamos categorías y status.</p></details>
+        <details><summary>¿Se puede crecer después?</summary><p>Sí. Cuando hagan el launch se pueden agregar más callers, formularios de registro de partners, email marketing o reportes. Se cotiza aparte según lo que necesiten.</p></details>
+      </div>
+    </section>
+
+    <!-- Aceptar -->
+    <section id="aceptar">
+      <div class="card cta">
+        <div class="by no-print" style="justify-content:center;margin-bottom:22px">
+          <span class="agency"><span class="lg"><img src="../assets/img/dgp-mark.png" alt=""></span>DGP Global Group</span>
+          <span class="amp">&amp;</span>
+          <span class="agency"><span class="lg"><img src="../assets/img/moya-mark.png" alt=""></span>Moya Company</span>
+        </div>
+        <h2>¿Empezamos?</h2>
+        <p>Con la aprobación y el 50% inicial arrancamos de inmediato. En unas dos semanas su caller estará trabajando en el CRM.</p>
+        <div class="row">
+          <a class="btn gold lg" id="waBtn" href="https://wa.me/17133827990" target="_blank" rel="noopener">Aceptar por WhatsApp</a>
+          <button class="btn lg no-print" type="button" onclick="window.print()">Guardar en PDF</button>
+        </div>
+        <p id="selNote" style="margin:18px auto 0;font-size:13.5px"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="by">
+        <span class="lbl">Presupuesto de</span>
+        <span class="agency"><span class="lg"><img src="../assets/img/dgp-mark.png" alt="Logo de DGP Global Group"></span>DGP Global Group</span>
+        <span class="amp">&amp;</span>
+        <span class="agency"><span class="lg"><img src="../assets/img/moya-mark.png" alt="Logo de Moya Company"></span>Moya Company</span>
+      </div>
+      <span>Valores en dólares (USD) · Válido por 15 días</span>
+    </div>
+  </footer>
+
+  <script>
+    const CRM = 475, DOMAIN = 25;
+    const HOST = {
+      year: { name: 'Hosting anual', today: 145, rec: 'Renovación anual: dominio $25 + hosting $145' },
+      month: { name: 'Hosting mensual', today: 25, rec: 'Luego $25/mes de hosting · dominio $25/año' },
+      none: { name: null, today: 0, rec: 'Renovación anual del dominio: $25' }
+    };
+    const money = (n) => '$' + n.toLocaleString('en-US', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 });
+    let host = 'year';
+
+    function update() {
+      const h = HOST[host];
+      const total = CRM + DOMAIN + h.today;
+      document.getElementById('lines').innerHTML =
+        `<div class="sum-line"><span>CRM LivX<small>Pago único</small></span><span>${money(CRM)}</span></div>` +
+        `<div class="sum-line"><span>Dominio<small>Registro y configuración</small></span><span>${money(DOMAIN)}</span></div>` +
+        (h.name ? `<div class="sum-line"><span>${h.name}<small>${host === 'year' ? 'Primer año' : 'Primer mes'}</small></span><span>${money(h.today)}</span></div>` : '');
+      document.getElementById('total').textContent = money(total);
+      document.getElementById('rec').textContent = h.rec;
+      document.getElementById('selNote').innerHTML =
+        `Total hoy: <strong>${money(total)}</strong> · 50% del CRM para iniciar: <strong>${money(CRM / 2)}</strong>`;
+      document.querySelectorAll('.opt').forEach((el) => el.classList.toggle('on', el.dataset.v === host));
+      const msg = `Hola, aceptamos el presupuesto del CRM para LivX: CRM ${money(CRM)} + dominio ${money(DOMAIN)}` +
+        (h.name ? ` + ${h.name.toLowerCase()} (${host === 'year' ? '$145/año' : '$25/mes'})` : ' (sin hosting)') + `. Total hoy: ${money(total)}.`;
+      document.getElementById('waBtn').href = 'https://wa.me/17133827990?text=' + encodeURIComponent(msg);
+    }
+    document.getElementById('hostOpts').addEventListener('change', (e) => { host = e.target.value; update(); });
+
+    // Fecha de emisión fija: la validez no se mueve cada vez que se abre la página
+    const ISSUED = new Date(2026, 9, 23);
+    const fmt = (x) => x.toLocaleDateString('es-US', { day: 'numeric', month: 'long', year: 'numeric' });
+    document.getElementById('issued').textContent = fmt(ISSUED);
+    document.getElementById('valid').textContent = fmt(new Date(ISSUED.getTime() + 15 * 86400000));
+    update();
+  </script>
+</body>
+</html>
