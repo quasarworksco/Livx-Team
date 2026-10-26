@@ -243,6 +243,27 @@
     .sync .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--good); animation: ping 2s infinite; }
     @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(95, 211, 154, .6); } 70%, 100% { box-shadow: 0 0 0 8px rgba(95, 211, 154, 0); } }
 
+    /* ---------- Hero polish ---------- */
+    .hero { position: relative; }
+    .hero::before { content: ""; position: absolute; inset: -40px 0 auto; height: 560px; z-index: -1; pointer-events: none;
+      background-image: linear-gradient(rgba(247, 242, 232, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(247, 242, 232, .045) 1px, transparent 1px);
+      background-size: 56px 56px; -webkit-mask-image: radial-gradient(ellipse at 30% 30%, #000 20%, transparent 70%); mask-image: radial-gradient(ellipse at 30% 30%, #000 20%, transparent 70%); }
+    .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+    .stat { padding: 18px 20px; border-radius: var(--radius); border: 1px solid var(--line); background: rgba(16, 17, 27, .55); }
+    .stat b { display: block; font-family: var(--display); font-size: 40px; line-height: 1; color: var(--gold); font-variant-numeric: lining-nums; font-weight: 700; }
+    .stat span { display: block; margin-top: 6px; font-size: 13px; color: var(--ink-2); font-weight: 300; }
+    .sec-head .k .num { color: var(--ink-3); margin-right: 10px; }
+
+    /* ---------- Value pillars ---------- */
+    .pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .pillar { padding: 28px; position: relative; overflow: hidden; }
+    .pillar::after { content: ""; position: absolute; right: -40px; top: -40px; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(closest-side, rgba(241, 198, 111, .16), transparent); }
+    .pillar .big { font-family: var(--display); font-size: 46px; line-height: 1; color: var(--ink); font-weight: 700; }
+    .pillar .big em { color: var(--gold); }
+    .pillar h3 { font-size: 16px; font-weight: 600; margin: 14px 0 6px; }
+    .pillar p { font-size: 14px; color: var(--ink-2); font-weight: 300; }
+    @media (max-width: 960px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pillars { grid-template-columns: minmax(0, 1fr); } }
+
     .js .reveal { opacity: 0; translate: 0 18px; transition: opacity .7s ease, translate .7s ease; }
     .js .reveal.in { opacity: 1; translate: 0 0; }
 
@@ -297,15 +318,22 @@
         <div><small>Date</small><strong id="issued">—</strong></div>
         <div><small>Estimated delivery</small><strong>3 weeks</strong></div>
       </div>
+      <div class="stats">
+        <div class="stat"><b>5</b><span>views of the same data</span></div>
+        <div class="stat"><b>16</b><span>users, no per-user fees</span></div>
+        <div class="stat"><b>4</b><span>permission levels</span></div>
+        <div class="stat"><b>Live</b><span>real-time collaboration</span></div>
+      </div>
       <div class="row no-print" style="margin-top:26px">
         <a class="btn gold lg" href="#demo">Try the live preview</a>
+        <a class="btn lg" href="#value">Why it's a smart start</a>
       </div>
     </div>
 
     <!-- Today -->
     <section>
       <div class="sec-head reveal">
-        <div class="k">Where you are today</div>
+        <div class="k"><span class="num">01</span>Where you are today</div>
         <h2>The spreadsheet got LivX started. Now it's time for a real database.</h2>
         <p>A shared Google Sheet works as a list, but as more people use it, it gets harder to keep clean, organized, and secure.</p>
       </div>
@@ -335,10 +363,24 @@
       </div>
     </section>
 
+    <!-- Value -->
+    <section id="value">
+      <div class="sec-head reveal">
+        <div class="k"><span class="num">02</span>A smart way to start</div>
+        <h2>Professional tools from day one, at a size that fits LivX today</h2>
+        <p>Designed for a growing team: everything you need to organize your partners today, on a platform that can keep growing with LivX.</p>
+      </div>
+      <div class="pillars">
+        <div class="card pillar reveal"><div class="big">$0 <em>per user</em></div><h3>No per-seat subscriptions</h3><p>Popular database tools charge every month for every person on the team. Here, your 16 users are included.</p></div>
+        <div class="card pillar reveal"><div class="big">100% <em>yours</em></div><h3>Your data, your brand</h3><p>A private workspace under the LivX name, on your own domain. Export everything anytime.</p></div>
+        <div class="card pillar reveal"><div class="big">Room <em>to grow</em></div><h3>Built to grow with you</h3><p>In the long run, more integrations can be added on the same platform as LivX needs them.</p></div>
+      </div>
+    </section>
+
     <!-- Demo -->
     <section id="demo">
       <div class="sec-head reveal">
-        <div class="k">The solution</div>
+        <div class="k"><span class="num">03</span>The solution</div>
         <h2>One database. Five ways to see it.</h2>
         <p>Interactive preview. Switch between views, drag a card on the kanban board, or add a business with the form, and watch every view update. All data shown is sample data.</p>
       </div>
@@ -374,7 +416,7 @@
     <!-- Views -->
     <section>
       <div class="sec-head reveal">
-        <div class="k">Views</div>
+        <div class="k"><span class="num">04</span>Views</div>
         <h2>Same data, the view that fits the job</h2>
         <p>Every view reads from the same records. Change something in one view and it updates everywhere, instantly. Save as many views as you need, each with its own filters, sorting, and grouping.</p>
       </div>
@@ -390,7 +432,7 @@
     <!-- Collaboration -->
     <section>
       <div class="sec-head reveal">
-        <div class="k">Real-time collaboration</div>
+        <div class="k"><span class="num">05</span>Real-time collaboration</div>
         <h2>Built for a team working at the same time</h2>
         <p>Several people can work in the database at once, each with the access level they need. Nobody overwrites anybody, and nothing gets lost.</p>
       </div>
@@ -413,7 +455,7 @@
     <!-- Admin -->
     <section>
       <div class="sec-head reveal">
-        <div class="k">Admin panel</div>
+        <div class="k"><span class="num">06</span>Admin panel</div>
         <h2>One main admin account, handed to you</h2>
         <p>At launch we give LivX the owner credentials for the main admin panel. From there, you add your team, up to 16 users, and decide what each person can see and do.</p>
       </div>
@@ -445,7 +487,7 @@
     <!-- Migration -->
     <section>
       <div class="sec-head reveal">
-        <div class="k">Migration</div>
+        <div class="k"><span class="num">07</span>Migration</div>
         <h2>Send us your spreadsheet. We'll do the rest.</h2>
         <p>You send the file you use today, and we turn it into a clean, organized database. Every row comes with you.</p>
       </div>
@@ -463,7 +505,7 @@
     <!-- Devices -->
     <section>
       <div class="sec-head reveal">
-        <div class="k">On any screen</div>
+        <div class="k"><span class="num">08</span>On any screen</div>
         <h2>On your computer, tablet, and phone. <em style="color:var(--gold)">Always in sync.</em></h2>
         <p>Runs in the browser with nothing to install. The layout adapts to every screen, and changes appear on every device at once.</p>
       </div>
@@ -495,7 +537,7 @@
     <!-- Included -->
     <section>
       <div class="sec-head reveal">
-        <div class="k">Also included</div>
+        <div class="k"><span class="num">09</span>Also included</div>
         <h2>The power of Airtable, under your own name</h2>
       </div>
       <div class="grid g3">
@@ -506,27 +548,13 @@
         <div class="card feat reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Secure sign-in and backups</h3><p>Private access with a password for each user, encrypted connection, and automatic backups.</p></div>
         <div class="card feat reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><h3>Import and export</h3><p>Bring in new spreadsheets anytime and export to Excel or CSV whenever you want.</p></div>
       </div>
-    </section>
-
-    <!-- What's next -->
-    <section>
-      <div class="sec-head reveal">
-        <div class="k">What's next</div>
-        <h2>Start simple. Grow at your own pace.</h2>
-        <p>This first phase gives LivX a solid database to work in right away. As your needs grow, we add integrations on top of the same platform, so nothing has to be rebuilt.</p>
-      </div>
-      <div class="grid g3">
-        <div class="card feat reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div><h3>Calling and texting</h3><p>Call, record, and text businesses right from each record with Twilio.</p></div>
-        <div class="card feat reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><h3>Email marketing</h3><p>Send updates and campaigns to partners and members straight from your data.</p></div>
-        <div class="card feat reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h3>Automations and reports</h3><p>Reminders, status-based actions, website sign-up forms, and weekly reports.</p></div>
-      </div>
-      <p class="demo-note reveal">Integrations are added in later phases and quoted separately, based on what LivX needs.</p>
+      <p class="demo-note reveal">In the long run, more integrations can be added, such as calling, texting, email, or automations.</p>
     </section>
 
     <!-- Timeline -->
     <section>
       <div class="sec-head reveal">
-        <div class="k">Timeline</div>
+        <div class="k"><span class="num">10</span>Timeline</div>
         <h2>Your team working in the new database in 3 weeks</h2>
       </div>
       <div class="steps">
@@ -545,8 +573,8 @@
           <span class="amp">&amp;</span>
           <span class="agency"><span class="lg"><img src="../assets/img/moya-mark.png" alt=""></span>Moya Company</span>
         </div>
-        <h2>Ready to turn your spreadsheet into a database?</h2>
-        <p>Once approved, we start with your current file. In about 3 weeks your team will be working together in LivX's own database.</p>
+        <h2>Let's get LivX started.</h2>
+        <p>Once approved, send us your current spreadsheet and we take it from there. In about 3 weeks your team will be working together in LivX's own database.</p>
         <div class="row">
           <a class="btn gold lg no-print" href="#demo">Back to the preview</a>
           <button class="btn lg no-print" type="button" onclick="window.print()">Save as PDF</button>

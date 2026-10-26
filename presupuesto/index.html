@@ -174,6 +174,30 @@
     footer { padding: 30px 0 48px; color: var(--soft); font-size: 13px; border-top: 1px solid var(--border); margin-top: 26px; background: var(--white); }
     footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
 
+    /* Comparación y pasos */
+    .vs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .vs > div { background: var(--white); padding: 28px; }
+    .vs .us { background: #fafbff; position: relative; }
+    .vs .us::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--blue-l), var(--blue)); }
+    .vs small { display: block; font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; color: var(--soft); }
+    .vs h3 { font-size: 16px; font-weight: 500; color: var(--black); margin-top: 6px; }
+    .vs .big { font-family: var(--display); font-size: 64px; line-height: 1; margin: 14px 0 4px; color: var(--black); }
+    .vs .us .big { color: var(--blue); }
+    .vs .big small { display: inline; font-family: var(--body); font-size: 14px; letter-spacing: 0; text-transform: none; }
+    .vs ul { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 8px; font-size: 14px; color: var(--soft); }
+    .vs li { display: flex; gap: 8px; }
+    .vs li::before { content: "–"; color: #a3a9b5; }
+    .vs .us li::before { content: "✓"; color: var(--blue); font-weight: 700; }
+    .save-band { margin-top: 14px; padding: 16px 22px; background: var(--black); color: var(--white); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .save-band b { font-family: var(--display); font-weight: 400; font-size: 34px; color: #7d9bff; line-height: 1; }
+    .fine { font-size: 12px; color: var(--soft); margin-top: 10px; }
+    .how { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .how > div { background: var(--white); padding: 26px; }
+    .how .n { font-family: var(--display); font-size: 44px; line-height: 1; color: var(--blue); }
+    .how h3 { font-size: 16px; font-weight: 500; color: var(--black); margin: 10px 0 6px; }
+    .how p { font-size: 14px; color: var(--soft); font-weight: 300; }
+    @media (max-width: 760px) { .vs, .how { grid-template-columns: minmax(0, 1fr); } }
+
     @media (max-width: 900px) {
       .price-wrap { grid-template-columns: minmax(0, 1fr); }
       .summary { position: static; }
@@ -231,7 +255,7 @@
     <section id="inversion" style="padding-top:10px">
       <div class="price-wrap">
         <div class="card line price-card">
-          <span class="lbl">Base de datos LivX · plan de entrada</span>
+          <span class="lbl">Base de datos LivX · diseño y desarrollo</span>
           <div class="price"><span class="cur">$</span><span class="amt">330</span><span class="per">USD · pago único</span></div>
           <div class="plus">+ <b>$25</b> dominio (registro y configuración)</div>
           <p class="price-sub">Diseño y desarrollo de la plataforma, migración de su documento, puesta en línea y capacitación. Entrega estimada en 3 semanas.</p>
@@ -266,9 +290,34 @@
             <div class="then" id="then"></div>
           </div>
           <div class="sum-year"><span>Total del primer año</span><b id="year">—</b></div>
-          <p class="sum-note">Este es el plan de entrada. Las integraciones (llamadas, SMS, email, automatizaciones) se pueden sumar más adelante y se cotizan aparte.</p>
+          <p class="sum-note">A largo plazo se podrán añadir más integraciones, cotizadas aparte.</p>
         </aside>
       </div>
+    </section>
+
+    <!-- Comparación -->
+    <section id="comparacion">
+      <div class="sec-head">
+        <span class="eyebrow">Comparación</span>
+        <h2>Lo mismo que Airtable, <span>sin pagar por usuario</span></h2>
+        <p>Pensamos este presupuesto para que LivX pueda empezar hoy con una herramienta profesional, a la medida de su momento.</p>
+      </div>
+      <div class="vs">
+        <div>
+          <small>Airtable · plan Team</small>
+          <h3>16 usuarios que editan</h3>
+          <div class="big">$3,840<small> /año</small></div>
+          <ul><li>Unos $20 por usuario al mes, todos los meses</li><li>El costo sube con cada persona que se suma</li><li>Los datos viven en una cuenta de terceros</li></ul>
+        </div>
+        <div class="us">
+          <small>Su base de datos LivX</small>
+          <h3>Hasta 16 usuarios incluidos</h3>
+          <div class="big">$500<small> el primer año</small></div>
+          <ul><li>Pago único de $330 + dominio + hosting anual</li><li>Luego solo $170 al año (dominio + hosting)</li><li>Con su nombre, su dominio y sus datos</li></ul>
+        </div>
+      </div>
+      <div class="save-band"><span>Ahorro aproximado el primer año</span><b>$3,340</b></div>
+      <p class="fine">Referencia: precio de lista aproximado de Airtable Team en 2026 ($20 por editor al mes con facturación anual). Airtable no cobra a usuarios de solo lectura. Puede variar.</p>
     </section>
 
     <!-- Hosting -->
@@ -281,16 +330,24 @@
       <div class="opts" id="hostOpts"></div>
     </section>
 
-    <!-- Siguientes fases -->
-    <section id="fases">
-      <div class="sec-head">
-        <span class="eyebrow">Plan de entrada</span>
-        <h2>Empieza simple, <span>crece con ustedes</span></h2>
-        <p>Esta primera fase deja lista la base de datos para trabajar desde ya. Cuando LivX lo necesite, le sumamos integraciones sobre la misma plataforma, sin empezar de cero.</p>
-      </div>
+    <!-- Integraciones -->
+    <section id="integraciones">
       <div class="card callout">
-        <svg class="i" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-        <p><strong>Integraciones para fases siguientes</strong> (se cotizan aparte): llamadas, grabaciones y SMS con Twilio, email marketing, formularios en su sitio web, automatizaciones y reportes. Los servicios de terceros se contratan a nombre de LivX y se pagan directamente al proveedor.</p>
+        <svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <p>A largo plazo se podrán añadir <strong>más integraciones</strong> a la misma plataforma (por ejemplo, llamadas, SMS, email o automatizaciones). Se cotizan aparte, y los servicios de terceros se pagan directamente al proveedor.</p>
+      </div>
+    </section>
+
+    <!-- Cómo empezamos -->
+    <section>
+      <div class="sec-head">
+        <span class="eyebrow">Cómo empezamos</span>
+        <h2>Tres pasos <span>y a trabajar</span></h2>
+      </div>
+      <div class="how">
+        <div><div class="n">01</div><h3>Aprobación y 60%</h3><p>Confirman el presupuesto y el pago inicial de $198. Ese mismo día arrancamos.</p></div>
+        <div><div class="n">02</div><h3>Nos envían su documento</h3><p>Su Google Sheet, Excel o CSV. Nosotros lo migramos y lo dejamos ordenado.</p></div>
+        <div><div class="n">03</div><h3>Reciben sus credenciales</h3><p>En unas 3 semanas les entregamos el panel de administración, capacitación y el 40% final de $132.</p></div>
       </div>
     </section>
 
