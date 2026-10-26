@@ -3,37 +3,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CRM Proposal · LivX</title>
-  <meta name="description" content="A proposal from DGP Global Group and Moya Company for LivX: a CRM with a spreadsheet-style view, follow-ups, and built-in Twilio calling for the cold calling team.">
+  <title>Database Proposal · LivX</title>
+  <meta name="description" content="A proposal from DGP Global Group and Moya Company for LivX: a private, Airtable-style database with grid, calendar, kanban, gallery, and form views, real-time collaboration, and up to 16 users.">
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#07080d">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CRM Proposal for LivX">
-  <meta property="og:description" content="From Google Sheets to a CRM with calling, call recordings, texting, and follow-ups for the LivX cold calling team.">
+  <meta property="og:title" content="Database Proposal for LivX">
+  <meta property="og:description" content="Your own Airtable-style database: grid, calendar, kanban, gallery, and form views, real-time collaboration, and up to 16 users.">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://livxteam.dgp-link.com/proposal/">
   <meta property="og:url" content="https://livxteam.dgp-link.com/proposal/">
-  <meta property="og:site_name" content="LivX CRM">
+  <meta property="og:site_name" content="LivX">
   <meta property="og:locale" content="en_US">
   <meta property="og:image" content="https://livxteam.dgp-link.com/proposal/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CRM Proposal for LivX">
-  <meta name="twitter:description" content="From Google Sheets to a CRM with calling, call recordings, texting, and follow-ups for the LivX cold calling team.">
+  <meta name="twitter:title" content="Database Proposal for LivX">
+  <meta name="twitter:description" content="Your own Airtable-style database: grid, calendar, kanban, gallery, and form views, real-time collaboration, and up to 16 users.">
   <meta name="twitter:image" content="https://livxteam.dgp-link.com/proposal/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/site.css">
   <style>
-    /* ---------- Hoja actual ---------- */
+    /* ---------- Current spreadsheet ---------- */
     .sheet-wrap { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 18px; align-items: start; }
-    .sheet { background: #fff; color: #202124; border-radius: 14px; overflow: hidden; font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; border: 1px solid var(--line); }
+    .sheet { background: #fff; color: #202124; overflow: hidden; font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; }
     .sheet .bar { background: #f1f3f4; padding: 8px 12px; display: flex; gap: 10px; align-items: center; font-size: 12px; color: #444; border-bottom: 1px solid #dadce0; }
     .sheet .bar i { width: 18px; height: 18px; border-radius: 4px; background: #0f9d58; display: inline-block; }
     .sheet table { border-collapse: collapse; width: 100%; min-width: 560px; }
-    .sheet th { background: #1e1b4b; color: #fff; font-weight: 600; padding: 7px 8px; white-space: nowrap; text-align: left; font-size: 12.5px; }
+    .sheet th { background: #1e1b4b; color: #fff; font-weight: 600; padding: 7px 8px; text-align: left; white-space: nowrap; }
     .sheet td { border: 1px solid #e3e3e3; padding: 5px 8px; white-space: nowrap; }
     .sheet td.flag { background: rgba(240, 123, 123, .14); outline: 1.5px dashed #d93025; outline-offset: -2px; }
     .gs { display: inline-block; padding: 0 8px; border-radius: 8px; font-size: 11.5px; }
@@ -46,125 +46,163 @@
     .issue h3 { font-size: 14.5px; font-weight: 600; }
     .issue p { font-size: 13.5px; color: var(--ink-2); font-weight: 300; }
 
-    /* ---------- Demo del CRM ---------- */
+    /* ---------- Workspace preview ---------- */
     .app { border: 1px solid var(--line-2); border-radius: 20px; overflow: hidden; background: var(--bg-2); box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .9), 0 0 0 1px rgba(241, 198, 111, .05); }
-    .app-chrome { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); background: #0d0e17; }
-    .app-chrome .d { width: 10px; height: 10px; border-radius: 50%; background: #2a2c3d; }
-    .app-chrome .url { margin-left: 10px; flex: 1; max-width: 360px; font-size: 12px; color: var(--ink-3); background: rgba(255, 255, 255, .04); border: 1px solid var(--line); border-radius: 8px; padding: 3px 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .app-body { display: grid; grid-template-columns: 56px minmax(0, 1fr) 340px; min-height: 560px; }
-    .side { border-right: 1px solid var(--line); padding: 12px 0; display: flex; flex-direction: column; align-items: center; gap: 6px; background: #0a0b12; }
-    .side .lg { font-family: var(--display); font-weight: 700; font-size: 20px; margin-bottom: 10px; }
-    .side .lg b { color: var(--gold); }
-    .side span { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; color: var(--ink-3); }
-    .side span.on { color: var(--gold); background: var(--gold-soft); }
-    .main { min-width: 0; display: flex; flex-direction: column; }
-    .views { display: flex; gap: 2px; padding: 10px 12px 0; border-bottom: 1px solid var(--line); overflow-x: auto; }
-    .views button { font: inherit; font-size: 12.5px; color: var(--ink-3); background: none; border: 0; padding: 8px 12px 10px; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; display: flex; gap: 6px; align-items: center; }
-    .views button.on { color: var(--ink); border-bottom-color: var(--gold); }
-    .views .cnt { font-size: 11px; padding: 0 6px; border-radius: 6px; background: rgba(255, 255, 255, .06); }
-    .tools { display: flex; gap: 8px; padding: 10px 12px; border-bottom: 1px solid var(--line); align-items: center; flex-wrap: wrap; }
-    .tools .search { flex: 1; min-width: 140px; display: flex; gap: 8px; align-items: center; height: 32px; padding: 0 10px; border-radius: 8px; border: 1px solid var(--line); color: var(--ink-3); font-size: 12.5px; }
-    .tools .tb { height: 32px; padding: 0 10px; border-radius: 8px; border: 1px solid var(--line); color: var(--ink-2); font-size: 12.5px; display: inline-flex; align-items: center; gap: 6px; }
-    .tools .tb.gold { color: #1a1408; background: var(--gold); border-color: var(--gold); font-weight: 500; }
-    .tools svg.i { width: 15px; height: 15px; }
-    .grid-x { overflow: auto; flex: 1; }
-    table.at { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 860px; font-size: 12.5px; }
-    table.at th { position: sticky; top: 0; background: #0f1019; text-align: left; font-weight: 500; color: var(--ink-3); padding: 8px 10px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); white-space: nowrap; font-size: 11.5px; }
-    table.at th .ty { opacity: .6; margin-right: 4px; }
-    table.at td { padding: 8px 10px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); white-space: nowrap; color: var(--ink-2); }
-    table.at td.num { color: var(--ink-3); width: 34px; text-align: center; font-size: 11px; }
-    table.at td.name { color: var(--ink); font-weight: 500; }
-    table.at tbody tr { cursor: pointer; transition: background .1s; }
-    table.at tbody tr:hover td { background: rgba(255, 255, 255, .025); }
-    table.at tbody tr.sel td { background: rgba(241, 198, 111, .07); }
-    table.at tbody tr.sel td:first-child { box-shadow: inset 2px 0 0 var(--gold); }
-    .due { color: var(--bad); font-weight: 500; }
-    .today { color: var(--gold); font-weight: 500; }
-    .ph { font-variant-numeric: tabular-nums; }
+    .app-top { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); background: #0d0e17; flex-wrap: wrap; }
+    .app-top .base { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 14px; }
+    .app-top .base .lg { width: 30px; height: 30px; border-radius: 9px; background: var(--gold); color: #1a1408; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 16px; }
+    .app-top .base small { display: block; font-weight: 400; font-size: 11.5px; color: var(--ink-3); }
+    .tables { display: flex; gap: 4px; margin-left: 8px; }
+    .tables span { font-size: 12.5px; padding: 5px 11px; border-radius: 8px; color: var(--ink-3); }
+    .tables span.on { background: rgba(255, 255, 255, .06); color: var(--ink); }
+    .presence { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+    .avs { display: flex; gap: 5px; }
+    .av { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 600; color: #0b0c14; border: 2px solid #0d0e17; position: relative; }
+    .av.live::after { content: ""; position: absolute; right: -2px; bottom: -2px; width: 9px; height: 9px; border-radius: 50%; background: var(--good); border: 2px solid #0d0e17; }
+    .share { font: inherit; font-size: 12.5px; font-weight: 600; height: 32px; padding: 0 14px; border-radius: 8px; border: 0; background: var(--gold); color: #1a1408; display: inline-flex; align-items: center; gap: 6px; }
+    .share svg.i { width: 14px; height: 14px; }
+    .vbar { display: flex; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); align-items: center; flex-wrap: wrap; }
+    .vtabs { display: flex; gap: 4px; overflow-x: auto; }
+    .vtabs button { font: inherit; font-size: 12.5px; color: var(--ink-2); background: none; border: 1px solid transparent; padding: 6px 12px; border-radius: 9px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+    .vtabs button:hover { background: rgba(255, 255, 255, .04); }
+    .vtabs button.on { background: var(--gold-soft); border-color: rgba(241, 198, 111, .3); color: var(--gold); }
+    .vtabs svg.i { width: 15px; height: 15px; }
+    .vtools { margin-left: auto; display: flex; gap: 6px; }
+    .vtools span { height: 30px; padding: 0 10px; border-radius: 8px; border: 1px solid var(--line); color: var(--ink-3); font-size: 12px; display: inline-flex; align-items: center; gap: 6px; }
+    .vtools svg.i { width: 13px; height: 13px; }
+    .stage { position: relative; min-height: 470px; max-height: 560px; overflow: auto; }
+    .toast { position: absolute; right: 14px; bottom: 14px; z-index: 5; display: flex; gap: 10px; align-items: center; padding: 10px 14px; border-radius: 12px; background: #171927; border: 1px solid var(--line-2); font-size: 12.5px; box-shadow: 0 16px 30px -12px rgba(0, 0, 0, .8); opacity: 0; translate: 0 8px; transition: opacity .3s, translate .3s; pointer-events: none; max-width: calc(100% - 28px); }
+    .toast.on { opacity: 1; translate: 0 0; }
+    .toast .av { margin: 0; border-color: #171927; flex: none; }
+    .toast b { font-weight: 600; }
 
-    .panel { border-left: 1px solid var(--line); display: flex; flex-direction: column; min-width: 0; background: #0c0d15; }
-    .p-head { padding: 16px 16px 12px; border-bottom: 1px solid var(--line); }
-    .p-head h3 { font-family: var(--display); font-size: 26px; font-weight: 700; }
-    .p-head .sub { font-size: 12.5px; color: var(--ink-3); margin-top: 2px; }
-    .p-head .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
-    .acts { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 8px; margin-top: 14px; }
-    .acts button { font: inherit; font-size: 12.5px; height: 36px; border-radius: 10px; border: 1px solid var(--line-2); background: rgba(255, 255, 255, .03); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; }
-    .acts button.call { background: var(--good); color: #062014; border-color: transparent; font-weight: 600; }
-    .acts button.hang { background: var(--bad); color: #2a0707; border-color: transparent; font-weight: 600; }
-    .acts svg.i { width: 15px; height: 15px; }
-    .from { font-size: 11.5px; color: var(--ink-3); margin-top: 8px; }
-    .from svg.i { width: 12px; height: 12px; vertical-align: -1px; margin-right: 4px; }
-    .from b { color: var(--ink-2); font-weight: 500; }
-    .live { margin-top: 10px; padding: 10px 12px; border-radius: 10px; background: rgba(95, 211, 154, .08); border: 1px solid rgba(95, 211, 154, .25); font-size: 12.5px; display: none; align-items: center; gap: 10px; }
-    .live.on { display: flex; }
-    .live .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--good); animation: blink 1s infinite; }
-    @keyframes blink { 50% { opacity: .25; } }
-    .live .tm { margin-left: auto; font-variant-numeric: tabular-nums; font-weight: 600; }
-    .outcome { display: none; margin-top: 10px; }
-    .outcome.on { display: block; }
-    .outcome small { display: block; font-size: 11.5px; color: var(--ink-3); margin-bottom: 6px; }
-    .outcome .opts { display: flex; flex-wrap: wrap; gap: 6px; }
-    .outcome button { font: inherit; font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line-2); background: none; color: var(--ink-2); cursor: pointer; }
-    .outcome button:hover { border-color: var(--gold); color: var(--gold); }
-    .nextfu { margin: 12px 16px 0; padding: 10px 12px; border-radius: 10px; border: 1px dashed rgba(241, 198, 111, .35); background: var(--gold-soft); font-size: 12.5px; display: flex; gap: 10px; align-items: center; }
-    .nextfu svg.i { color: var(--gold); width: 16px; height: 16px; }
-    .nextfu b { font-weight: 600; color: var(--gold); }
-    .p-tabs { display: flex; gap: 2px; padding: 10px 16px 0; border-bottom: 1px solid var(--line); }
-    .p-tabs button { font: inherit; font-size: 12.5px; color: var(--ink-3); background: none; border: 0; padding: 6px 10px 9px; cursor: pointer; border-bottom: 2px solid transparent; }
-    .p-tabs button.on { color: var(--ink); border-bottom-color: var(--gold); }
-    .p-body { padding: 12px 16px 16px; overflow: auto; flex: 1; max-height: 330px; }
-    .ev { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); }
-    .ev:last-child { border-bottom: 0; }
-    .ev .ic { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; flex: none; background: rgba(255, 255, 255, .04); border: 1px solid var(--line); color: var(--ink-2); }
-    .ev .ic.g { color: var(--good); } .ev .ic.v { color: var(--violet); } .ev .ic.y { color: var(--gold); }
-    .ev .ic svg.i { width: 14px; height: 14px; }
-    .ev .tx { flex: 1; min-width: 0; font-size: 12.5px; }
-    .ev .tx b { font-weight: 500; color: var(--ink); }
-    .ev .tx .w { color: var(--ink-3); font-size: 11.5px; }
-    .ev .tx p { color: var(--ink-2); margin-top: 2px; font-weight: 300; }
-    .rec { display: flex; align-items: center; gap: 8px; margin-top: 6px; padding: 6px 8px; border-radius: 8px; background: rgba(255, 255, 255, .03); border: 1px solid var(--line); }
-    .rec button { width: 24px; height: 24px; border-radius: 50%; border: 0; background: var(--ink); color: var(--bg); display: grid; place-items: center; cursor: pointer; flex: none; }
-    .rec button svg { width: 10px; height: 10px; fill: currentColor; }
-    .wave { flex: 1; display: flex; gap: 2px; align-items: center; height: 20px; }
-    .wave i { flex: 1; background: var(--ink-3); border-radius: 2px; opacity: .55; }
-    .wave i.p { background: var(--gold); opacity: 1; }
-    .rec .d { font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-    .bubble { max-width: 86%; padding: 8px 11px; border-radius: 12px; font-size: 12.5px; margin: 6px 0; }
-    .bubble.out { margin-left: auto; background: rgba(241, 198, 111, .14); border: 1px solid rgba(241, 198, 111, .25); border-bottom-right-radius: 4px; }
-    .bubble.in { background: rgba(255, 255, 255, .05); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
-    .bubble small { display: block; font-size: 10.5px; color: var(--ink-3); margin-top: 2px; }
-    .compose { display: flex; gap: 6px; margin-top: 10px; }
-    .compose span { flex: 1; height: 32px; border-radius: 8px; border: 1px solid var(--line); font-size: 12px; color: var(--ink-3); display: flex; align-items: center; padding: 0 10px; }
-    .compose b { height: 32px; padding: 0 12px; border-radius: 8px; background: var(--gold); color: #1a1408; font-size: 12px; display: grid; place-items: center; font-weight: 600; }
-    .fields { display: grid; grid-template-columns: auto 1fr; gap: 8px 14px; font-size: 12.5px; }
-    .fields dt { color: var(--ink-3); }
-    .fields dd { margin: 0; color: var(--ink); }
+    /* Grid */
+    table.grid-v { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 900px; font-size: 12.5px; }
+    .grid-v th { position: sticky; top: 0; z-index: 1; background: #0f1019; text-align: left; font-weight: 500; color: var(--ink-3); padding: 8px 10px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); white-space: nowrap; font-size: 11.5px; }
+    .grid-v th .ty { opacity: .6; margin-right: 5px; }
+    .grid-v td { padding: 8px 10px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); white-space: nowrap; color: var(--ink-2); }
+    .grid-v td.num { color: var(--ink-3); width: 36px; text-align: center; font-size: 11px; }
+    .grid-v td.name { color: var(--ink); font-weight: 500; }
+    .grid-v tr:hover td { background: rgba(255, 255, 255, .025); }
+    .grid-v td.add { color: var(--ink-3); }
+    .flash td, .flash.card-k, .flash.gcard { animation: flash 1.6s ease; }
+    @keyframes flash { 0%, 40% { background: rgba(241, 198, 111, .16); } 100% { background: transparent; } }
+    .who-dot { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; font-size: 10px; font-weight: 600; color: #0b0c14; vertical-align: middle; }
+
+    /* Kanban */
+    .kan { display: grid; grid-template-columns: repeat(5, minmax(200px, 1fr)); gap: 12px; padding: 14px; min-width: 1060px; }
+    .col { background: rgba(255, 255, 255, .02); border: 1px solid var(--line); border-radius: 12px; padding: 10px; min-height: 380px; transition: border-color .15s, background .15s; }
+    .col.over { border-color: var(--gold); background: var(--gold-soft); }
+    .col h4 { margin: 2px 2px 10px; font-size: 12.5px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+    .col h4 .cnt { margin-left: auto; font-size: 11px; color: var(--ink-3); font-weight: 400; }
+    .card-k { background: #13141f; border: 1px solid var(--line); border-radius: 10px; padding: 10px 11px; margin-bottom: 8px; cursor: grab; font-size: 12.5px; }
+    .card-k:active { cursor: grabbing; }
+    .card-k.drag { opacity: .4; }
+    .card-k b { display: block; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+    .card-k .r { display: flex; justify-content: space-between; align-items: center; gap: 6px; color: var(--ink-3); font-size: 11.5px; }
+    .hint { font-size: 12px; color: var(--ink-3); padding: 12px 14px 0; }
+
+    /* Calendar */
+    .cal { padding: 14px; min-width: 760px; }
+    .cal-h { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .cal-h h4 { margin: 0; font-family: var(--display); font-size: 24px; font-weight: 700; }
+    .cal-h span { font-size: 12px; color: var(--ink-3); }
+    .cal-g { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .cal-g > div { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); min-height: 76px; padding: 6px; font-size: 11px; }
+    .cal-g .dow { min-height: 0; text-align: center; color: var(--ink-3); font-size: 11px; padding: 6px; background: #0f1019; }
+    .cal-g .d { color: var(--ink-3); margin-bottom: 4px; }
+    .cal-g .out { background: rgba(0, 0, 0, .25); }
+    .cal-g .td .d { color: #1a1408; background: var(--gold); border-radius: 99px; display: inline-block; padding: 0 6px; font-weight: 600; }
+    .ev-c { display: block; padding: 3px 6px; border-radius: 6px; margin-bottom: 3px; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--ink); border-left: 3px solid; background: rgba(255, 255, 255, .05); }
+
+    /* Gallery */
+    .gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; padding: 14px; }
+    .gcard { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #13141f; }
+    .gcard .cover { height: 104px; display: grid; place-items: center; font-family: var(--display); font-size: 34px; font-weight: 700; color: rgba(255, 255, 255, .92); position: relative; }
+    .gcard .cover .chip { position: absolute; left: 8px; top: 8px; background: rgba(7, 8, 13, .7); font-family: var(--body); }
+    .gcard .bd { padding: 10px 12px 12px; font-size: 12.5px; }
+    .gcard .bd b { display: block; font-weight: 500; color: var(--ink); }
+    .gcard .bd span { color: var(--ink-3); font-size: 11.5px; }
+    .gcard .bd p { margin-top: 6px; color: var(--ink-2); font-size: 12px; font-weight: 300; }
+
+    /* Form */
+    .formv { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 280px); gap: 18px; padding: 18px; align-items: start; }
+    .fcard { background: #f7f2e8; color: #1a1a24; border-radius: 14px; padding: 22px; }
+    .fcard h4 { margin: 0; font-family: var(--display); font-size: 26px; font-weight: 700; }
+    .fcard > p { font-size: 12.5px; color: #5d5a66; margin: 4px 0 14px; }
+    .fcard label { display: block; font-size: 12px; font-weight: 600; margin: 10px 0 4px; }
+    .fcard input, .fcard select { width: 100%; font: inherit; font-size: 13px; height: 38px; padding: 0 10px; border-radius: 8px; border: 1px solid #d8d2c4; background: #fff; color: #1a1a24; }
+    .fcard .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .fcard button { margin-top: 16px; width: 100%; height: 42px; border: 0; border-radius: 10px; background: #0b0c14; color: #f7f2e8; font: inherit; font-weight: 600; cursor: pointer; }
+    .fside { font-size: 13px; color: var(--ink-2); font-weight: 300; }
+    .fside h5 { margin: 0 0 8px; font-size: 14px; font-weight: 600; color: var(--ink); }
+    .fside ul { margin: 10px 0 0; padding-left: 18px; }
+    .fside li { margin: 4px 0; }
+    .fside li::marker { color: var(--gold); }
+
     .demo-note { text-align: center; color: var(--ink-3); font-size: 12.5px; margin-top: 14px; }
 
-    /* ---------- Antes y después ---------- */
-    .map td:first-child { color: var(--ink-3); }
-    .map td .arrow { color: var(--gold); }
-    .new-pill { font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(241, 198, 111, .35); border-radius: 999px; padding: 0 7px; margin-left: 6px; }
+    /* ---------- Views explained ---------- */
+    .views5 { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+    .v5 { padding: 20px; }
+    .v5 .ico { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--gold-soft); color: var(--gold); border: 1px solid rgba(241, 198, 111, .22); margin-bottom: 14px; }
+    .v5 h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .v5 p { font-size: 13px; color: var(--ink-2); font-weight: 300; }
 
-    /* ---------- Flujo de llamada ---------- */
-    .flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-    .flow > div { padding: 22px; border-right: 1px solid var(--line); background: linear-gradient(180deg, var(--surface), var(--bg-2)); }
-    .flow > div:last-child { border-right: 0; }
-    .flow .n { font-variant-numeric: lining-nums; font-family: var(--display); font-size: 40px; color: var(--gold); line-height: 1; }
-    .flow h3 { font-size: 15px; font-weight: 600; margin: 10px 0 6px; }
-    .flow p { font-size: 13.5px; color: var(--ink-2); font-weight: 300; }
+    /* ---------- Collaboration & roles ---------- */
+    .collab { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 18px; align-items: start; }
+    .collab-list { padding: 8px 0; }
+    .cl { display: flex; gap: 14px; padding: 16px 22px; border-bottom: 1px solid var(--line); }
+    .cl:last-child { border-bottom: 0; }
+    .cl .ico { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; color: var(--gold); background: var(--gold-soft); border: 1px solid rgba(241, 198, 111, .22); flex: none; }
+    .cl .ico svg.i { width: 16px; height: 16px; }
+    .cl h3 { font-size: 14.5px; font-weight: 600; }
+    .cl p { font-size: 13.5px; color: var(--ink-2); font-weight: 300; }
+    table.roles { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 520px; }
+    .roles th, .roles td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: center; }
+    .roles th { font-size: 12px; font-weight: 600; color: var(--ink); vertical-align: bottom; }
+    .roles th small { display: block; font-weight: 300; color: var(--ink-3); font-size: 11px; margin-top: 2px; }
+    .roles td:first-child, .roles th:first-child { text-align: left; color: var(--ink-2); }
+    .roles tr:last-child td { border-bottom: 0; }
+    .roles .y { color: var(--good); }
+    .roles .n { color: var(--ink-3); opacity: .5; }
+    .roles svg.i { width: 16px; height: 16px; }
+    .roles .own { background: var(--gold-soft); }
 
-    /* ---------- Roles ---------- */
-    .role { padding: 26px; }
-    .role .who { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-    .role .av { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--gold-soft); color: var(--gold); border: 1px solid rgba(241, 198, 111, .25); }
-    .role h3 { font-family: var(--display); font-size: 26px; font-weight: 700; }
-    .role .who small { display: block; color: var(--ink-3); font-size: 12.5px; }
-    .role ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 9px; }
-    .role li { display: flex; gap: 10px; font-size: 14px; color: var(--ink-2); font-weight: 300; }
-    .role li svg.i { color: var(--gold); width: 16px; height: 16px; margin-top: 3px; }
+    /* ---------- Admin ---------- */
+    .admin { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+    .adm { overflow: hidden; }
+    .adm-top { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+    .adm-top h3 { font-size: 15px; font-weight: 600; }
+    .seats { margin-left: auto; display: flex; align-items: center; gap: 10px; font-size: 12.5px; color: var(--ink-2); }
+    .seats .bar { width: 110px; height: 6px; border-radius: 99px; background: rgba(255, 255, 255, .08); overflow: hidden; }
+    .seats .bar i { display: block; height: 100%; background: var(--gold); }
+    .inv { height: 30px; padding: 0 12px; border-radius: 8px; background: var(--gold); color: #1a1408; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; }
+    .urow { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto auto; gap: 12px; align-items: center; padding: 11px 18px; border-bottom: 1px solid var(--line); font-size: 13px; }
+    .urow:last-child { border-bottom: 0; }
+    .urow .av { margin: 0; width: 32px; height: 32px; border-color: transparent; }
+    .urow b { display: block; font-weight: 500; }
+    .urow small { color: var(--ink-3); font-size: 11.5px; }
+    .urow .st { font-size: 11.5px; color: var(--good); }
+    .urow .st.off { color: var(--ink-3); }
+    .adm-list { list-style: none; padding: 0; margin: 0; }
+    .adm-list li { display: flex; gap: 12px; padding: 14px 20px; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--ink-2); font-weight: 300; }
+    .adm-list li:last-child { border-bottom: 0; }
+    .adm-list li strong { color: var(--ink); font-weight: 500; }
+    .adm-list svg.i { color: var(--gold); width: 17px; height: 17px; margin-top: 3px; }
 
-    /* ---------- Dispositivos ---------- */
+    /* ---------- Migration ---------- */
+    .mig { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .mig > div { padding: 22px; border-right: 1px solid var(--line); background: linear-gradient(180deg, var(--surface), var(--bg-2)); }
+    .mig > div:last-child { border-right: 0; }
+    .mig .n { font-family: var(--display); font-size: 40px; color: var(--gold); line-height: 1; font-variant-numeric: lining-nums; }
+    .mig h3 { font-size: 15px; font-weight: 600; margin: 10px 0 6px; }
+    .mig p { font-size: 13.5px; color: var(--ink-2); font-weight: 300; }
+    .ftypes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .ftypes span { font-size: 12.5px; color: var(--ink-2); border: 1px solid var(--line-2); border-radius: 999px; padding: 4px 12px; display: inline-flex; gap: 6px; align-items: center; }
+    .ftypes span b { color: var(--gold); font-weight: 500; }
+
+    /* ---------- Devices ---------- */
     .devices { position: relative; display: flex; justify-content: center; align-items: flex-end; padding: 40px 10px 10px; isolation: isolate; }
     .devices::before { content: ""; position: absolute; inset: 10% 15% 0; background: radial-gradient(closest-side, rgba(241, 198, 111, .18), transparent); filter: blur(30px); z-index: -1; }
     .dv { --b: #1a1c2b; position: relative; }
@@ -172,7 +210,7 @@
     .scr::after { content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, rgba(255, 255, 255, .07), transparent 40%); pointer-events: none; }
     .laptop { width: 56%; z-index: 2; }
     .laptop .bez { background: var(--b); border: 1px solid #2a2d42; border-radius: 14px 14px 4px 4px; padding: 2.2% 2.2% 3%; }
-    .laptop .scr { aspect-ratio: 16 / 10; }
+    .laptop .scr { aspect-ratio: 16 / 10; flex-direction: column; }
     .laptop .base { height: 14px; margin: 0 -7%; background: linear-gradient(180deg, #2a2d42, #12131d); border-radius: 0 0 14px 14px; position: relative; }
     .laptop .base::before { content: ""; position: absolute; left: 42%; right: 42%; top: 0; height: 5px; background: #0b0c14; border-radius: 0 0 6px 6px; }
     .tablet { width: 25%; margin-right: -5%; margin-bottom: 4px; z-index: 1; transform: rotate(-4deg); }
@@ -185,84 +223,62 @@
     .float { animation: float 6s ease-in-out infinite; }
     .float.d2 { animation-delay: -2s; } .float.d3 { animation-delay: -4s; }
     @keyframes float { 50% { translate: 0 -8px; } }
-    /* Interfaz en miniatura */
-    .m-side { width: 7%; background: #08090f; border-right: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; gap: 6%; padding-top: 4%; }
-    .m-side i { width: 50%; aspect-ratio: 1; border-radius: 25%; background: rgba(255, 255, 255, .08); }
-    .m-side i:first-child { background: var(--gold); opacity: .8; }
-    .m-main { flex: 1; padding: 3%; display: flex; flex-direction: column; gap: 3.2%; min-width: 0; }
-    .m-bar { display: flex; gap: 3%; align-items: center; }
-    .m-bar b { height: 7px; border-radius: 4px; background: rgba(255, 255, 255, .12); }
-    .m-bar b.g { background: var(--gold); }
-    .m-row { display: grid; grid-template-columns: 1.6fr 1.2fr 1fr 1.2fr; gap: 4%; align-items: center; padding: 1.4% 0; border-bottom: 1px solid rgba(255, 255, 255, .05); }
+    .m-top { display: flex; gap: 3%; padding: 2.5% 3%; border-bottom: 1px solid var(--line); align-items: center; }
+    .m-top b { height: 7px; border-radius: 4px; background: rgba(255, 255, 255, .12); }
+    .m-top b.g { background: var(--gold); }
+    .m-grid { padding: 1.5% 3%; display: flex; flex-direction: column; flex: 1; }
+    .m-row { display: grid; grid-template-columns: .3fr 1.6fr 1.1fr 1fr 1.2fr .5fr; gap: 3%; align-items: center; padding: 1.3% 0; border-bottom: 1px solid rgba(255, 255, 255, .05); }
     .m-row b { height: 5px; border-radius: 3px; background: rgba(255, 255, 255, .16); }
     .m-row s { height: 8px; border-radius: 99px; text-decoration: none; }
+    .m-row i { width: 9px; height: 9px; border-radius: 50%; }
     .s-g { background: rgba(95, 211, 154, .5); } .s-y { background: rgba(241, 198, 111, .6); } .s-b { background: rgba(127, 178, 255, .5); } .s-v { background: rgba(185, 163, 255, .5); } .s-r { background: rgba(240, 123, 123, .5); }
-    .m-panel { width: 30%; border-left: 1px solid var(--line); padding: 3%; display: flex; flex-direction: column; gap: 5%; background: #0d0e17; }
-    .m-panel .t { height: 9px; width: 70%; border-radius: 4px; background: rgba(247, 242, 232, .5); }
-    .m-panel .call { height: 14px; border-radius: 6px; background: var(--good); opacity: .85; }
-    .m-panel .wav { display: flex; gap: 2px; align-items: center; height: 18px; }
-    .m-panel .wav i { flex: 1; background: var(--gold); opacity: .6; border-radius: 2px; }
-    .m-panel .ln { height: 5px; border-radius: 3px; background: rgba(255, 255, 255, .1); }
-    .m-kan { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5%; padding: 6% 5%; }
-    .m-kan > div { display: flex; flex-direction: column; gap: 6%; }
-    .m-kan .h { height: 6px; border-radius: 3px; width: 70%; }
-    .m-kan .c { aspect-ratio: 1.5; border-radius: 6px; background: rgba(255, 255, 255, .05); border: 1px solid var(--line); padding: 12%; display: flex; flex-direction: column; gap: 14%; }
-    .m-kan .c b { height: 4px; border-radius: 2px; background: rgba(255, 255, 255, .18); }
-    .m-kan .c b:last-child { width: 55%; }
-    .m-ph { padding: 22% 9% 8%; display: flex; flex-direction: column; gap: 4.5%; flex: 1; }
-    .m-ph .t { height: 9px; width: 75%; border-radius: 4px; background: rgba(247, 242, 232, .55); }
-    .m-ph .st { height: 8px; width: 45%; border-radius: 99px; }
-    .m-ph .call { height: 22px; border-radius: 8px; background: var(--good); display: grid; place-items: center; }
-    .m-ph .call::before { content: ""; width: 9px; height: 9px; border-radius: 50%; border: 2px solid #062014; }
-    .m-ph .ev { height: 26px; border-radius: 7px; background: rgba(255, 255, 255, .05); border: 1px solid var(--line); }
-    .m-ph .nav { margin-top: auto; display: flex; justify-content: space-around; padding-top: 6%; border-top: 1px solid var(--line); }
-    .m-ph .nav i { width: 12%; aspect-ratio: 1; border-radius: 30%; background: rgba(255, 255, 255, .1); }
-    .m-ph .nav i:first-child { background: var(--gold); }
+    .m-cal { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4%; padding: 8% 6%; align-content: start; }
+    .m-cal > div { aspect-ratio: 1; border-radius: 5px; background: rgba(255, 255, 255, .04); border: 1px solid var(--line); padding: 10%; display: flex; flex-direction: column; gap: 10%; }
+    .m-cal s { height: 5px; border-radius: 3px; text-decoration: none; }
+    .m-ph { padding: 22% 8% 8%; display: grid; grid-template-columns: 1fr 1fr; gap: 6%; align-content: start; flex: 1; }
+    .m-ph > div { border-radius: 7px; overflow: hidden; background: rgba(255, 255, 255, .05); border: 1px solid var(--line); }
+    .m-ph > div i { display: block; height: 30px; }
+    .m-ph > div b { display: block; height: 4px; margin: 6px; border-radius: 2px; background: rgba(255, 255, 255, .2); }
     .sync { position: absolute; top: 6px; left: 50%; translate: -50% 0; display: inline-flex; gap: 8px; align-items: center; font-size: 12px; color: var(--ink-2); padding: 5px 12px; border-radius: 999px; background: rgba(16, 17, 27, .85); border: 1px solid var(--line-2); white-space: nowrap; }
-    .sync .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 0 rgba(95, 211, 154, .6); animation: ping 2s infinite; }
-    @keyframes ping { 70% { box-shadow: 0 0 0 8px rgba(95, 211, 154, 0); } 100% { box-shadow: 0 0 0 0 rgba(95, 211, 154, 0); } }
-    .perks { margin-top: 34px; }
-    .perk { padding: 20px; }
-    .perk .ico { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; color: var(--gold); background: var(--gold-soft); border: 1px solid rgba(241, 198, 111, .22); margin-bottom: 12px; }
-    .perk h3 { font-size: 14.5px; font-weight: 600; margin-bottom: 4px; }
-    .perk p { font-size: 13px; color: var(--ink-2); font-weight: 300; }
-    .bp { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
-    .bp span { font-size: 12px; color: var(--ink-3); border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; }
-    .bp span b { color: var(--gold); font-weight: 500; }
+    .sync .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--good); animation: ping 2s infinite; }
+    @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(95, 211, 154, .6); } 70%, 100% { box-shadow: 0 0 0 8px rgba(95, 211, 154, 0); } }
 
-    /* Aparición al hacer scroll */
     .js .reveal { opacity: 0; translate: 0 18px; transition: opacity .7s ease, translate .7s ease; }
     .js .reveal.in { opacity: 1; translate: 0 0; }
 
     @media (max-width: 1060px) {
-      .app-body { grid-template-columns: 56px minmax(0, 1fr); }
-      .panel { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--line); }
-      .p-body { max-height: none; }
+      .views5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .collab, .admin { grid-template-columns: minmax(0, 1fr); }
     }
     @media (max-width: 860px) {
-      .sheet-wrap { grid-template-columns: minmax(0, 1fr); }
-      .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .flow > div:nth-child(2) { border-right: 0; }
-      .flow > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .sheet-wrap, .formv { grid-template-columns: minmax(0, 1fr); }
+      .mig { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .mig > div:nth-child(2) { border-right: 0; }
+      .mig > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .tables { display: none; }
     }
     @media (max-width: 680px) {
-      .app-body { grid-template-columns: minmax(0, 1fr); }
-      .side { display: none; }
-      .flow { grid-template-columns: minmax(0, 1fr); }
-      .flow > div { border-right: 0; border-bottom: 1px solid var(--line); }
-      .flow > div:last-child { border-bottom: 0; }
-      .app-chrome .url { display: none; }
+      .views5 { grid-template-columns: minmax(0, 1fr); }
+      .mig { grid-template-columns: minmax(0, 1fr); }
+      .mig > div { border-right: 0; border-bottom: 1px solid var(--line); }
+      .mig > div:last-child { border-bottom: 0; }
+      .vtools { display: none; }
+      .presence .avs { display: none; }
+      .fcard .two { grid-template-columns: minmax(0, 1fr); }
+      .urow { grid-template-columns: 34px minmax(0, 1fr) auto; }
+      .urow .st { display: none; }
+      .devices { padding-top: 48px; } .sync { font-size: 11px; } .laptop .base { height: 9px; }
+      .phone .bez { border-radius: 14px; } .phone .scr { border-radius: 9px; } .tablet .bez { border-radius: 10px; }
     }
-    @media (max-width: 680px) { .devices { padding-top: 48px; } .sync { font-size: 11px; } .laptop .base { height: 9px; } .phone .bez { border-radius: 14px; } .phone .scr { border-radius: 9px; } .tablet .bez { border-radius: 10px; } }
-    @media (prefers-reduced-motion: reduce) { .live .pulse, .float, .sync .dot { animation: none; } .js .reveal { opacity: 1; translate: none; transition: none; } }
-    @media print { .js .reveal { opacity: 1; translate: none; } .float { animation: none; } }
+    @media (prefers-reduced-motion: reduce) { .float, .sync .dot { animation: none; } .js .reveal { opacity: 1; translate: none; transition: none; } }
+    @media print { .js .reveal { opacity: 1; translate: none; } .float { animation: none; } .stage { max-height: none; } }
   </style>
 </head>
 <body>
   <script>document.documentElement.classList.add('js');</script>
   <header class="top">
     <div class="wrap">
-      <div class="brand"><span class="word">Liv<b>X</b></span><span class="sep"></span><span class="sub">CRM Proposal</span></div>
+      <div class="brand"><span class="word">Liv<b>X</b></span><span class="sep"></span><span class="sub">Database Proposal</span></div>
       <nav class="nav no-print">
         <button class="btn" type="button" onclick="window.print()"><svg class="i" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Save as PDF</button>
       </nav>
@@ -273,25 +289,25 @@
     <!-- Hero -->
     <div class="hero">
       <span class="eyebrow">Proposal for LivX</span>
-      <h1>From a Google Sheet to a CRM where <em>every call counts.</em></h1>
-      <p class="lead">A system built for LivX: the ease of an Airtable-style spreadsheet, with a phone built right in like LeadConnector. Your cold caller makes calls, sends texts, and schedules follow-ups from one place, while you listen to every call and watch your founding partner pre-sale grow.</p>
+      <h1>Your own Airtable, <em>built for LivX.</em></h1>
+      <p class="lead">A private database for LivX with the power of Airtable. Bring in the spreadsheet you use today, then work with the same data as a grid, calendar, kanban board, gallery, or form. Your whole team edits together in real time, with up to 16 users and the right level of access for each one.</p>
       <div class="meta">
         <div><small>Prepared for</small><strong>LivX</strong></div>
         <div><small>Prepared by</small><strong>DGP Global Group &amp; Moya Company</strong></div>
         <div><small>Date</small><strong id="issued">—</strong></div>
-        <div><small>Estimated delivery</small><strong>5 days max</strong></div>
+        <div><small>Estimated delivery</small><strong>3 weeks</strong></div>
       </div>
       <div class="row no-print" style="margin-top:26px">
-        <a class="btn gold lg" href="#demo">See it in action</a>
+        <a class="btn gold lg" href="#demo">Try the live preview</a>
       </div>
     </div>
 
     <!-- Today -->
     <section>
       <div class="sec-head reveal">
-        <div class="k">How it works today</div>
-        <h2>The spreadsheet was a great start. For a full-time cold caller, it falls short.</h2>
-        <p>This is how LivX tracks businesses today. It works as a directory, but there is no way to log what happens on each call or what needs to happen next.</p>
+        <div class="k">Where you are today</div>
+        <h2>The spreadsheet got LivX started. Now it's time for a real database.</h2>
+        <p>A shared Google Sheet works as a list, but as more people use it, it gets harder to keep clean, organized, and secure.</p>
       </div>
       <div class="sheet-wrap">
         <div class="card" style="padding:0;overflow:hidden">
@@ -311,10 +327,10 @@
           </div>
         </div>
         <div class="card issues">
-          <div class="issue"><span class="n">1</span><div><h3>No follow-ups or dates</h3><p>When an owner says "call me back Thursday," it doesn't get written down anywhere. That's how interested partners slip through the cracks.</p></div></div>
-          <div class="issue"><span class="n">2</span><div><h3>Status is just YES / NO / Signed up</h3><p>There's no way to tell "no answer" apart from "asked for info by text" or "wants a meeting."</p></div></div>
-          <div class="issue"><span class="n">3</span><div><h3>No notes or history</h3><p>You can't see who called, when, how many times, or what was said, or whether contact was made by phone, text, or email.</p></div></div>
-          <div class="issue"><span class="n">4</span><div><h3>Duplicates and messy data</h3><p>The same business shows up twice, phone numbers are in different formats, and some rows have no contact or phone number.</p></div></div>
+          <div class="issue"><span class="n">1</span><div><h3>One view for everything</h3><p>Rows and columns only. There's no calendar for follow-ups, no board to track progress, and no form to collect new entries.</p></div></div>
+          <div class="issue"><span class="n">2</span><div><h3>Everyone can change everything</h3><p>Anyone with the link can edit or delete any row. There's no way to give someone view-only or limited access.</p></div></div>
+          <div class="issue"><span class="n">3</span><div><h3>Free-form data</h3><p>Phone numbers in different formats, duplicate businesses, and blank fields, because nothing guides how data is entered.</p></div></div>
+          <div class="issue"><span class="n">4</span><div><h3>Hard to see who changed what</h3><p>When a value changes, it's hard to tell who did it or what it was before.</p></div></div>
         </div>
       </div>
     </section>
@@ -323,244 +339,201 @@
     <section id="demo">
       <div class="sec-head reveal">
         <div class="k">The solution</div>
-        <h2>A spreadsheet you already know, with a phone inside.</h2>
-        <p>Interactive preview. Click a business to open its profile, then try the <strong>Call</strong> button. All data shown is sample data.</p>
+        <h2>One database. Five ways to see it.</h2>
+        <p>Interactive preview. Switch between views, drag a card on the kanban board, or add a business with the form, and watch every view update. All data shown is sample data.</p>
       </div>
 
       <div class="app" id="app">
-        <div class="app-chrome"><span class="d"></span><span class="d"></span><span class="d"></span><span class="url">crm.livx · Leads</span></div>
-        <div class="app-body">
-          <nav class="side" aria-hidden="true">
-            <div class="lg">L<b>X</b></div>
-            <span class="on"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="10" x2="9" y2="20"/></svg></span>
-            <span><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
-            <span><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="12" rx="1"/><rect x="17" y="3" width="4" height="8" rx="1"/></svg></span>
-            <span><svg class="i" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
-            <span><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-            <span><svg class="i" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>
-          </nav>
-
-          <div class="main">
-            <div class="views" id="views"></div>
-            <div class="tools">
-              <div class="search"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg>Search business, contact, or phone…</div>
-              <span class="tb"><svg class="i" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.5 10 19 14 21 14 12.5 22 3"/></svg>Filter</span>
-              <span class="tb"><svg class="i" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>Sort</span>
-              <span class="tb gold"><svg class="i" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>New lead</span>
+        <div class="app-top">
+          <div class="base"><span class="lg">LX</span><div>LivX Partners<small>Workspace</small></div></div>
+          <div class="tables"><span class="on">Businesses</span><span>Contacts</span><span>Events</span></div>
+          <div class="presence">
+            <div class="avs" aria-label="People online now">
+              <span class="av live" style="background:#f1c66f">OW</span>
+              <span class="av live" style="background:#7fb2ff">AL</span>
+              <span class="av live" style="background:#5fd39a">SM</span>
+              <span class="av" style="background:#b9a3ff">TY</span>
             </div>
-            <div class="grid-x">
-              <table class="at">
-                <thead><tr>
-                  <th></th><th><span class="ty">Aa</span>Business</th><th><span class="ty">◉</span>Status</th><th><span class="ty">▤</span>Category</th>
-                  <th><span class="ty">◷</span>Next follow-up</th><th><span class="ty">☏</span>Phone</th><th><span class="ty">⇄</span>Last contact</th><th><span class="ty">#</span>Attempts</th><th><span class="ty">⌖</span>Area</th>
-                </tr></thead>
-                <tbody id="rows"></tbody>
-              </table>
-            </div>
+            <span class="share"><svg class="i" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>Share</span>
           </div>
+        </div>
+        <div class="vbar">
+          <div class="vtabs" id="vtabs"></div>
+          <div class="vtools">
+            <span><svg class="i" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.5 10 19 14 21 14 12.5 22 3"/></svg>Filter</span>
+            <span><svg class="i" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>Group</span>
+            <span><svg class="i" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>Sort</span>
+          </div>
+        </div>
+        <div class="stage" id="stage"></div>
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      </div>
+      <p class="demo-note">Illustrative preview. We build the final tables, fields, and views together with you.</p>
+    </section>
 
-          <aside class="panel" aria-live="polite">
-            <div class="p-head">
-              <h3 id="pName">—</h3>
-              <div class="sub" id="pSub">—</div>
-              <div class="chips" id="pChips"></div>
-              <div class="acts">
-                <button class="call" id="callBtn" type="button"><svg class="i" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>Call</span></button>
-                <button type="button" data-tab="sms"><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>SMS</button>
-                <button type="button" data-tab="info"><svg class="i" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Note</button>
-              </div>
-              <div class="from"><svg class="i" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Calling from <b>(713) 555-0100</b> · caller's line · recording on</div>
-              <div class="live" id="live"><span class="pulse"></span><span id="liveTx">Calling…</span><span class="tm" id="liveTm">00:00</span></div>
-              <div class="outcome" id="outcome">
-                <small>How did the call go?</small>
-                <div class="opts" id="outOpts"></div>
-              </div>
-            </div>
-            <div class="nextfu" id="pNext"></div>
-            <div class="p-tabs" id="pTabs">
-              <button type="button" class="on" data-tab="act">Activity</button>
-              <button type="button" data-tab="sms">SMS</button>
-              <button type="button" data-tab="info">Details</button>
-            </div>
-            <div class="p-body" id="pBody"></div>
-          </aside>
+    <!-- Views -->
+    <section>
+      <div class="sec-head reveal">
+        <div class="k">Views</div>
+        <h2>Same data, the view that fits the job</h2>
+        <p>Every view reads from the same records. Change something in one view and it updates everywhere, instantly. Save as many views as you need, each with its own filters, sorting, and grouping.</p>
+      </div>
+      <div class="views5">
+        <div class="card v5 reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="10" x2="9" y2="20"/></svg></div><h3>Grid</h3><p>The familiar spreadsheet, now with real field types, filters, grouping, and inline editing.</p></div>
+        <div class="card v5 reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><h3>Calendar</h3><p>Any date field becomes a calendar: follow-ups, meetings, launch dates, and events.</p></div>
+        <div class="card v5 reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="12" rx="1"/><rect x="17" y="3" width="4" height="8" rx="1"/></svg></div><h3>Kanban</h3><p>Drag and drop records between stages to track progress at a glance.</p></div>
+        <div class="card v5 reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><h3>Gallery</h3><p>Visual cards with photos and logos, perfect for browsing partners and perks.</p></div>
+        <div class="card v5 reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></div><h3>Form</h3><p>A shareable form where every answer lands straight in the database, already organized.</p></div>
+      </div>
+    </section>
+
+    <!-- Collaboration -->
+    <section>
+      <div class="sec-head reveal">
+        <div class="k">Real-time collaboration</div>
+        <h2>Built for a team working at the same time</h2>
+        <p>Several people can work in the database at once, each with the access level they need. Nobody overwrites anybody, and nothing gets lost.</p>
+      </div>
+      <div class="collab">
+        <div class="card collab-list reveal">
+          <div class="cl"><span class="ico"><svg class="i" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.5 9a9 9 0 0 1 14.9-3.4L23 10M1 14l4.6 4.4A9 9 0 0 0 20.5 15"/></svg></span><div><h3>Live sync</h3><p>Changes show up for everyone in seconds, with no refreshing.</p></div></div>
+          <div class="cl"><span class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div><h3>See who's online</h3><p>Know who's working in the database right now.</p></div></div>
+          <div class="cl"><span class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><div><h3>Comments on records</h3><p>Leave notes on any business and @mention a teammate.</p></div></div>
+          <div class="cl"><span class="ico"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><div><h3>Change history</h3><p>See who changed what and when, and restore a previous value if needed.</p></div></div>
+        </div>
+        <div class="card scroll-x reveal">
+          <table class="roles">
+            <thead><tr><th>Permission levels</th><th class="own">Owner<small>Main admin</small></th><th>Creator<small>Builds</small></th><th>Editor<small>Updates</small></th><th>Read-only<small>Views</small></th></tr></thead>
+            <tbody id="roles"></tbody>
+          </table>
         </div>
       </div>
-      <p class="demo-note">Illustrative preview. We fine-tune the final design with you from day one.</p>
+    </section>
+
+    <!-- Admin -->
+    <section>
+      <div class="sec-head reveal">
+        <div class="k">Admin panel</div>
+        <h2>One main admin account, handed to you</h2>
+        <p>At launch we give LivX the owner credentials for the main admin panel. From there, you add your team, up to 16 users, and decide what each person can see and do.</p>
+      </div>
+      <div class="admin">
+        <div class="card adm reveal" aria-hidden="true">
+          <div class="adm-top">
+            <h3>Users &amp; permissions</h3>
+            <div class="seats"><span>7 of 16 seats</span><span class="bar"><i style="width:44%"></i></span></div>
+            <span class="inv">+ Invite</span>
+          </div>
+          <div class="urow"><span class="av" style="background:#f1c66f">OW</span><div><b>LivX Admin</b><small>admin@livx · main account</small></div><span class="chip c-int">Owner</span><span class="st">● Online</span></div>
+          <div class="urow"><span class="av" style="background:#7fb2ff">AL</span><div><b>Alex</b><small>Marketing</small></div><span class="chip c-fu">Creator</span><span class="st">● Online</span></div>
+          <div class="urow"><span class="av" style="background:#5fd39a">SM</span><div><b>Sam</b><small>Partnerships</small></div><span class="chip c-try">Editor</span><span class="st">● Online</span></div>
+          <div class="urow"><span class="av" style="background:#b9a3ff">TY</span><div><b>Taylor</b><small>Outreach</small></div><span class="chip c-try">Editor</span><span class="st off">2h ago</span></div>
+          <div class="urow"><span class="av" style="background:#f07b7b">JO</span><div><b>Jordan</b><small>Events</small></div><span class="chip c-try">Editor</span><span class="st off">Yesterday</span></div>
+          <div class="urow"><span class="av" style="background:#cfd3e6">RI</span><div><b>Riley</b><small>Investor</small></div><span class="chip c-new">Read-only</span><span class="st off">Last week</span></div>
+        </div>
+        <ul class="card adm-list reveal">
+          <li><svg class="i" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span><strong>Owner credentials</strong> delivered to LivX at launch</span></li>
+          <li><svg class="i" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg><span><strong>Up to 16 users</strong>, each with their own email and password</span></li>
+          <li><svg class="i" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span><strong>Assign roles</strong>: owner, creator, editor, or read-only</span></li>
+          <li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg><span><strong>Deactivate users</strong> and reset passwords anytime</span></li>
+          <li><svg class="i" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span><strong>Activity log</strong> of who signed in and what changed</span></li>
+          <li><svg class="i" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span><strong>Export</strong> any table to Excel or CSV. Your data is always yours</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Migration -->
+    <section>
+      <div class="sec-head reveal">
+        <div class="k">Migration</div>
+        <h2>Send us your spreadsheet. We'll do the rest.</h2>
+        <p>You send the file you use today, and we turn it into a clean, organized database. Every row comes with you.</p>
+      </div>
+      <div class="mig reveal">
+        <div><div class="n">01</div><h3>Send the file</h3><p>Google Sheets, Excel, or CSV. Even several files.</p></div>
+        <div><div class="n">02</div><h3>We map the fields</h3><p>Each column becomes the right field type: date, phone, email, dropdown, and more.</p></div>
+        <div><div class="n">03</div><h3>We clean it up</h3><p>We merge duplicates and put phone numbers, names, and categories in one consistent format.</p></div>
+        <div><div class="n">04</div><h3>You review and launch</h3><p>You check the data in the new database before your team starts using it.</p></div>
+      </div>
+      <div class="ftypes reveal">
+        <span><b>Aa</b> Text</span><span><b>#</b> Number</span><span><b>◉</b> Single select</span><span><b>◎</b> Multi-select</span><span><b>◷</b> Date</span><span><b>☏</b> Phone</span><span><b>@</b> Email</span><span><b>⌁</b> URL</span><span><b>☑</b> Checkbox</span><span><b>📎</b> Attachments</span><span><b>★</b> Rating</span><span><b>$</b> Currency</span><span><b>⇄</b> Link to another table</span><span><b>👤</b> Assigned user</span>
+      </div>
     </section>
 
     <!-- Devices -->
-    <section id="dispositivos">
+    <section>
       <div class="sec-head reveal">
         <div class="k">On any screen</div>
-        <h2>On your computer, tablet, and phone. <em style="color:var(--gold)">Always up to date.</em></h2>
-        <p>The design adapts to every screen. Whatever the caller logs on the computer, the owners see instantly on their phones, with nothing to install.</p>
+        <h2>On your computer, tablet, and phone. <em style="color:var(--gold)">Always in sync.</em></h2>
+        <p>Runs in the browser with nothing to install. The layout adapts to every screen, and changes appear on every device at once.</p>
       </div>
       <div class="devices reveal" aria-hidden="true">
         <span class="sync"><span class="dot"></span>Synced in real time</span>
         <div class="dv tablet float d2"><div class="bez"><div class="scr">
-          <div class="m-kan"><div><span class="h s-b"></span><div class="c"><b></b><b></b></div><div class="c"><b></b><b></b></div><div class="c"><b></b><b></b></div></div><div><span class="h s-y"></span><div class="c"><b></b><b></b></div><div class="c"><b></b><b></b></div></div><div><span class="h s-g"></span><div class="c"><b></b><b></b></div><div class="c"><b></b><b></b></div><div class="c"><b></b><b></b></div></div></div>
+          <div class="m-cal"><div><s class="s-b"></s></div><div></div><div><s class="s-y"></s><s class="s-g"></s></div><div></div><div></div><div><s class="s-v"></s></div><div></div><div><s class="s-g"></s></div><div><s class="s-y"></s></div><div></div><div><s class="s-r"></s></div><div></div><div></div><div><s class="s-b"></s></div><div></div><div><s class="s-g"></s></div></div>
         </div></div></div>
         <div class="dv laptop float"><div class="bez"><div class="scr">
-          <div class="m-side"><i></i><i></i><i></i><i></i><i></i></div>
-          <div class="m-main">
-            <div class="m-bar"><b style="width:18%"></b><b style="width:14%"></b><b style="width:14%"></b><b class="g" style="width:12%;margin-left:auto"></b></div>
-            <div class="m-row"><b style="width:80%"></b><s class="s-b"></s><b style="width:70%"></b><b style="width:60%"></b></div><div class="m-row"><b style="width:65%"></b><s class="s-y"></s><b style="width:70%"></b><b style="width:85%"></b></div><div class="m-row"><b style="width:90%"></b><s class="s-v"></s><b style="width:70%"></b><b style="width:55%"></b></div><div class="m-row"><b style="width:55%"></b><s class="s-g"></s><b style="width:70%"></b><b style="width:75%"></b></div><div class="m-row"><b style="width:75%"></b><s class="s-b"></s><b style="width:70%"></b><b style="width:65%"></b></div><div class="m-row"><b style="width:60%"></b><s class="s-g"></s><b style="width:70%"></b><b style="width:80%"></b></div><div class="m-row"><b style="width:85%"></b><s class="s-r"></s><b style="width:70%"></b><b style="width:50%"></b></div><div class="m-row"><b style="width:70%"></b><s class="s-y"></s><b style="width:70%"></b><b style="width:70%"></b></div>
+          <div class="m-top"><b class="g" style="width:8%"></b><b style="width:12%"></b><b style="width:10%"></b><b style="width:10%"></b><b style="width:10%;margin-left:auto"></b></div>
+          <div class="m-grid">
+            <div class="m-row"><b></b><b style="width:80%"></b><s class="s-b"></s><b style="width:70%"></b><b style="width:60%"></b><i style="background:#7fb2ff"></i></div>
+            <div class="m-row"><b></b><b style="width:65%"></b><s class="s-y"></s><b style="width:80%"></b><b style="width:85%"></b><i style="background:#f1c66f"></i></div>
+            <div class="m-row"><b></b><b style="width:90%"></b><s class="s-v"></s><b style="width:60%"></b><b style="width:55%"></b><i style="background:#5fd39a"></i></div>
+            <div class="m-row"><b></b><b style="width:55%"></b><s class="s-g"></s><b style="width:75%"></b><b style="width:75%"></b><i style="background:#b9a3ff"></i></div>
+            <div class="m-row"><b></b><b style="width:75%"></b><s class="s-b"></s><b style="width:70%"></b><b style="width:65%"></b><i style="background:#7fb2ff"></i></div>
+            <div class="m-row"><b></b><b style="width:60%"></b><s class="s-g"></s><b style="width:80%"></b><b style="width:80%"></b><i style="background:#f1c66f"></i></div>
+            <div class="m-row"><b></b><b style="width:85%"></b><s class="s-r"></s><b style="width:65%"></b><b style="width:50%"></b><i style="background:#5fd39a"></i></div>
+            <div class="m-row"><b></b><b style="width:70%"></b><s class="s-y"></s><b style="width:70%"></b><b style="width:70%"></b><i style="background:#f07b7b"></i></div>
+            <div class="m-row"><b></b><b style="width:62%"></b><s class="s-v"></s><b style="width:75%"></b><b style="width:58%"></b><i style="background:#7fb2ff"></i></div>
           </div>
-          <div class="m-panel"><span class="t"></span><span class="ln" style="width:50%"></span><span class="call"></span><div class="wav"><i style="height:40%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:100%"></i><i style="height:35%"></i><i style="height:70%"></i><i style="height:90%"></i><i style="height:45%"></i><i style="height:65%"></i><i style="height:30%"></i><i style="height:85%"></i><i style="height:50%"></i></div><span class="ln"></span><span class="ln" style="width:80%"></span><span class="ln" style="width:60%"></span></div>
         </div></div><div class="base"></div></div>
         <div class="dv phone float d3"><div class="bez"><div class="scr">
-          <div class="m-ph"><span class="t"></span><span class="st s-y"></span><span class="call"></span><span class="ev"></span><span class="ev"></span><span class="ev"></span><div class="nav"><i></i><i></i><i></i><i></i></div></div>
+          <div class="m-ph"><div><i style="background:linear-gradient(135deg,#9f7541,#f1c66f)"></i><b></b></div><div><i style="background:linear-gradient(135deg,#334d67,#7fb2ff)"></i><b></b></div><div><i style="background:linear-gradient(135deg,#665b80,#b9a3ff)"></i><b></b></div><div><i style="background:linear-gradient(135deg,#1f5c43,#5fd39a)"></i><b></b></div><div><i style="background:linear-gradient(135deg,#6b2f3a,#f07b7b)"></i><b></b></div><div><i style="background:linear-gradient(135deg,#9f7541,#f1c66f)"></i><b></b></div></div>
         </div></div></div>
-      </div>
-      <div class="bp reveal"><span><b>Computer</b> · full table + side profile</span><span><b>Tablet</b> · touch-friendly kanban pipeline</span><span><b>Phone</b> · profile, call, and text in one tap</span></div>
-      <div class="grid g4 perks">
-        <div class="card perk reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h3>Responsive design</h3><p>Each screen shows what matters most: the full table on a computer, the lead profile on a phone.</p></div>
-        <div class="card perk reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.5 9a9 9 0 0 1 14.9-3.4L23 10M1 14l4.6 4.4A9 9 0 0 0 20.5 15"/></svg></div><h3>Everything in real time</h3><p>A call logged at the office shows up on the owners' phones right away.</p></div>
-        <div class="card perk reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><h3>Feels like an app</h3><p>Add it to your phone's home screen with the LivX icon and it opens full screen.</p></div>
-        <div class="card perk reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div><h3>Follow-up alerts</h3><p>Get a reminder when it's time to call a lead back or when a business replies to a text.</p></div>
-      </div>
-    </section>
-
-    <!-- Before / after -->
-    <section>
-      <div class="sec-head reveal">
-        <div class="k">Your data</div>
-        <h2>Keep everything you have. Add what's missing.</h2>
-        <p>We import your current spreadsheet, merge duplicates, and put every phone number in the same format. Then we add the fields you don't have today.</p>
-      </div>
-      <div class="card scroll-x map">
-        <table class="t" style="min-width:560px">
-          <thead><tr><th>In the Google Sheet</th><th>In the CRM</th></tr></thead>
-          <tbody>
-            <tr><td>Business Name · Business Type</td><td><span class="arrow">→</span> Business and type, with duplicate detection</td></tr>
-            <tr><td>Category (colors)</td><td><span class="arrow">→</span> Category: Restaurant, Bar, Wellness, Fitness, Retail, Experience…</td></tr>
-            <tr><td>Signed (YES / NO / Signed up)</td><td><span class="arrow">→</span> <strong>Lead status</strong> by stage: New, Attempting contact, Contacted, Interested, Follow-up, Founding partner, and Not interested</td></tr>
-            <tr><td>Contact · Phone number</td><td><span class="arrow">→</span> Contact, title, phone (one format, click to call), email, and Instagram</td></tr>
-            <tr><td>Side of Town</td><td><span class="arrow">→</span> Houston area (River Oaks, Midtown, Heights, Galleria…)</td></tr>
-            <tr><td>Emailed</td><td><span class="arrow">→</span> Logged in the history as an email touchpoint, with the date</td></tr>
-            <tr><td>—</td><td><strong>Next follow-up</strong> with date, time, and reminder<span class="new-pill">Nuevo</span></td></tr>
-            <tr><td>—</td><td><strong>Contact type</strong>: call, text, email, visit, or DM<span class="new-pill">Nuevo</span></td></tr>
-            <tr><td>—</td><td><strong>Last contact</strong> and <strong>attempts</strong>, tracked automatically<span class="new-pill">Nuevo</span></td></tr>
-            <tr><td>—</td><td><strong>Notes</strong> and full history with recordings and texts<span class="new-pill">Nuevo</span></td></tr>
-            <tr><td>—</td><td><strong>Owner</strong> and lead <strong>source</strong><span class="new-pill">Nuevo</span></td></tr>
-          </tbody>
-        </table>
       </div>
     </section>
 
     <!-- Included -->
-    <section id="incluye">
+    <section>
       <div class="sec-head reveal">
-        <div class="k">What's included</div>
-        <h2>Built for cold calling. Nothing you won't use.</h2>
+        <div class="k">Also included</div>
+        <h2>The power of Airtable, under your own name</h2>
       </div>
       <div class="grid g3">
-        <div class="card feat reveal">
-          <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="10" x2="9" y2="20"/></svg></div>
-          <h3>Airtable-style table view</h3>
-          <p>Edit right in the cell, with filters, sorting, search, and saved views.</p>
-          <ul><li>"Call today," "Overdue," "Interested"</li><li>Export to Excel anytime</li></ul>
-        </div>
-        <div class="card feat reveal">
-          <div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
-          <h3>Built-in Twilio phone</h3>
-          <p>The caller dials from the browser using a Houston number. No need to use a personal cell phone.</p>
-          <ul><li>Every call is recorded and saved to the lead</li><li>Call time and length are logged automatically</li><li>Incoming calls ring the same number</li></ul>
-        </div>
-        <div class="card feat reveal">
-          <div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-          <h3>Two-way texting</h3>
-          <p>Text right from the lead's profile. Replies land in the same thread, just like a conversation.</p>
-          <ul><li>Templates: "Thanks for your time," LivX info, sign-up link</li></ul>
-        </div>
-        <div class="card feat reveal">
-          <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-          <h3>Follow-ups and schedule</h3>
-          <p>After each call, pick the outcome and the next contact date. The CRM builds the day's call list for you.</p>
-          <ul><li>Overdue, today, tomorrow, and this week</li><li>No "call me Thursday" ever gets lost</li></ul>
-        </div>
-        <div class="card feat reveal">
-          <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="12" rx="1"/><rect x="17" y="3" width="4" height="8" rx="1"/></svg></div>
-          <h3>Founding partner pipeline</h3>
-          <p>The same leads as kanban cards, from "New" to "Founding partner," so you can see the pre-sale at a glance.</p>
-        </div>
-        <div class="card feat reveal">
-          <div class="ico"><svg class="i" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-          <h3>Owner dashboard</h3>
-          <p>Calls per day, live conversations, interested leads, and signed partners. You can also listen to any recording.</p>
-        </div>
-        <div class="card feat reveal">
-          <div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
-          <h3>Google Sheet migration</h3>
-          <p>We move your entire spreadsheet over, clean up duplicates, and standardize phone numbers and categories.</p>
-        </div>
-        <div class="card feat reveal">
-          <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-          <h3>Users and permissions</h3>
-          <p>Everyone signs in with their own email and password. Owners see everything; the caller sees and works their own leads.</p>
-        </div>
-        <div class="card feat reveal">
-          <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
-          <h3>Computer, tablet, and phone</h3>
-          <p>Runs in the browser with nothing to install, and adapts to every screen with the same look and feel.</p>
-        </div>
+        <div class="card feat reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.5 10 19 14 21 14 12.5 22 3"/></svg></div><h3>Filters, sorting, and grouping</h3><p>Find anything in seconds and save the view so your team can reuse it.</p></div>
+        <div class="card feat reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M17.5 14v7M14 17.5h7"/></svg></div><h3>Multiple linked tables</h3><p>Businesses, contacts, events, and anything else, all connected to each other.</p></div>
+        <div class="card feat reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg></div><h3>Instant search</h3><p>Search across every table by name, contact, phone, or any other field.</p></div>
+        <div class="card feat reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg></div><h3>Files and photos</h3><p>Attach logos, menus, contracts, and photos to any record.</p></div>
+        <div class="card feat reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Secure sign-in and backups</h3><p>Private access with a password for each user, encrypted connection, and automatic backups.</p></div>
+        <div class="card feat reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><h3>Import and export</h3><p>Bring in new spreadsheets anytime and export to Excel or CSV whenever you want.</p></div>
       </div>
     </section>
 
-    <!-- Call flow -->
+    <!-- What's next -->
     <section>
       <div class="sec-head reveal">
-        <div class="k">A day in the caller's life</div>
-        <h2>From the list to the next call in four steps</h2>
+        <div class="k">What's next</div>
+        <h2>Start simple. Grow at your own pace.</h2>
+        <p>This first phase gives LivX a solid database to work in right away. As your needs grow, we add integrations on top of the same platform, so nothing has to be rebuilt.</p>
       </div>
-      <div class="flow">
-        <div><div class="n">01</div><h3>Open "Call today"</h3><p>Overdue follow-ups come first, then today's, then new leads.</p></div>
-        <div><div class="n">02</div><h3>Call in one click</h3><p>The call goes out from their Twilio number and is recorded. Past notes and attempts are right there on the profile.</p></div>
-        <div><div class="n">03</div><h3>Log the outcome</h3><p>No answer, voicemail, interested, wants info, or not interested. The status updates automatically.</p></div>
-        <div><div class="n">04</div><h3>Schedule and move on</h3><p>Pick the next contact date, send a text if needed, and move on to the next lead.</p></div>
+      <div class="grid g3">
+        <div class="card feat reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div><h3>Calling and texting</h3><p>Call, record, and text businesses right from each record with Twilio.</p></div>
+        <div class="card feat reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><h3>Email marketing</h3><p>Send updates and campaigns to partners and members straight from your data.</p></div>
+        <div class="card feat reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h3>Automations and reports</h3><p>Reminders, status-based actions, website sign-up forms, and weekly reports.</p></div>
       </div>
-    </section>
-
-    <!-- Roles -->
-    <section>
-      <div class="sec-head reveal">
-        <div class="k">Who it's for</div>
-        <h2>One tool, two perspectives</h2>
-      </div>
-      <div class="grid g2">
-        <div class="card role reveal">
-          <div class="who"><span class="av"><svg class="i" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-6h3zM3 19a2 2 0 0 0 2 2h1v-6H3z"/></svg></span><div><h3>Cold caller</h3><small>Works the list every day</small></div></div>
-          <ul>
-            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Knows exactly who to call and in what order</li>
-            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Calls and texts from a work line, not a personal cell phone</li>
-            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Sees notes and history before dialing</li>
-            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Logs every call in seconds</li>
-          </ul>
-        </div>
-        <div class="card role reveal">
-          <div class="who"><span class="av"><svg class="i" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><div><h3>LivX owners</h3><small>Oversee and close</small></div></div>
-          <ul>
-            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Listen to recordings to give feedback and protect the brand message</li>
-            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>See how many calls, conversations, and interested leads happened each day</li>
-            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Step in on hot leads to close the deal</li>
-            <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>The data and the phone number stay in LivX accounts</li>
-          </ul>
-        </div>
-      </div>
+      <p class="demo-note reveal">Integrations are added in later phases and quoted separately, based on what LivX needs.</p>
     </section>
 
     <!-- Timeline -->
     <section>
       <div class="sec-head reveal">
         <div class="k">Timeline</div>
-        <h2>Your caller working in the CRM in 5 days</h2>
+        <h2>Your team working in the new database in 3 weeks</h2>
       </div>
       <div class="steps">
-        <div class="card step reveal"><div class="when">Day 1</div><h3>Kickoff</h3><p>Together we define the stages, fields, call outcomes, and text templates.</p></div>
-        <div class="card step reveal"><div class="when">Days 2–3</div><h3>CRM and login</h3><p>Table, lead profiles, follow-ups, pipeline, and users. Import of your current spreadsheet.</p></div>
-        <div class="card step reveal"><div class="when">Day 4</div><h3>Twilio</h3><p>Houston number, browser calling, recordings, and texting. We submit the number's texting registration, which the carriers approve.</p></div>
-        <div class="card step reveal"><div class="when">Day 5</div><h3>Launch</h3><p>Testing with the caller, final tweaks, training, and going live on your domain.</p></div>
+        <div class="card step reveal"><div class="when">Week 1</div><h3>Plan and migrate</h3><p>We review your spreadsheet, design the tables and fields with you, and import your data.</p></div>
+        <div class="card step reveal"><div class="when">Week 2</div><h3>Views and collaboration</h3><p>Grid, calendar, kanban, gallery, and form views, plus live sync, comments, and history.</p></div>
+        <div class="card step reveal"><div class="when">Week 3</div><h3>Admin and users</h3><p>Admin panel, roles and permissions, and setup of your users, up to 16.</p></div>
+        <div class="card step reveal"><div class="when">Launch</div><h3>Training and handoff</h3><p>Testing with your team, final adjustments, live training, and delivery of the owner credentials.</p></div>
       </div>
     </section>
 
@@ -572,8 +545,8 @@
           <span class="amp">&amp;</span>
           <span class="agency"><span class="lg"><img src="../assets/img/moya-mark.png" alt=""></span>Moya Company</span>
         </div>
-        <h2>Ready to leave the Google Sheet behind</h2>
-        <p>Once approved, within 5 days your caller will be calling, texting, and following up from your own CRM.</p>
+        <h2>Ready to turn your spreadsheet into a database?</h2>
+        <p>Once approved, we start with your current file. In about 3 weeks your team will be working together in LivX's own database.</p>
         <div class="row">
           <a class="btn gold lg no-print" href="#demo">Back to the preview</a>
           <button class="btn lg no-print" type="button" onclick="window.print()">Save as PDF</button>
@@ -595,150 +568,198 @@
   </footer>
 
   <script>
-    // Sample data for the preview (fictional contacts and phone numbers)
-    const ST = {
-      new: ['New', 'c-new'], try: ['Attempting contact', 'c-try'], int: ['Interested', 'c-int'],
-      fu: ['Follow-up', 'c-fu'], won: ['Founding partner', 'c-won'], lost: ['Not interested', 'c-lost']
-    };
-    const LEADS = [
-      { name: 'Fuegos', type: 'Bar', cat: 'Bar', st: 'try', next: ['Overdue · yesterday', 'due'], ph: '(832) 555-0141', last: 'Yesterday · call', tries: 3, zone: 'Washington Ave', who: 'Shift manager', note: 'Asked us to call after 3 PM, before service starts.' },
-      { name: 'Fourtin 8', type: 'Chinese restaurant', cat: 'Restaurant', st: 'int', next: ['Today · 4:00 PM', 'today'], ph: '(917) 555-0163', last: 'Mon · text', tries: 2, zone: 'Chinatown', who: 'Owner', note: 'Interested in a "secret menu" for members. Wants to see the app preview.' },
-      { name: 'Loyly Sauna Lounge', type: 'Wellness', cat: 'Wellness', st: 'fu', next: ['Today · 11:30 AM', 'today'], ph: '(832) 555-0106', last: 'Fri · call', tries: 2, zone: 'Midtown', who: 'Co-owners', note: 'Both partners decide together. Email them info and call back.' },
-      { name: 'El Tiempo Cantina', type: 'Mexican restaurant', cat: 'Restaurant', st: 'new', next: ['Tomorrow · 10:00 AM', ''], ph: '(713) 555-0172', last: '—', tries: 0, zone: 'Montrose', who: 'General manager', note: 'New lead imported from the Google Sheet.' },
-      { name: 'BLVD', type: 'Bar', cat: 'Bar', st: 'try', next: ['Tomorrow · 2:00 PM', ''], ph: '(832) 555-0117', last: 'Tue · voicemail', tries: 1, zone: 'Heights', who: 'Events manager', note: 'Left a voicemail. Try an Instagram DM next.' },
-      { name: 'Trufusion', type: 'Fitness · franchise', cat: 'Fitness', st: 'fu', next: ['Thu · 9:00 AM', ''], ph: '(281) 555-0179', last: 'Wed · call', tries: 2, zone: 'Houston', who: 'Manager', note: 'Needs franchise approval. Follow up Thursday.' },
-      { name: 'The Tox', type: 'Wellness', cat: 'Wellness', st: 'won', next: ['—', ''], ph: '(713) 555-0189', last: 'Mon · call', tries: 3, zone: 'Galleria', who: 'Manager', note: 'Signed on as a founding partner. Profile created.' },
-      { name: 'Green Earth', type: 'Juice bar', cat: 'Juice bar', st: 'won', next: ['—', ''], ph: '(832) 555-0127', last: 'Last week', tries: 2, zone: 'Houston', who: 'Owner', note: 'Founding partner. Offers a welcome perk.' },
-      { name: 'Pitch 25', type: 'Restaurant', cat: 'Restaurant', st: 'lost', next: ['—', ''], ph: '(832) 555-0152', last: '2 weeks ago', tries: 4, zone: 'EaDo', who: 'General manager', note: 'Not interested for now. Reach back out in 3 months.' }
+    // Sample data for the preview (fictional contacts and team members)
+    const STATUS = [
+      ['prospect', 'Prospect', 'c-new', '#cfd3e6'],
+      ['contacted', 'Contacted', 'c-try', '#7fb2ff'],
+      ['talks', 'In talks', 'c-fu', '#b9a3ff'],
+      ['partner', 'Founding partner', 'c-won', '#5fd39a'],
+      ['later', 'Not now', 'c-lost', '#f07b7b']
     ];
+    const ST = Object.fromEntries(STATUS.map(([k, n, c, col]) => [k, { n, c, col }]));
+    const TEAM = { OW: ['Owner', '#f1c66f'], AL: ['Alex', '#7fb2ff'], SM: ['Sam', '#5fd39a'], TY: ['Taylor', '#b9a3ff'] };
+    const CAT = { Restaurant: ['#9f7541', '#f1c66f'], Bar: ['#334d67', '#7fb2ff'], Wellness: ['#1f5c43', '#5fd39a'], Fitness: ['#6b2f3a', '#f07b7b'], Retail: ['#665b80', '#b9a3ff'], 'Juice bar': ['#2f5d5a', '#7fd6c9'] };
+    let RECS = [
+      { name: 'Fuegos', cat: 'Bar', st: 'contacted', contact: 'Shift manager', phone: '(832) 555-0141', area: 'Washington Ave', date: '2026-10-28', who: 'AL', perk: 'Signature cocktail for members' },
+      { name: 'Fourtin 8', cat: 'Restaurant', st: 'talks', contact: 'Owner', phone: '(917) 555-0163', area: 'Chinatown', date: '2026-10-27', who: 'SM', perk: 'Secret menu tasting' },
+      { name: 'Loyly Sauna Lounge', cat: 'Wellness', st: 'talks', contact: 'Co-owners', phone: '(832) 555-0106', area: 'Midtown', date: '2026-10-30', who: 'AL', perk: 'Free first session' },
+      { name: 'El Tiempo Cantina', cat: 'Restaurant', st: 'prospect', contact: 'General manager', phone: '(713) 555-0172', area: 'Montrose', date: '2026-11-03', who: 'TY', perk: '—' },
+      { name: 'BLVD', cat: 'Bar', st: 'contacted', contact: 'Events manager', phone: '(832) 555-0117', area: 'Heights', date: '2026-11-04', who: 'TY', perk: 'VIP table on Fridays' },
+      { name: 'Trufusion', cat: 'Fitness', st: 'talks', contact: 'Manager', phone: '(281) 555-0179', area: 'Houston', date: '2026-11-05', who: 'SM', perk: 'Two free classes' },
+      { name: 'The Tox', cat: 'Wellness', st: 'partner', contact: 'Manager', phone: '(713) 555-0189', area: 'Galleria', date: '2026-10-21', who: 'OW', perk: '15% off first visit' },
+      { name: 'Green Earth', cat: 'Juice bar', st: 'partner', contact: 'Owner', phone: '(832) 555-0127', area: 'Houston', date: '2026-10-16', who: 'OW', perk: 'Welcome juice' },
+      { name: 'River Oaks Plant House', cat: 'Retail', st: 'partner', contact: 'Owner', phone: '(713) 555-0190', area: 'River Oaks', date: '2026-10-14', who: 'AL', perk: 'Members-only workshop' },
+      { name: 'Pitch 25', cat: 'Restaurant', st: 'later', contact: 'General manager', phone: '(832) 555-0152', area: 'EaDo', date: '2026-11-12', who: 'SM', perk: '—' }
+    ];
+    const I = (p) => `<svg class="i" viewBox="0 0 24 24">${p}</svg>`;
     const VIEWS = [
-      ['All leads', () => true],
-      ['Call today', (l) => /due|today/.test(l.next[1])],
-      ['Follow-ups', (l) => l.st === 'fu' || l.st === 'int'],
-      ['Founding partners', (l) => l.st === 'won']
+      ['grid', 'Grid', I('<rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="10" x2="9" y2="20"/>')],
+      ['calendar', 'Calendar', I('<rect x="3" y="4" width="18" height="17" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>')],
+      ['kanban', 'Kanban', I('<rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="12" rx="1"/><rect x="17" y="3" width="4" height="8" rx="1"/>')],
+      ['gallery', 'Gallery', I('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>')],
+      ['form', 'Form', I('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/>')]
     ];
-    const OUTCOMES = [['No answer', 'try'], ['Voicemail', 'try'], ['Interested', 'int'], ['Wants info', 'fu'], ['Founding partner', 'won'], ['Not interested', 'lost']];
-    const ic = {
-      call: '<svg class="i" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>',
-      sms: '<svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
-      note: '<svg class="i" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>',
-      cal: '<svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
-      play: '<svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>'
-    };
     const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-    const chip = (k) => `<span class="chip ${ST[k][1]}">${ST[k][0]}</span>`;
-    const wave = (seed, played) => Array.from({ length: 34 }, (_, i) => {
-      const h = 25 + Math.abs(Math.sin(i * 1.7 + seed) * 70);
-      return `<i style="height:${h.toFixed(0)}%"${i < played ? ' class="p"' : ''}></i>`;
-    }).join('');
-    const rec = (seed, dur) => `<div class="rec"><button type="button" aria-label="Play recording">${ic.play}</button><div class="wave">${wave(seed, 0)}</div><span class="d">${dur}</span></div>`;
+    const chip = (k) => `<span class="chip ${ST[k].c}">${ST[k].n}</span>`;
+    const dot = (w) => `<span class="who-dot" style="background:${TEAM[w][1]}" title="${TEAM[w][0]}">${w}</span>`;
+    const fmtDate = (d) => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const initials = (n) => n.split(/\s+/).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
+    let view = 'grid', flashName = null;
 
-    let view = 0, sel = 1, tab = 'act';
-    const extra = {}; // activity added from the demo
+    function renderTabs() {
+      document.getElementById('vtabs').innerHTML = VIEWS.map(([k, n, ic]) =>
+        `<button type="button" class="${k === view ? 'on' : ''}" data-v="${k}">${ic}${n}</button>`).join('');
+    }
+    const fl = (r) => (r.name === flashName ? ' flash' : '');
 
-    function renderViews() {
-      document.getElementById('views').innerHTML = VIEWS.map(([n, f], i) =>
-        `<button type="button" class="${i === view ? 'on' : ''}" data-v="${i}">${n}<span class="cnt">${LEADS.filter(f).length}</span></button>`).join('');
+    function gridV() {
+      return `<table class="grid-v"><thead><tr><th></th>
+        <th><span class="ty">Aa</span>Business</th><th><span class="ty">◉</span>Status</th><th><span class="ty">▤</span>Category</th>
+        <th><span class="ty">◷</span>Next follow-up</th><th><span class="ty">☏</span>Phone</th><th><span class="ty">⌖</span>Area</th>
+        <th><span class="ty">★</span>Member perk</th><th><span class="ty">👤</span>Assigned</th></tr></thead><tbody>
+        ${RECS.map((r, i) => `<tr class="${fl(r).trim()}"><td class="num">${i + 1}</td><td class="name">${esc(r.name)}</td><td>${chip(r.st)}</td>
+          <td><span class="tag">${esc(r.cat)}</span></td><td>${fmtDate(r.date)}</td><td>${esc(r.phone)}</td><td>${esc(r.area)}</td>
+          <td>${esc(r.perk)}</td><td>${dot(r.who)}</td></tr>`).join('')}
+        <tr><td class="num">+</td><td class="add" colspan="8">Add a record…</td></tr></tbody></table>`;
     }
-    function renderRows() {
-      const list = LEADS.map((l, i) => [l, i]).filter(([l]) => VIEWS[view][1](l));
-      if (!list.some(([, i]) => i === sel) && list.length) sel = list[0][1];
-      document.getElementById('rows').innerHTML = list.map(([l, i], n) => `
-        <tr data-i="${i}" class="${i === sel ? 'sel' : ''}">
-          <td class="num">${n + 1}</td><td class="name">${esc(l.name)}</td><td>${chip(l.st)}</td><td><span class="tag">${esc(l.cat)}</span></td>
-          <td class="${l.next[1]}">${esc(l.next[0])}</td><td class="ph">${esc(l.ph)}</td><td>${esc(l.last)}</td><td>${l.tries}</td><td>${esc(l.zone)}</td>
-        </tr>`).join('');
+    function kanbanV() {
+      return `<p class="hint">Tip: drag a card to another column. The status updates in every view.</p><div class="kan">${STATUS.map(([k, n, c, col]) => {
+        const list = RECS.filter((r) => r.st === k);
+        return `<div class="col" data-st="${k}"><h4><span class="chip ${c}">${n}</span><span class="cnt">${list.length}</span></h4>
+          ${list.map((r) => `<div class="card-k${fl(r)}" draggable="true" data-name="${esc(r.name)}"><b>${esc(r.name)}</b>
+            <div class="r"><span class="tag">${esc(r.cat)}</span><span>${fmtDate(r.date)}</span>${dot(r.who)}</div></div>`).join('')}</div>`;
+      }).join('')}</div>`;
     }
-    function activity(l, i) {
-      const added = (extra[i] || []).map((e) => `
-        <div class="ev"><span class="ic g">${ic.call}</span><div class="tx"><b>Outbound call · ${e.out}</b> <span class="w">· just now · ${e.dur}</span>${rec(i + 3, e.dur)}</div></div>`).join('');
-      if (l.tries === 0 && !added) return `<div class="ev"><span class="ic">${ic.note}</span><div class="tx"><b>Lead imported</b> <span class="w">· from Google Sheet</span><p>${esc(l.note)}</p></div></div>`;
-      return added + `
-        <div class="ev"><span class="ic y">${ic.note}</span><div class="tx"><b>Note</b> <span class="w">· caller</span><p>${esc(l.note)}</p></div></div>
-        <div class="ev"><span class="ic g">${ic.call}</span><div class="tx"><b>Outbound call · ${l.st === 'try' ? 'No answer' : 'Connected'}</b> <span class="w">· ${esc((l.first || l.last).split(' · ')[0])}</span>${l.st === 'try' ? '' : rec(i, '3:42')}</div></div>
-        <div class="ev"><span class="ic v">${ic.sms}</span><div class="tx"><b>Text sent</b> <span class="w">· "LivX info" template</span><p>Hi, this is the LivX team. Here's the info on our founding partner program…</p></div></div>
-        <div class="ev"><span class="ic">${ic.call}</span><div class="tx"><b>First call · Voicemail</b> <span class="w">· last week · 0:31</span>${rec(i + 7, '0:31')}</div></div>`;
-    }
-    function renderPanel() {
-      const l = LEADS[sel];
-      document.getElementById('pName').textContent = l.name;
-      document.getElementById('pSub').textContent = `${l.type} · ${l.zone} · ${l.who}`;
-      document.getElementById('pChips').innerHTML = `${chip(l.st)}<span class="tag">${esc(l.cat)}</span><span class="tag">${l.tries} attempts</span>`;
-      document.getElementById('pNext').innerHTML = l.next[0] === '—'
-        ? `${ic.cal}<span>No follow-up scheduled</span>`
-        : `${ic.cal}<span>Next follow-up: <b>${esc(l.next[0])}</b> · call</span>`;
-      document.querySelectorAll('#pTabs button').forEach((b) => b.classList.toggle('on', b.dataset.tab === tab));
-      const body = document.getElementById('pBody');
-      if (tab === 'act') body.innerHTML = activity(l, sel);
-      else if (tab === 'sms') body.innerHTML = `
-        <div class="bubble out">Hi, this is the LivX team 👋 Thanks for your time today. Here's the info on becoming a founding partner.<small>Sent · ${esc(l.ph)}</small></div>
-        ${l.tries ? '<div class="bubble in">Thanks! I\'ll go over it with my partner and get back to you.<small>Received</small></div>' : ''}
-        <div class="compose"><span>Type a text or pick a template…</span><b>Send</b></div>`;
-      else body.innerHTML = `<dl class="fields">
-        <dt>Contact</dt><dd>${esc(l.who)}</dd><dt>Phone</dt><dd>${esc(l.ph)}</dd><dt>Email</dt><dd>—</dd>
-        <dt>Area</dt><dd>${esc(l.zone)}</dd><dt>Source</dt><dd>Google Sheet</dd><dt>Owner</dt><dd>Cold caller</dd>
-        <dt>Notes</dt><dd>${esc(l.note)}</dd></dl>`;
-    }
-    function render() { renderViews(); renderRows(); renderPanel(); }
-
-    document.getElementById('views').addEventListener('click', (e) => {
-      const b = e.target.closest('button'); if (!b) return;
-      view = +b.dataset.v; render();
-    });
-    document.getElementById('rows').addEventListener('click', (e) => {
-      const tr = e.target.closest('tr'); if (!tr) return;
-      sel = +tr.dataset.i; endCall(true); renderRows(); renderPanel();
-    });
-    document.querySelector('.panel').addEventListener('click', (e) => {
-      const t = e.target.closest('[data-tab]');
-      if (t) { tab = t.dataset.tab; renderPanel(); return; }
-      const play = e.target.closest('.rec button');
-      if (play) {
-        const bars = play.parentElement.querySelectorAll('.wave i');
-        let k = 0; clearInterval(play._t);
-        bars.forEach((b) => b.classList.remove('p'));
-        play._t = setInterval(() => { if (k >= bars.length) return clearInterval(play._t); bars[k++].classList.add('p'); }, 90);
+    function calendarV() {
+      // October 2026 starts on a Thursday; show Oct 1 – Nov 14 (6 full weeks from Sep 27)
+      const start = new Date(2026, 8, 27), today = '2026-10-26';
+      const cells = [];
+      for (let i = 0; i < 49; i++) {
+        const d = new Date(start); d.setDate(start.getDate() + i);
+        const iso = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+        const evs = RECS.filter((r) => r.date === iso);
+        cells.push(`<div class="${d.getMonth() !== 9 ? 'out' : ''}${iso === today ? ' td' : ''}"><div class="d">${d.getDate()}</div>
+          ${evs.map((r) => `<span class="ev-c" style="border-color:${ST[r.st].col}" title="${esc(r.name)}">${esc(r.name)}</span>`).join('')}</div>`);
       }
+      return `<div class="cal"><div class="cal-h"><h4>October 2026</h4><span>By "Next follow-up" · colored by status</span></div>
+        <div class="cal-g">${['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d) => `<div class="dow">${d}</div>`).join('')}${cells.join('')}</div></div>`;
+    }
+    function galleryV() {
+      return `<div class="gal">${RECS.map((r) => {
+        const [a, b] = CAT[r.cat] || ['#334d67', '#7fb2ff'];
+        return `<div class="gcard${fl(r)}"><div class="cover" style="background:linear-gradient(135deg,${a},${b})">${chip(r.st)}${esc(initials(r.name))}</div>
+          <div class="bd"><b>${esc(r.name)}</b><span>${esc(r.cat)} · ${esc(r.area)}</span><p>${esc(r.perk === '—' ? 'Perk to be defined' : r.perk)}</p></div></div>`;
+      }).join('')}</div>`;
+    }
+    function formV() {
+      return `<div class="formv"><form class="fcard" id="addForm">
+        <h4>Become a LivX partner</h4><p>New entries go straight into the "Businesses" table.</p>
+        <label for="f-name">Business name</label><input id="f-name" required placeholder="e.g. Rooftop 713">
+        <div class="two"><div><label for="f-cat">Category</label><select id="f-cat">${Object.keys(CAT).map((c) => `<option>${c}</option>`).join('')}</select></div>
+        <div><label for="f-area">Area</label><input id="f-area" placeholder="e.g. Midtown"></div></div>
+        <div class="two"><div><label for="f-contact">Contact name</label><input id="f-contact" placeholder="e.g. Jamie"></div>
+        <div><label for="f-phone">Phone</label><input id="f-phone" placeholder="(713) 555-0100"></div></div>
+        <label for="f-perk">Member perk you'd offer</label><input id="f-perk" placeholder="e.g. Free appetizer">
+        <button type="submit">Submit</button></form>
+        <div class="fside"><h5>Share it anywhere</h5>Send the form link by text or email, or post it on social media. No login needed to fill it out.
+        <ul><li>Required fields and dropdowns keep data clean</li><li>Each answer becomes a new record</li><li>Try it: submit and watch it appear</li></ul></div></div>`;
+    }
+    function render() {
+      renderTabs();
+      const stage = document.getElementById('stage');
+      stage.innerHTML = { grid: gridV, calendar: calendarV, kanban: kanbanV, gallery: galleryV, form: formV }[view]();
+      flashName = null;
+    }
+
+    // Toast for live collaboration
+    let toastT;
+    function toast(w, html) {
+      const t = document.getElementById('toast');
+      t.innerHTML = `<span class="av" style="background:${TEAM[w][1]}">${w}</span><span>${html}</span>`;
+      t.classList.add('on'); clearTimeout(toastT);
+      toastT = setTimeout(() => t.classList.remove('on'), 3200);
+    }
+
+    document.getElementById('vtabs').addEventListener('click', (e) => {
+      const b = e.target.closest('button'); if (!b) return;
+      view = b.dataset.v; render();
     });
 
-    // Call simulation
-    let timer = null, secs = 0;
-    const callBtn = document.getElementById('callBtn');
-    const fmt = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
-    function endCall(silent) {
-      clearInterval(timer); timer = null;
-      callBtn.classList.add('call'); callBtn.classList.remove('hang'); callBtn.querySelector('span').textContent = 'Call';
-      document.getElementById('live').classList.remove('on');
-      document.getElementById('outcome').classList.toggle('on', !silent);
+    // Kanban drag and drop
+    const stage = document.getElementById('stage');
+    let dragName = null;
+    stage.addEventListener('dragstart', (e) => {
+      const c = e.target.closest('.card-k'); if (!c) return;
+      dragName = c.dataset.name; c.classList.add('drag');
+      e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', dragName);
+    });
+    stage.addEventListener('dragend', (e) => { const c = e.target.closest('.card-k'); if (c) c.classList.remove('drag'); });
+    stage.addEventListener('dragover', (e) => {
+      const col = e.target.closest('.col'); if (!col || !dragName) return;
+      e.preventDefault();
+      stage.querySelectorAll('.col.over').forEach((c) => c !== col && c.classList.remove('over'));
+      col.classList.add('over');
+    });
+    stage.addEventListener('dragleave', (e) => { const col = e.target.closest('.col'); if (col && !col.contains(e.relatedTarget)) col.classList.remove('over'); });
+    stage.addEventListener('drop', (e) => {
+      const col = e.target.closest('.col'); if (!col || !dragName) return;
+      e.preventDefault();
+      const r = RECS.find((x) => x.name === dragName);
+      if (r && r.st !== col.dataset.st) { r.st = col.dataset.st; flashName = r.name; toast('OW', `You moved <b>${esc(r.name)}</b> to <b>${ST[r.st].n}</b>. Synced for everyone.`); }
+      dragName = null; render();
+    });
+
+    // Form submission adds a record
+    stage.addEventListener('submit', (e) => {
+      if (e.target.id !== 'addForm') return;
+      e.preventDefault();
+      const v = (id) => document.getElementById(id).value.trim();
+      const d = new Date(2026, 9, 26 + 3);
+      const r = {
+        name: v('f-name') || 'New business', cat: v('f-cat'), st: 'prospect', contact: v('f-contact') || '—',
+        phone: v('f-phone') || '—', area: v('f-area') || 'Houston', perk: v('f-perk') || '—', who: 'OW',
+        date: `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+      };
+      RECS.unshift(r); flashName = r.name; view = 'grid'; render();
+      toast('OW', `New form response: <b>${esc(r.name)}</b> was added to Businesses.`);
+    });
+
+    // Simulated teammates editing in real time
+    const LIVE = [
+      ['AL', 'Fuegos', 'talks'], ['SM', 'Trufusion', 'partner'], ['TY', 'BLVD', 'talks'], ['AL', 'El Tiempo Cantina', 'contacted']
+    ];
+    let liveI = 0, liveTimer = null;
+    function liveTick() {
+      if (view === 'form' || document.hidden) return;
+      const [w, name, st] = LIVE[liveI % LIVE.length]; liveI++;
+      const r = RECS.find((x) => x.name === name); if (!r) return;
+      if (r.st === st) return;
+      r.st = st; flashName = r.name; render();
+      toast(w, `<b>${TEAM[w][0]}</b> changed <b>${esc(r.name)}</b> to <b>${ST[st].n}</b>`);
     }
-    callBtn.addEventListener('click', () => {
-      if (timer) return endCall(false);
-      secs = 0;
-      document.getElementById('outcome').classList.remove('on');
-      document.getElementById('live').classList.add('on');
-      document.getElementById('liveTx').textContent = `Calling ${LEADS[sel].name}…`;
-      document.getElementById('liveTm').textContent = '00:00';
-      callBtn.classList.remove('call'); callBtn.classList.add('hang'); callBtn.querySelector('span').textContent = 'Hang up';
-      timer = setInterval(() => {
-        secs++;
-        if (secs === 3) document.getElementById('liveTx').textContent = 'On call · recording';
-        document.getElementById('liveTm').textContent = fmt(secs);
-      }, 1000);
-    });
-    document.getElementById('outOpts').innerHTML = OUTCOMES.map(([n], i) => `<button type="button" data-o="${i}">${n}</button>`).join('');
-    document.getElementById('outOpts').addEventListener('click', (e) => {
-      const b = e.target.closest('button'); if (!b) return;
-      const [name, st] = OUTCOMES[+b.dataset.o];
-      const l = LEADS[sel];
-      l.first = l.first || l.last; l.st = st; l.tries += 1; l.last = 'Just now · call';
-      l.next = st === 'won' || st === 'lost' ? ['—', ''] : ['Tomorrow · 10:00 AM', ''];
-      (extra[sel] = extra[sel] || []).unshift({ out: name, dur: `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}` });
-      document.getElementById('outcome').classList.remove('on');
-      tab = 'act'; render();
-    });
+    const appObs = 'IntersectionObserver' in window && new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !liveTimer) { liveTimer = setInterval(liveTick, 7000); }
+      else if (!e.isIntersecting && liveTimer) { clearInterval(liveTimer); liveTimer = null; }
+    }, { threshold: .4 });
+    if (appObs) appObs.observe(document.getElementById('app'));
+
+    // Permission matrix
+    const ROLES = [
+      ['View all records and views', 1, 1, 1, 1],
+      ['Comment on records', 1, 1, 1, 1],
+      ['Add, edit, and delete records', 1, 1, 1, 0],
+      ['Create and save views and filters', 1, 1, 1, 0],
+      ['Add or change tables and fields', 1, 1, 0, 0],
+      ['Create and share forms', 1, 1, 0, 0],
+      ['Invite users and assign roles', 1, 0, 0, 0],
+      ['Admin panel and workspace settings', 1, 0, 0, 0]
+    ];
+    const yes = I('<polyline points="20 6 9 17 4 12"/>'), no = I('<line x1="6" y1="12" x2="18" y2="12"/>');
+    document.getElementById('roles').innerHTML = ROLES.map(([t, ...v]) =>
+      `<tr><td>${t}</td>${v.map((x, i) => `<td class="${x ? 'y' : 'n'}${i === 0 ? ' own' : ''}" aria-label="${x ? 'Yes' : 'No'}">${x ? yes : no}</td>`).join('')}</tr>`).join('');
 
     // Fixed issue date
-    const ISSUED = new Date(2026, 9, 23);
+    const ISSUED = new Date(2026, 9, 26);
     document.getElementById('issued').textContent = ISSUED.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
     render();
 
@@ -746,7 +767,7 @@
     const io = 'IntersectionObserver' in window && new IntersectionObserver((es) => es.forEach((e) => {
       if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
     }), { rootMargin: '0px 0px -8% 0px' });
-    document.querySelectorAll('.reveal').forEach((el, i) => io ? io.observe(el) : el.classList.add('in'));
+    document.querySelectorAll('.reveal').forEach((el) => io ? io.observe(el) : el.classList.add('in'));
   </script>
 </body>
 </html>
