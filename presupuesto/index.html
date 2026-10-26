@@ -100,11 +100,6 @@
     .plus { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 14px; padding: 8px 14px; background: var(--blue-bg); border: 1px solid rgba(20, 56, 204, .15); border-radius: 100px; font-size: 14px; color: var(--muted); }
     .plus b { font-family: var(--display); font-weight: 400; font-size: 24px; line-height: 1; color: var(--blue); }
     .price-sub { color: var(--soft); font-size: 14.5px; font-weight: 300; }
-    .terms { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
-    .term { background: var(--off); padding: 14px 18px; }
-    .term small { color: var(--soft); font-size: 12.5px; }
-    .term strong { display: block; font-family: var(--display); font-weight: 400; font-size: 34px; line-height: 1; color: var(--black); margin-top: 4px; }
-    .term .pct { color: var(--blue); font-weight: 700; }
     .checks { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 11px; }
     .checks li { display: flex; gap: 10px; font-size: 14.5px; color: var(--soft); }
     .checks li strong { color: var(--black); font-weight: 500; }
@@ -211,8 +206,7 @@
       .badge { display: none; }
       .logo { font-size: 18px; letter-spacing: 3px; }
       .sum-total strong { font-size: 46px; }
-      .terms { grid-template-columns: minmax(0, 1fr); }
-    }
+      }
     @media print {
       body { background: #fff; font-size: 12.5px; }
       .top, .no-print { display: none !important; }
@@ -259,10 +253,6 @@
           <div class="price"><span class="cur">$</span><span class="amt">330</span><span class="per">USD · pago único</span></div>
           <div class="plus">+ <b>$25</b> dominio (registro y configuración)</div>
           <p class="price-sub">Diseño y desarrollo de la plataforma, migración de su documento, puesta en línea y capacitación. Entrega estimada en 3 semanas.</p>
-          <div class="terms">
-            <div class="term"><small><span class="pct">60%</span> para iniciar</small><strong>$198</strong></div>
-            <div class="term"><small><span class="pct">40%</span> contra entrega</small><strong>$132</strong></div>
-          </div>
           <ul class="checks">
             <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Base de datos tipo Airtable</strong> con varias tablas conectadas entre sí</span></li>
             <li><svg class="i" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>5 vistas de los mismos datos</strong>: cuadrícula, calendario, kanban, galería y formulario</span></li>
@@ -345,9 +335,9 @@
         <h2>Tres pasos <span>y a trabajar</span></h2>
       </div>
       <div class="how">
-        <div><div class="n">01</div><h3>Aprobación y 60%</h3><p>Confirman el presupuesto y el pago inicial de $198. Ese mismo día arrancamos.</p></div>
+        <div><div class="n">01</div><h3>Aprobación</h3><p>Confirman el presupuesto y ese mismo día arrancamos.</p></div>
         <div><div class="n">02</div><h3>Nos envían su documento</h3><p>Su Google Sheet, Excel o CSV. Nosotros lo migramos y lo dejamos ordenado.</p></div>
-        <div><div class="n">03</div><h3>Reciben sus credenciales</h3><p>En unas 3 semanas les entregamos el panel de administración, capacitación y el 40% final de $132.</p></div>
+        <div><div class="n">03</div><h3>Reciben sus credenciales</h3><p>En unas 3 semanas les entregamos el panel de administración, las credenciales y la capacitación.</p></div>
       </div>
     </section>
 
@@ -355,7 +345,7 @@
     <section>
       <div class="card cta">
         <h2>¿Empezamos? <span>3 semanas.</span></h2>
-        <p>Con la aprobación y el 60% inicial arrancamos de inmediato con la migración de su documento. En unas 3 semanas su equipo estará trabajando en su propia base de datos.</p>
+        <p>Con su aprobación arrancamos de inmediato con la migración de su documento. En unas 3 semanas su equipo estará trabajando en su propia base de datos.</p>
         <button class="btn no-print" type="button" onclick="window.print()">Guardar en PDF</button>
         <p class="total-line" id="selNote"></p>
       </div>
@@ -419,7 +409,7 @@
       document.getElementById('then').textContent = h.then;
       document.getElementById('year').textContent = money(PRICE + DOMAIN + h.firstYear);
       document.getElementById('selNote').innerHTML =
-        `Total hoy: <strong>${money(total)}</strong> · 60% para iniciar: <strong>${money(PRICE * .6)}</strong>`;
+        `Total hoy: <strong>${money(total)}</strong>`;
       document.querySelectorAll('.opt').forEach((el) => {
         el.classList.toggle('on', el.dataset.v === host);
         el.querySelector('input').checked = el.dataset.v === host;
